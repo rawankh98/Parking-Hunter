@@ -2,7 +2,7 @@
 
 Group Name: PRO CODE
 
-Project Name: Park Hunter
+Project Name: Parking Hunter
 
 Leader: Victoria Fares AbuZulof
 
