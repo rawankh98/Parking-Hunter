@@ -24,6 +24,8 @@ public class Parking {
     @OneToMany(mappedBy = "addingReview")
     private  List<Review>reviews;
 
+    @OneToMany(mappedBy = "dashbordrepo")
+    private  List<Dashboard>dashboards;
     public Parking(){
 
     }

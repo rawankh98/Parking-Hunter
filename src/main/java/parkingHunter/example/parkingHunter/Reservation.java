@@ -8,9 +8,9 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    String date;
-    String starTime;
-    String endTime;
+    private String date;
+    private String starTime;
+    private String endTime;
 
     @ManyToOne
     private Parking reserveSpace;
