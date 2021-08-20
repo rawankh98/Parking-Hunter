@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="parking: ${parkings}">
+    <li th:text="${parking.parkingName}" />
+    <li th:text="${parking.region}" />
+    <li th:text="${parking.latitude}" />
+    <li th:text="${parking.longitude}" />
+    <li th:text="${parking.numSpaces}" />
+    <li th:text="${parking.availableSpaces}" />
+    <li th:text="${parking.openingHour}" />
+    <li th:text="${parking.closingHour}" />
+    <li th:text="${parking.pricePerHour}" />
+    <li th:text="${parking.ownerName}" />
+    <br>
+</ul>
+</body>
+</html>

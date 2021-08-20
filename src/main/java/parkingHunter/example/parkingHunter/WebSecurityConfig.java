@@ -30,7 +30,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.cors().disable().csrf().disable().authorizeRequests().antMatchers( "/login", "/signup","/").permitAll().antMatchers("/adminpanel").hasAuthority("ROLE_ADMIN").antMatchers("/owner").hasAuthority("ROLE_OWNER").anyRequest().authenticated().and().formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/", true).failureUrl("/error").and().logout().logoutUrl("/perform_logout").deleteCookies("JSESSIONID");
+            http.cors().disable().csrf().disable().authorizeRequests().antMatchers( "/login", "/signup","/").permitAll().antMatchers("/adminpanel").hasAuthority("ROLE_ADMIN").antMatchers("/owner","/addparking").hasAuthority("ROLE_OWNER").anyRequest().authenticated().and().formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/", true).failureUrl("/error").and().logout().logoutUrl("/perform_logout").deleteCookies("JSESSIONID");
         }
 
 }

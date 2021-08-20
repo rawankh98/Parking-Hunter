@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add parking</title>
+</head>
+<body>
+<form method="POST" action="/addparking">
+    <label for="parkingName">Parking Name :</label>
+    <input id="parkingName" name="parkingName" type="text" required>
+
+    <label for="region"> Region : </label>
+    <input id="region" name="region" type="text" required>
+
+    <label for="numSpaces">Number of spaces</label>
+    <input id="numSpaces" name="numSpaces" type="number" min="0" required>
+
+    <label for="openingHour">Opening Hour :</label>
+    <input id="openingHour" name="openingHour" type="time" required>
+
+    <label for="closingHour">Closing Hour :</label>
+    <input id="closingHour" name="closingHour" type="time" required>
+
+    <label for="pricePerHour">Price per hour :</label>
+    <input id="pricePerHour" name="pricePerHour" type="number" min="0"  required>
+
+    <label >Location information :</label>
+    <input id="lat" name="lat" type="number" step="any" required>
+    <input id="lon" name="lon" type="number" step="any"  required >
+    <button type="button" onclick="getLocation()">Add The Parking Location</button>
+
+    <button type="submit">Add Parking</button>
+</form>
+
+<script>
+let latinput = document.getElementById("lat");
+let loninput = document.getElementById("lon");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  latinput.value=position.coords.latitude;
+  loninput.value=position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+
+</script>
+</body>
+</html>
