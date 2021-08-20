@@ -15,6 +15,7 @@ public class ApplicationUserController {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @GetMapping("/")
     @ResponseBody
     public String conect(){
