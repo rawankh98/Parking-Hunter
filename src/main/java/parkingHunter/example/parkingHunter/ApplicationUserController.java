@@ -14,30 +14,36 @@ public class ApplicationUserController {
     DBUserRepository DBUserRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @GetMapping("/")
     @ResponseBody
     public String conect(){
 
         return "connect";
     }
+
     @GetMapping("/owner")
     @ResponseBody
     public String owner(){
        return "Im owner";
     }
+
     @GetMapping("/adminpanel")
     @ResponseBody
     public String admain(){
        return "iam admin";
     }
+
     @GetMapping("/signup")
     public String getSignUpPage(){
         return "signup.html";
     }
+
     @GetMapping("/login")
     public String getSignInPage(){
         return "signin.html";
     }
+
     @PostMapping("/signup")
     public RedirectView signUp(@RequestParam(value="username") String username, @RequestParam(value="password") String password){
         DBUser newUser = new DBUser(username,bCryptPasswordEncoder.encode(password),"ROLE_USER");
@@ -46,4 +52,7 @@ public class ApplicationUserController {
 //        ROLE_USER
         return new RedirectView("/login");
     }
+
+    
+
 }
