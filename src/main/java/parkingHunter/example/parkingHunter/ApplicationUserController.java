@@ -24,6 +24,7 @@ public class ApplicationUserController {
 
     @GetMapping("/owner")
     @ResponseBody
+
     public String owner(){
        return "Im owner";
     }
@@ -50,7 +51,7 @@ public class ApplicationUserController {
         DBUserRepository.save(newUser);
 
 //        ROLE_USER
-        return new RedirectView("/login");
+        return new RedirectView("/");
     }
 
     
