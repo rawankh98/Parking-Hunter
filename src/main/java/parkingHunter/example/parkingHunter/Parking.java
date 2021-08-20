@@ -27,17 +27,19 @@ public class Parking {
     public Parking(){
 
     }
-    public Parking( String parkingName, String region, String latitude, String longitude, int numSpaces, int availableSpaces, String openingHour, String closingHour, int pricePerHour,String ownerName,DBUser addingParking) {
+    public Parking( String parkingName, String region, String latitude, String longitude, String numSpaces,
+                    String openingHour, String closingHour, String pricePerHour,String ownerName,DBUser addingParking) {
         this.ownerName = ownerName;
+        //int availableSpaces,
         this.parkingName = parkingName;
         this.region = region;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.numSpaces = numSpaces;
-        this.availableSpaces = availableSpaces;
+        this.numSpaces = Integer.parseInt(numSpaces);
+        this.availableSpaces = Integer.parseInt(numSpaces);
         this.openingHour = openingHour;
         this.closingHour = closingHour;
-        this.pricePerHour = pricePerHour;
+        this.pricePerHour = Integer.parseInt(pricePerHour);
         this.addingParking=addingParking;
     }
 
@@ -131,5 +133,24 @@ public class Parking {
 
     public void setAddingParking(DBUser addingParking) {
         this.addingParking = addingParking;
+    }
+
+    @Override
+    public String toString() {
+        return "Parking{" +
+                "id=" + id +
+                ", parkingName='" + parkingName + '\'' +
+                ", region='" + region + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", numSpaces=" + numSpaces +
+                ", availableSpaces=" + availableSpaces +
+                ", openingHour='" + openingHour + '\'' +
+                ", closingHour='" + closingHour + '\'' +
+                ", pricePerHour=" + pricePerHour +
+                ", ownerName='" + ownerName + '\'' +
+                ", addingParking=" + addingParking +
+                ", reviews=" + reviews +
+                '}';
     }
 }

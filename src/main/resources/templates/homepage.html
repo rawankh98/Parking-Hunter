@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Home page</h2>
+<form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
+    <button type="submit">Add parking</button>
+</form>
+<form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">
+    <button type="submit">view parking</button>
+</form>
+
+
+<form th:if="${userType==null}" action="/login">
+    <button type="submit">Sign in</button>
+</form>
+<form th:if="${userType==null}" action="/signup">
+    <button type="submit">Sign up</button>
+</form>
+</body>
+</html>

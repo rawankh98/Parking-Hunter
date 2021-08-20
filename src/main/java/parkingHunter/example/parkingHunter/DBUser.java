@@ -13,6 +13,7 @@ public class DBUser {
     private String username;
     private String password;
     private String authority;
+    private String profilePicture;
     // all details can be added here ...
 
     @OneToMany(mappedBy = "addingParking")
@@ -21,10 +22,11 @@ public class DBUser {
 
     }
 
-    public DBUser(String username, String password, String authority) {
+    public DBUser(String username, String password, String authority,String profilePicture) {
         this.username = username;
         this.password = password;
         this.authority = authority;
+        this.profilePicture=profilePicture;
     }
 
     public Integer getId() {
@@ -58,4 +60,13 @@ public class DBUser {
     public void setAuthority(String authority) {
         this.authority = authority;
     }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
 }
