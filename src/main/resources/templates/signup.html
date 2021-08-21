@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<!--<h1 th:text="${errormesssage}"></h1>-->
 <form method="POST" action="/signup">
 
-  <label for="username">User Name</label>
-  <input id="username" name="username" type="text">
+    <label for="username">User Name</label>
+    <input id="username" name="username" type="text" required>
 
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required>
 
-  <button type="submit">Sign up</button>
+    <label for="secondpass">ReType Password</label>
+    <input id="secondpass" name="secondpass" type="password" required>
+
+    <label for="userType">Sign Up As A:</label>
+    <select name="userType" id="userType" required>
+        <option value="ROLE_USER" selected>User</option>
+        <option value="ROLE_OWNER">Parking Owner</option>
+    </select>
+    <button type="submit">Sign up</button>
 
 </form>
 

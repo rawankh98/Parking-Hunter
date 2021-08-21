@@ -1,4 +1,6 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Models;
+
+import parkingHunter.example.parkingHunter.Models.Parking;
 
 import javax.persistence.*;
 
@@ -10,7 +12,7 @@ public class Review {
     private String userName;
     private String body;
     private String dateTime;
-    private int stars;
+//    private int stars;
     private String parkName;
 
     @ManyToOne
@@ -19,11 +21,13 @@ public class Review {
     public Review(){
 
     }
-    public Review(String userName, String body, String dateTime, int stars, String parkName,Parking addingReview) {
+
+    //int stars,
+    public Review(String userName, String body, String dateTime,  String parkName,Parking addingReview) {
         this.userName = userName;
         this.body = body;
         this.dateTime = dateTime;
-        this.stars = stars;
+//        this.stars = stars;
         this.parkName = parkName;
         this.addingReview=addingReview;
     }
@@ -56,13 +60,13 @@ public class Review {
         this.dateTime = dateTime;
     }
 
-    public int getStars() {
-        return stars;
-    }
+//    public int getStars() {
+//        return stars;
+//    }
 
-    public void setStars(int stars) {
-        this.stars = stars;
-    }
+//    public void setStars(int stars) {
+//        this.stars = stars;
+//    }
 
     public String getParkName() {
         return parkName;
