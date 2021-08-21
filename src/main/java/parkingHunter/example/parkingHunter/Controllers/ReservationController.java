@@ -48,7 +48,7 @@ public class ReservationController {
 
         LocalTime t1 = LocalTime.parse(starTime);
         LocalTime t2 = LocalTime.parse(endTime);
-        Duration diff = Duration.between(t2, t1);
+        Duration diff = Duration.between(t1, t2);
         long totalTime=diff.toHours();
         String type="appUser";
         Dashboard dashboard=new Dashboard(date,totalTime,type,parking);
@@ -56,11 +56,11 @@ public class ReservationController {
 
 
         // TODO: THIS WILL BE REDIRECTED TO TEMPLATE PARKING-PROFILE AND ADDED TO THE OWNER DASHBOARD
-     return new RedirectView("/----");
+     return new RedirectView("/");
     }
 
-    @GetMapping("/reservingForm")
-    public String  kjh(){
-        return "reserving.html";
-    }
+//    @GetMapping("/reservingForm")
+//    public String  kjh(){
+//        return "reserving.html";
+//    }
 }
