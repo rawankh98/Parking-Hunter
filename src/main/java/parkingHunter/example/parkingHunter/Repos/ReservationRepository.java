@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import parkingHunter.example.parkingHunter.Models.Reservation;
 
 public interface ReservationRepository extends CrudRepository<Reservation,Integer> {
+    Iterable<Reservation> findByUserName(String username);
 }

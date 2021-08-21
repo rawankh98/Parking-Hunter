@@ -18,8 +18,12 @@ public class Parking {
     private String closingHour;
     private int pricePerHour;
     private String ownerName;
+
     @ManyToOne
     private DBUser addingParking;
+
+    @OneToMany(mappedBy = "reserveSpace")
+    private  List<Reservation> reservations;
 
     @OneToMany(mappedBy = "addingReview")
     private  List<Review>reviews;

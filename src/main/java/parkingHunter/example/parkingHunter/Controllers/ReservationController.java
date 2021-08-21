@@ -2,7 +2,6 @@ package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -33,6 +32,16 @@ public class ReservationController {
     @Autowired
     DashboardRepository dashboardRepository;
 
+//    @GetMapping("/mmm")
+//    @ResponseBody
+//    public String  lkj(){
+//        System.out.println("************************************************************");
+//        Iterable<Reservation> reservation = reservationRepository.findAll();
+//        System.out.println(reservation);
+//
+//        return "asasdsd";
+//    }
+
     @PostMapping("/reserve")
     public RedirectView reserve(@RequestParam(value ="id") Integer idP, @RequestParam(value ="date") String date,
                                 @RequestParam(value ="starTime") String starTime,
@@ -42,7 +51,7 @@ public class ReservationController {
         String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(idP).get();
-        Reservation newReservation = new Reservation(date,starTime,endTime,parking);
+        Reservation newReservation = new Reservation(userName,date,starTime,endTime,parking);
         reservationRepository.save(newReservation);
 
 

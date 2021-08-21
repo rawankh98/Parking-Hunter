@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.ReservationRepository;
 import parkingHunter.example.parkingHunter.Repos.ReviewRepository;
 
 import java.security.Principal;
@@ -27,19 +29,39 @@ public class ApplicationUserController {
     @Autowired
     ParkingRepository parkingRepository;
 
+    @Autowired
+    DBUserRepository dbUserRepository;
+
+    @Autowired
+    ReservationRepository reservationRepository;
+
     @GetMapping("/")
     public String conect(Principal principal,Model model) {
+
         if (principal != null) {
            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
            model.addAttribute("userType",userType);
+
+            model.addAttribute("parkingsOwner",
+            parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
            Iterable parking = parkingRepository.findAll();
             model.addAttribute("parkings",parking);
             Iterable addingReviewId=reviewRepository.findAll();
             model.addAttribute("review",addingReviewId);
+
+            Iterable reservations= reservationRepository.findAll();
+
+
+            Iterable oneReservations= reservationRepository.findByUserName(principal.getName());
+
+            model.addAttribute("allReservations",reservations);
+            model.addAttribute("oneReservation",oneReservations);
         } else {
             System.out.println("not authenticated");
         }
+
+
         return "homepage";
     }
 
