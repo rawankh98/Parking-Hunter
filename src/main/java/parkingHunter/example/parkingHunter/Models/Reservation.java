@@ -13,7 +13,7 @@ public class Reservation {
     private String starTime;
     private String endTime;
 
-
+// ManyToMany!!!
     @ManyToOne
     private Parking reserveSpace;
 

@@ -14,6 +14,7 @@ public class Dashboard {
     private String type;
     @ManyToOne
     private Parking dashbordrepo;
+
     public Dashboard(){
 
     }

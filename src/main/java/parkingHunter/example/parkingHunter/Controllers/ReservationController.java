@@ -45,14 +45,13 @@ public class ReservationController {
         Reservation newReservation = new Reservation(userName,date,starTime,endTime,parking);
         reservationRepository.save(newReservation);
 
-
-        LocalTime t1 = LocalTime.parse(starTime);
-        LocalTime t2 = LocalTime.parse(endTime);
-        Duration diff = Duration.between(t1, t2);
-        long totalTime=diff.toHours();
-        String type="appUser";
-        Dashboard dashboard=new Dashboard(date,totalTime,type,parking);
-        dashboardRepository.save(dashboard);
+//        LocalTime t1 = LocalTime.parse(starTime);
+//        LocalTime t2 = LocalTime.parse(endTime);
+//        Duration diff = Duration.between(t1, t2);
+//        long totalTime=diff.toHours();
+//        String type="appUser";
+//        Dashboard dashboard=new Dashboard(date,totalTime,type,parking);
+//        dashboardRepository.save(dashboard);
 
      return new RedirectView("/");
     }
@@ -60,10 +59,20 @@ public class ReservationController {
 
     @GetMapping("/reserve/{id}")
     public  RedirectView deleteReservation(@RequestParam(value="id")Integer id){
-        System.out.println("*************************************************************");
+//        System.out.println("*************************************************************");
         reservationRepository.deleteById(id);
 
-        System.out.println(reservationRepository.findAll());
+      //  System.out.println(reservationRepository.findAll());
+
+        Reservation res = reservationRepository.findById(id).get();
+
+        LocalTime t1 = LocalTime.parse(res.getStarTime());
+        LocalTime t2 = LocalTime.parse(res.getEndTime());
+        Duration diff = Duration.between(t1, t2);
+        long totalTime=diff.toHours();
+        String type="appUser";
+        Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,res.getReserveSpace());
+        dashboardRepository.save(dashboard);
 
         return new RedirectView("/");
     }
@@ -71,14 +80,27 @@ public class ReservationController {
     @GetMapping("/editReserve/{id}")
     public RedirectView updateTime(@RequestParam(value="id")Integer id){
 
-        System.out.println("*********************************************************");
+//        System.out.println("*********************************************************");
         Reservation res=reservationRepository.findById(id).get();
         LocalTime time = LocalTime.parse(res.getEndTime());
 
         LocalTime updatedTime = time.plusHours(1);
         res.setEndTime(updatedTime.toString());
         reservationRepository.save(res);
-        System.out.println(res);
+//        System.out.println(res);
+
+//        LocalTime t1 = LocalTime.parse(res.getStarTime());
+//        Duration diff = Duration.between(t1, updatedTime);
+//        long totalTime=diff.toHours();
+//       // String type="appUser";
+//        System.out.println("*****************************");
+//        //System.out.println(totalTime);
+//        Dashboard dash=dashboardRepository.findByDashbordrepoId(id);
+//       // System.out.println("1111111111111111111111111111111111111111");
+//        dash.setTotalTime(totalTime);
+//        System.out.println(dash.getTotalTime());
+//        dashboardRepository.save(dash);
+////        Dashboard dashboard=dashboardRepository.
 
         return new RedirectView("/");
     }
