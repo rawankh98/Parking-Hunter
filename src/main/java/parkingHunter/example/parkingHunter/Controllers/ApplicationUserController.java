@@ -1,4 +1,4 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,25 +9,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
+import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.ReviewRepository;
 
 import java.security.Principal;
 
 @Controller
 public class ApplicationUserController {
     @Autowired
-    DBUserRepository DBUserRepository;
+    parkingHunter.example.parkingHunter.Repos.DBUserRepository DBUserRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    ReviewRepository reviewRepository;
+
+    @Autowired
+    ParkingRepository parkingRepository;
 
     @GetMapping("/")
     public String conect(Principal principal,Model model) {
         if (principal != null) {
-//            System.out.println(DBUserRepository.findByUsername(principal.getName()));
            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
            model.addAttribute("userType",userType);
 
-
-//            System.out.println(principal.getName());
+           Iterable parking = parkingRepository.findAll();
+            model.addAttribute("parkings",parking);
+            Iterable addingReviewId=reviewRepository.findAll();
+            model.addAttribute("review",addingReviewId);
         } else {
             System.out.println("not authenticated");
         }

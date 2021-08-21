@@ -5,11 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import parkingHunter.example.parkingHunter.DBUser;
-import parkingHunter.example.parkingHunter.DBUserRepository;
-import parkingHunter.example.parkingHunter.Parking;
-import parkingHunter.example.parkingHunter.ParkingRepository;
+import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
+import parkingHunter.example.parkingHunter.Models.Parking;
+import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 
 import java.security.Principal;
 

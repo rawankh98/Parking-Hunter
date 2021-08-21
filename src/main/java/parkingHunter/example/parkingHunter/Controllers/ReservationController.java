@@ -1,4 +1,4 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,12 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
+import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Models.Dashboard;
+import parkingHunter.example.parkingHunter.Models.Parking;
+import parkingHunter.example.parkingHunter.Models.Reservation;
+import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
+import parkingHunter.example.parkingHunter.Repos.DashboardRepository;
+import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.ReservationRepository;
 
 import java.security.Principal;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Controller
 public class ReservationController {

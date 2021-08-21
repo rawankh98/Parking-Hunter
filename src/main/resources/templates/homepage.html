@@ -6,19 +6,59 @@
 </head>
 <body>
 <h2>Home page</h2>
-<form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
-    <button type="submit">Add parking</button>
-</form>
-<form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">
-    <button type="submit">view parking</button>
-</form>
+<div th:each="parking: ${parkings}">
+    <p th:text="${parking.parkingName}"></p>
+    <p th:text="${parking.region}"></p>
+    <p th:text="${parking.latitude}"></p>
+    <p th:text="${parking.longitude}"></p>
+    <p th:text="${parking.numSpaces}"></p>
+    <p th:text="${parking.availableSpaces}"></p>
+    <p th:text="${parking.openingHour}"></p>
+    <p th:text="${parking.closingHour}"></p>
+    <p th:text="${parking.pricePerHour}"></p>
+    <p th:text="${parking.ownerName}"></p>
+    <br>
+    <div class="stars">
+        <form action="/addReview" method="post">
+
+            <input name="body" type="text" placeholder="Review">
+            <!--            <input class="star star-5" id="star-5" type="radio" name="star"/>-->
+            <!--            <label class="star star-5" for="star-5"></label>-->
+            <!--            <input class="star star-4" id="star-4" type="radio" name="star"/>-->
+            <!--            <label class="star star-4" for="star-4"></label>-->
+            <!--            <input class="star star-3" id="star-3" type="radio" name="star"/>-->
+            <!--            <label class="star star-3" for="star-3"></label>-->
+            <!--            <input class="star star-2" id="star-2" type="radio" name="star"/>-->
+            <!--            <label class="star star-2" for="star-2"></label>-->
+            <!--            <input class="star star-1" id="star-1" type="radio" name="star"/>-->
+            <!--            <label class="star star-1" for="star-1"></label>-->
+            <button type="submit" name="idPark" th:value="${parking.id}">add review</button>
+
+        </form>
+    </div>
+    <div th:each="reviews:${review}">
+<!--        th:if="${parking.id==reviews.addingReviewId}"-->
+        <div >
+            <p th:text="${reviews.dateTime}"></p>
+            <p th:text="${reviews.body}"></p>
+        </div>
+
+    </div>
+
+    </div>
+    <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
+        <button type="submit">Add parking</button>
+    </form>
+    <form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">
+        <button type="submit">view parking</button>
+    </form>
 
 
-<form th:if="${userType==null}" action="/login">
-    <button type="submit">Sign in</button>
-</form>
-<form th:if="${userType==null}" action="/signup">
-    <button type="submit">Sign up</button>
-</form>
+    <form th:if="${userType==null}" action="/login">
+        <button type="submit">Sign in</button>
+    </form>
+    <form th:if="${userType==null}" action="/signup">
+        <button type="submit">Sign up</button>
+    </form>
 </body>
 </html>

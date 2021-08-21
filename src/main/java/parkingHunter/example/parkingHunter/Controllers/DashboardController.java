@@ -1,4 +1,4 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
