@@ -2,6 +2,7 @@ package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -32,16 +33,6 @@ public class ReservationController {
     @Autowired
     DashboardRepository dashboardRepository;
 
-//    @GetMapping("/mmm")
-//    @ResponseBody
-//    public String  lkj(){
-//        System.out.println("************************************************************");
-//        Iterable<Reservation> reservation = reservationRepository.findAll();
-//        System.out.println(reservation);
-//
-//        return "asasdsd";
-//    }
-
     @PostMapping("/reserve")
     public RedirectView reserve(@RequestParam(value ="id") Integer idP, @RequestParam(value ="date") String date,
                                 @RequestParam(value ="starTime") String starTime,
@@ -63,13 +54,20 @@ public class ReservationController {
         Dashboard dashboard=new Dashboard(date,totalTime,type,parking);
         dashboardRepository.save(dashboard);
 
-
-        // TODO: THIS WILL BE REDIRECTED TO TEMPLATE PARKING-PROFILE AND ADDED TO THE OWNER DASHBOARD
      return new RedirectView("/");
     }
 
-//    @GetMapping("/reservingForm")
-//    public String  kjh(){
-//        return "reserving.html";
-//    }
+
+    @GetMapping("/reserve/{id}")
+    public  RedirectView deleteReservation(@RequestParam(value="id")Integer id){
+        System.out.println("*************************************************************");
+        reservationRepository.deleteById(id);
+
+        System.out.println(reservationRepository.findAll());
+
+        return new RedirectView("/");
+    }
+
+
+
 }
