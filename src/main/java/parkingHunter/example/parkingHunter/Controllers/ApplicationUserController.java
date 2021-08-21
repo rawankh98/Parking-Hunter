@@ -32,6 +32,7 @@ public class ApplicationUserController {
         if (principal != null) {
            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
            model.addAttribute("userType",userType);
+           model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
 
            Iterable parking = parkingRepository.findAll();
             model.addAttribute("parkings",parking);
