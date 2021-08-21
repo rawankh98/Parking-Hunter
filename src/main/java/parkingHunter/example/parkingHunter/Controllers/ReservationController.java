@@ -68,6 +68,20 @@ public class ReservationController {
         return new RedirectView("/");
     }
 
+    @GetMapping("/editReserve/{id}")
+    public RedirectView updateTime(@RequestParam(value="id")Integer id){
+
+        System.out.println("*********************************************************");
+        Reservation res=reservationRepository.findById(id).get();
+        LocalTime time = LocalTime.parse(res.getEndTime());
+
+        LocalTime updatedTime = time.plusHours(1);
+        res.setEndTime(updatedTime.toString());
+        reservationRepository.save(res);
+        System.out.println(res);
+
+        return new RedirectView("/");
+    }
 
 
 }

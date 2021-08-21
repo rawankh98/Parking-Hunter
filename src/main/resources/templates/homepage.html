@@ -27,9 +27,12 @@
     <p th:text="${reservation.starTime}"></p>
     <p th:text="${reservation.endTime}"></p>
     <p th:text="${reservation.userName}"></p>
-    <form action="/reserve/{id}" method="delete">
 
+    <form action="/reserve/{id}" method="delete">
         <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>
+    </form>
+    <form action="/editReserve/{id}" method="put">
+        <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>
     </form>
 
 </div>
@@ -53,6 +56,7 @@
     <p th:text="${reservation.date}"></p>
     <p th:text="${reservation.starTime}"></p>
     <p th:text="${reservation.endTime}"></p>
+
 </div>
 
 
