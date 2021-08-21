@@ -1,4 +1,4 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
+import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Models.Parking;
+import parkingHunter.example.parkingHunter.Models.Review;
+import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
+import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.ReviewRepository;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
@@ -22,8 +28,8 @@ public class ReviewController {
     DBUserRepository dbUserRepository;
    @GetMapping("/parkinkp")
    public String parkinkp(Model model){
-       Iterable parkink=parkingRepository.findAll();
-       model.addAttribute("parking",parkink);
+//       Iterable parkink=parkingRepository.findAll();
+//       model.addAttribute("parking",parkink);
        Iterable addingReviewId=reviewRepository.findAll();
        model.addAttribute("review",addingReviewId);
 
@@ -39,7 +45,8 @@ public class ReviewController {
 
     @RequestMapping("/addReview")
     @PostMapping("/addReview")
-    public RedirectView addReview( String body, int stars, String parkName, int idPark, Principal principal){
+    public RedirectView addReview( String body,  int idPark, Principal principal){
+       //int stars, String parkName,
         DBUser userNames=dbUserRepository.findByUsername(principal.getName());
         String userName=userNames.getUsername();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
@@ -47,10 +54,10 @@ public class ReviewController {
         String dateTime=formatter.format(date);
         Parking addingReview=parkingRepository.findById(idPark).get();
 
-        parkName=addingReview.getParkingName();
-        Review review=new Review(userName,body,dateTime,stars,parkName,addingReview);
+        String parkName=addingReview.getParkingName();
+        Review review=new Review(userName,body,dateTime,parkName,addingReview);
         reviewRepository.save(review);
-       return new RedirectView("/showReview");
+       return new RedirectView("/");
    }
 
 

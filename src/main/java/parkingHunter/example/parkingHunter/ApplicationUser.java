@@ -3,8 +3,8 @@ package parkingHunter.example.parkingHunter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import parkingHunter.example.parkingHunter.Models.DBUser;
 
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

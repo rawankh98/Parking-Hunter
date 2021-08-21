@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import parkingHunter.example.parkingHunter.DBUserRepository;
-import parkingHunter.example.parkingHunter.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
+import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 
 import java.security.Principal;
 

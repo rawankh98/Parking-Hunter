@@ -1,4 +1,6 @@
-package parkingHunter.example.parkingHunter;
+package parkingHunter.example.parkingHunter.Models;
+
+import parkingHunter.example.parkingHunter.Models.Parking;
 
 import javax.persistence.*;
 
