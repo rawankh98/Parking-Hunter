@@ -36,8 +36,7 @@
 
         </form>
     </div>
-    <div th:each="reviews:${review}">
-<!--        th:if="${parking.id==reviews.addingReviewId}"-->
+    <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id}">
         <div >
             <p th:text="${reviews.dateTime}"></p>
             <p th:text="${reviews.body}"></p>
