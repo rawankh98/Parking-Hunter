@@ -9,20 +9,25 @@ public class Dashboard {
     private int id;
     private String date;
     private long totalTime;
+    private double price;
+    private double commulativePrice;
 
 
     private String type;
     @ManyToOne
     private Parking dashbordrepo;
 
+
     public Dashboard(){
 
     }
 
-    public Dashboard(String date, long totalTime, String type, Parking dashbordrepo) {
+    public Dashboard(String date, long totalTime, String type,double price,double commulativePrice, Parking dashbordrepo) {
         this.date = date;
         this.totalTime = totalTime;
         this.type = type;
+        this.commulativePrice=commulativePrice;
+        this.price=price;
         this.dashbordrepo = dashbordrepo;
     }
 
@@ -56,6 +61,23 @@ public class Dashboard {
 
     public Parking getDashbordrepo() {
         return dashbordrepo;
+    }
+
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getCommulativePrice() {
+        return commulativePrice;
+    }
+
+    public void setCommulativePrice(double commulativePrice) {
+        this.commulativePrice = commulativePrice;
     }
 
     public void setDashbordrepo(Parking dashbordrepo) {
