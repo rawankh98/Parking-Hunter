@@ -12,7 +12,8 @@ public class Reservation {
     private String date;
     private String starTime;
     private String endTime;
-
+    private long totalTime;
+    private String type;
 // ManyToMany!!!
     @ManyToOne
     private Parking reserveSpace;
@@ -25,12 +26,30 @@ public class Reservation {
         return id;
     }
 
-    public Reservation(String userName,String date, String starTime, String endTime, Parking reserveSpace) {
+    public Reservation(String userName,long totalTime,String date, String starTime, String endTime,String type, Parking reserveSpace) {
         this.userName = userName;
         this.date = date;
         this.starTime = starTime;
         this.endTime = endTime;
+        this.totalTime=totalTime;
+        this.type=type;
         this.reserveSpace = reserveSpace;
+    }
+
+    public long getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(long totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUserName() {
