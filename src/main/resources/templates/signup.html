@@ -3,28 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <style>
+    main{
+    min-height: 80vh;
+    }
+    .centeredlinks{
+position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+      .navbar{
+margin: 0;
+border-radius: 0;
+border-style: none;
+height: 70px;
+padding-top: 10px;
+}
+
+.footer-clean {
+  padding:50px 0;
+  background-color:#222;
+  color:white;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-clean h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-clean ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-clean ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-clean ul a:hover {
+  opacity:1;
+}
+
+.footer-clean .item.social {
+  text-align:right;
+}
+
+@media (max-width:767px) {
+  .footer-clean .item {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-clean .item.social {
+    text-align:center;
+  }
+}
+
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin-left:10px;
+  margin-top:22px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
+
+@media (max-width:991px) {
+  .footer-clean .item.social > a {
+    margin-top:40px;
+  }
+}
+
+@media (max-width:767px) {
+  .footer-clean .item.social > a {
+    margin-top:10px;
+  }
+}
+
+
+.footer-clean .copyright {
+  margin-top:14px;
+  margin-bottom:0;
+  font-size:13px;
+  opacity:0.6;
+}
+
+      h1, form, input, p {
+      padding: 0;
+      margin: 10px;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+      h1 {
+      padding: 10px 0;
+      font-size: 32px;
+      font-weight: 300;
+      text-align: center;
+      }
+      p {
+      font-size: 12px;
+      }
+      hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+      }
+      .main-block {
+      max-width: 460px;
+      min-height: 500px;
+      padding: 10px 0;
+      margin: 70px auto;
+      border-radius: 5px;
+      border: solid 1px #ccc;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background: #ebebeb;
+      }
+      form {
+      margin: 0 30px;
+      }
+      .account-type, .gender {
+      margin: 15px 0;
+      }
+      input[type=radio] {
+      display: none;
+      }
+      label#icon {
+      margin: 0;
+      border-radius: 5px 0 0 5px;
+      }
+      label.radio {
+      position: relative;
+      display: inline-block;
+      padding-top: 4px;
+      margin-right: 20px;
+      text-indent: 30px;
+      overflow: visible;
+      cursor: pointer;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1c87c9;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 4px;
+      top: 8px;
+      left: 4px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after {
+      opacity: 1;
+      }
+      input[type=text], input[type=password] {
+      width: calc(100% - 57px);
+      height: 36px;
+      margin: 13px 0 0 -5px;
+      padding-left: 10px;
+      border-radius: 0 5px 5px 0;
+      border: solid 1px #cbc9c9;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #fff;
+      }
+      input[type=password] {
+      margin-bottom: 15px;
+      }
+      #icon {
+      display: inline-block;
+      padding: 9.3px 15px;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #1c87c9;
+      color: #fff;
+      text-align: center;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 100%;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px;
+      border: none;
+      background: #1c87c9;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #26a9e0;
+      }
+    </style>
 </head>
 <body>
 <!--<h1 th:text="${errormesssage}"></h1>-->
-<form method="POST" action="/signup">
+<div th:replace="fragments/header.html :: header"></div>
+<main>
+    <div class="main-block">
+        <h1>Registration</h1>
+        <form method="POST" action="/signup">
+            <label id="icon" for="username"><i class="fas fa-user"></i></label>
+            <input type="text" name="username" id="username" placeholder="Username" required/>
+            <label id="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
+            <input type="password" name="password" id="password" placeholder="Password" required/>
+            <label id="icon" for="secondpass"><i class="fas fa-unlock-alt"></i></label>
+            <input type="password" name="secondpass" id="secondpass" placeholder="Retype Password" required/>
+            <hr>
+            <label for="userType">Sign Up As A:</label>
+            <select name="userType" id="userType" required>
+                <option value="ROLE_USER" selected>User</option>
+                <option value="ROLE_OWNER">Parking Owner</option></select>
+            <hr>
+            <div class="btn-block">
+                <p>By clicking Register, you agree on our <a href="#">Privacy Policy for Parking Hunter</a>.</p>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</main>
 
-    <label for="username">User Name</label>
-    <input id="username" name="username" type="text" required>
-
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" required>
-
-    <label for="secondpass">ReType Password</label>
-    <input id="secondpass" name="secondpass" type="password" required>
-
-    <label for="userType">Sign Up As A:</label>
-    <select name="userType" id="userType" required>
-        <option value="ROLE_USER" selected>User</option>
-        <option value="ROLE_OWNER">Parking Owner</option>
-    </select>
-    <button type="submit">Sign up</button>
-
-</form>
+<div th:replace="fragments/footer.html :: footer"></div>
 
 </body>
 </html>

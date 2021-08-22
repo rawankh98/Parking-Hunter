@@ -1,77 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--        <link rel="stylesheet" type="text/css" th:href="@{css/Index.css}"/>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+    .navbar{
+margin: 0;
+border-radius: 0;
+border-style: none;
+height: 70px;
+padding-top: 10px;
+}
+.centeredlinks{
+position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+    body{
+    height: 100%;
+    }
+    main{
+    min-height: 80vh;
+<!--    margin-top: 30px;-->
+
+    }
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://miro.medium.com/max/5184/1*1hkixgqgbUvjZwmPCYIRZg.jpeg");
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 100%;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.select-box {
+  cursor: pointer;
+  position : relative;
+  margin: 5em auto;
+  width: 300px;
+}
+
+.select,
+.label {
+  color: #414141;
+  display: block;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  background: none transparent;
+  border: 0 none;
+}
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.open .label::after {
+   content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
+}
+.footer-clean {
+  padding:50px 0;
+  background-color:#222;
+  color:white;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-clean h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-clean ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-clean ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-clean ul a:hover {
+  opacity:1;
+}
+
+.footer-clean .item.social {
+  text-align:right;
+}
+
+@media (max-width:767px) {
+  .footer-clean .item {
+    text-align:center;
+    padding-bottom:20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-clean .item.social {
+    text-align:center;
+  }
+}
+
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin-left:10px;
+  margin-top:22px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
+
+@media (max-width:991px) {
+  .footer-clean .item.social > a {
+    margin-top:40px;
+  }
+}
+
+@media (max-width:767px) {
+  .footer-clean .item.social > a {
+    margin-top:10px;
+  }
+}
+
+
+.footer-clean .copyright {
+  margin-top:14px;
+  margin-bottom:0;
+  font-size:13px;
+  opacity:0.6;
+}
+
+    </style>
 </head>
+
 <body>
-<h2>Home page</h2>
-<div th:each="parking: ${parkings}">
-    <p th:text="${parking.parkingName}"></p>
-    <p th:text="${parking.region}"></p>
-    <p th:text="${parking.latitude}"></p>
-    <p th:text="${parking.longitude}"></p>
-    <p th:text="${parking.numSpaces}"></p>
-    <p th:text="${parking.availableSpaces}"></p>
-    <p th:text="${parking.openingHour}"></p>
-    <p th:text="${parking.closingHour}"></p>
-    <p th:text="${parking.pricePerHour}"></p>
-    <p th:text="${parking.ownerName}"></p>
-    <br>
-    <div class="stars">
-        <form action="/addReview" method="post">
+<div th:replace="fragments/header.html :: header"></div>
 
-            <input name="body" type="text" placeholder="Review">
-            <!--            <input class="star star-5" id="star-5" type="radio" name="star"/>-->
-            <!--            <label class="star star-5" for="star-5"></label>-->
-            <!--            <input class="star star-4" id="star-4" type="radio" name="star"/>-->
-            <!--            <label class="star star-4" for="star-4"></label>-->
-            <!--            <input class="star star-3" id="star-3" type="radio" name="star"/>-->
-            <!--            <label class="star star-3" for="star-3"></label>-->
-            <!--            <input class="star star-2" id="star-2" type="radio" name="star"/>-->
-            <!--            <label class="star star-2" for="star-2"></label>-->
-            <!--            <input class="star star-1" id="star-1" type="radio" name="star"/>-->
-            <!--            <label class="star star-1" for="star-1"></label>-->
-            <button type="submit" name="idPark" th:value="${parking.id}">add review</button>
+<main>
+  <div class="hero-image">
+      <div class="hero-text">
+          <!-- Large button groups (default and split) -->
+          <form action="#">
 
+              <div class="select-box">
+
+                  <label for="select-box1" class="label select-box1"><span class="label-desc">Choose Region </span> </label>
+                  <select id="select-box1" class="select">
+                      <option value="Choice 1">Falkland Islands</option>
+                      <option value="Choice 2">Germany</option>
+                      <option value="Choice 3">Neverland</option>
+                  </select>
+
+              </div>
+
+          </form>
+<!--            <button>Hire me</button>-->
+      </div>
+
+  </div>
+    <h2>Home page</h2>
+    <div th:each="parking: ${parkingsOwner}"  th:if="${userType=='ROLE_OWNER'}">
+        <ul >
+            <li th:text="${parking.parkingName}" />
+            <li th:text="${parking.region}" />
+            <li th:text="${parking.latitude}" />
+            <li th:text="${parking.longitude}" />
+            <li th:text="${parking.numSpaces}" />
+            <li th:text="${parking.availableSpaces}" />
+            <li th:text="${parking.openingHour}" />
+            <li th:text="${parking.closingHour}" />
+            <li th:text="${parking.pricePerHour}" />
+            <li th:text="${parking.ownerName}" />
+            <br>
+        </ul>
+        <form action="/custmerOfOwner" method="post">
+            <input name="userName" type="text" placeholder="Add Client">
+            <button type="submit" name="id" th:value="${parking.id}">Add Client</button>
         </form>
+        <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">
+            <div >
+                <p th:text="${reviews.dateTime}"></p>
+                <p th:text="${reviews.body}"></p>
+            </div>
+        </div>
+        <h3>Reservations</h3>
+        <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">
+
+            <p th:text="${reservation.date}"></p>
+            <p th:text="${reservation.starTime}"></p>
+            <p th:text="${reservation.endTime}"></p>
+            <p th:text="${reservation.totalTime}"></p>
+            <p th:text="${reservation.userName}"></p>
+
+
+            <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">
+                <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>
+            </form>
+            <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">
+                <button type="submit" name="id" th:value="${reservation.id}">finish</button>
+            </form>
+            <form action="/reserve/{id}" method="delete">
+                <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>
+            </form>
+
+        </div>
     </div>
-    <div th:each="reviews:${review}">
-<!--        th:if="${parking.id==reviews.addingReviewId}"-->
-        <div >
-            <p th:text="${reviews.dateTime}"></p>
-            <p th:text="${reviews.body}"></p>
+
+    <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >
+        <p th:text="${parking.parkingName}"></p>
+        <p th:text="${parking.region}"></p>
+        <p th:text="${parking.latitude}"></p>
+        <p th:text="${parking.longitude}"></p>
+        <p th:text="${parking.numSpaces}"></p>
+        <p th:text="${parking.availableSpaces}"></p>
+        <p th:text="${parking.openingHour}"></p>
+        <p th:text="${parking.closingHour}"></p>
+        <p th:text="${parking.pricePerHour}"></p>
+        <p th:text="${parking.ownerName}"></p>
+        <br>
+
+
+        <div th:each="reservation: ${oneReservation}">
+            <p th:text="${reservation.date}"></p>
+            <p th:text="${reservation.starTime}"></p>
+            <p th:text="${reservation.endTime}"></p>
+
         </div>
 
-    </div>
-    <form action="/reserve" method="POST">
-        <label for="date">Date</label>
-        <input id="date" name="date" type="date">
-
-        <label for="starTime">Time In</label>
-        <input id="starTime" name="starTime" type="time">
-
-        <label for="endTime">Time Out</label>
-        <input id="endTime" name="endTime" type="time">
 
 
-        <button type="submit" name="id" th:value="${parking.id}" >reserve</button>
-    </form>
+        <div class="stars">
+            <form action="/addReview" method="post" th:if="${userType=='ROLE_USER'}">
+
+                <input name="body" type="text" placeholder="Review">
+                <!--            <input class="star star-5" id="star-5" type="radio" name="star"/>-->
+                <!--            <label class="star star-5" for="star-5"></label>-->
+                <!--            <input class="star star-4" id="star-4" type="radio" name="star"/>-->
+                <!--            <label class="star star-4" for="star-4"></label>-->
+                <!--            <input class="star star-3" id="star-3" type="radio" name="star"/>-->
+                <!--            <label class="star star-3" for="star-3"></label>-->
+                <!--            <input class="star star-2" id="star-2" type="radio" name="star"/>-->
+                <!--            <label class="star star-2" for="star-2"></label>-->
+                <!--            <input class="star star-1" id="star-1" type="radio" name="star"/>-->
+                <!--            <label class="star star-1" for="star-1"></label>-->
+                <button type="submit" name="idPark" th:value="${parking.id}" >add review</button>
+            </form>
+        </div>
+
+
+
+        <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">
+            <div >
+                <p th:text="${reviews.dateTime}"></p>
+                <p th:text="${reviews.body}"></p>
+            </div>
+        </div>
+
+
+
+
+
+
+        <form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date">
+
+            <label for="starTime">Time In</label>
+            <input id="starTime" name="starTime" type="time">
+
+            <label for="endTime">Time Out</label>
+            <input id="endTime" name="endTime" type="time">
+
+
+            <button type="submit" name="id" th:value="${parking.id}">reserve</button>
+        </form>
 
     </div>
     <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
         <button type="submit">Add parking</button>
     </form>
-    <form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">
+<form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">
         <button type="submit">view parking</button>
     </form>
+</main>
+<div th:replace="fragments/footer.html :: footer"></div>
 
 
-    <form th:if="${userType==null}" action="/login">
-        <button type="submit">Sign in</button>
-    </form>
-    <form th:if="${userType==null}" action="/signup">
-        <button type="submit">Sign up</button>
-    </form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script>
+    $("select").on("click" , function() {
+
+  $(this).parent(".select-box").toggleClass("open");
+
+});
+
+$(document).mouseup(function (e)
+{
+    var container = $(".select-box");
+
+    if (container.has(e.target).length === 0)
+    {
+        container.removeClass("open");
+    }
+});
+
+
+$("select").on("change" , function() {
+
+  var selection = $(this).find("option:selected").text(),
+      labelFor = $(this).attr("id"),
+      label = $("[for='" + labelFor + "']");
+
+  label.find(".label-desc").html(selection);
+
+});
+</script>
 </body>
 </html>
