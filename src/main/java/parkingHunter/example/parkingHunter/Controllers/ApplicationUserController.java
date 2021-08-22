@@ -70,6 +70,12 @@ public class ApplicationUserController {
         return "addParkingForm";
     }
 
+    @GetMapping("/aboutus")
+    public String aboutus() {
+
+        return "aboutus";
+    }
+
     @GetMapping("/adminpanel")
     @ResponseBody
     public String admain() {
