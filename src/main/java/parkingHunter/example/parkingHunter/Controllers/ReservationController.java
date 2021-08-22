@@ -43,6 +43,10 @@ public class ReservationController {
         String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(idP).get();
+        if (parking.getAvailableSpaces()>0){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()-1);
+        }
+
         String type="ROLE_USER";
         LocalTime t1 = LocalTime.parse(starTime);
         LocalTime t2 = LocalTime.parse(endTime);
@@ -61,6 +65,9 @@ public class ReservationController {
 //        String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(id).get();
+        if (parking.getAvailableSpaces()>0){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()-1);
+        }
         LocalDate dateLoacl= LocalDate.now();
         String date=dateLoacl.toString();
         LocalTime startingTime=LocalTime.now();
@@ -93,7 +100,12 @@ public class ReservationController {
     @GetMapping("/reserve/{id}")
     public  RedirectView deleteReservation(@RequestParam(value="id")Integer id){
 
+
         Reservation res = reservationRepository.findById(id).get();
+        Parking parking= parkingRepository.findById(res.getReserveSpace().getId()).get();
+        if (parking.getAvailableSpaces()>=0&&parking.getAvailableSpaces()<parking.getNumSpaces()){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()+1);
+        }
 
 //        if(res.getEndTime().equals("ahmad")){
 //            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -119,6 +131,7 @@ public class ReservationController {
 //        }
 
         reservationRepository.deleteById(id);
+
 
       //  System.out.println(reservationRepository.findAll());
 

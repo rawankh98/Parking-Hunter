@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Models.MappingParking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Models.Parking;
+import parkingHunter.example.parkingHunter.Repos.MappingParkingRepositoriy;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 
 import java.security.Principal;
@@ -19,7 +21,8 @@ public class AddParkingController {
     DBUserRepository DBUserRepository;
     @Autowired
     ParkingRepository parkingRepository;
-
+    @Autowired
+    MappingParkingRepositoriy mappingParkingRepositoriy;
     @GetMapping("/addparking")
     public String showAddparkingForm(){
         return "addParkingForm";
@@ -40,7 +43,9 @@ public class AddParkingController {
         Parking newParking=new Parking(parkingName,region,lat,lon,numSpaces,openingHour,closingHour,pricePerHour,
                 newUser,user);
         parkingRepository.save(newParking);
-        System.out.println(newParking);
+        MappingParking mappingParking=new MappingParking(lat,lon,region,parkingName,user);
+        mappingParkingRepositoriy.save(mappingParking);
+//        System.out.println(newParking);
 
         return "homepage";
     }

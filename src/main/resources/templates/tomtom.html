@@ -1,30 +1,50 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>TomTom Mapping Example</title>
-    <link rel='stylesheet' type='text/css'
-          href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
-    <style>
+  <meta charset="UTF-8">
+  <title>TomTom Mapping Example</title>
+  <link rel='stylesheet' type='text/css'
+        href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
+  <style>
    #map {
      width: 100vw;
      height: 100vh;
    }
  </style>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
+  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 </head>
 <body>
 <div id='map' class='map'></div>
 <script th:inline="javascript">
  var map = tt.map({
    key: 'ZMaJ7IeOvM2dcAAcqxNAWzSF1fL0G166', // this will be replaced by Thymeleaf at runtime
-   container: 'map',
-   style: 'tomtom://vector/1/basic-main'
+    container: 'map',
+ style: 'tomtom://vector/1/basic-main',
+ center: [35.93448795290056, 31.94958622949373],
+ zoom: 10
  });
  map.addControl(new tt.FullscreenControl());
  map.addControl(new tt.NavigationControl());
+   const popupOffsets = {
+    top: [0, 0],
+    bottom: [0, -50],
+    'bottom-right': [0, -70],
+    'bottom-left': [0, -70],
+    left: [25, -35],
+    right: [-25, -35]
+  }
+  const coolLocations = /*[[${coolLocations}]]*/ null;
+
+  coolLocations.forEach(location => {
+    const marker = new tt.Marker().setLngLat(location.lnglat).addTo(map);
+    const popup = new tt.Popup({offset: popupOffsets}).setHTML(location.description);
+    marker.setPopup(popup).togglePopup();
+  });
 </script>
 </body>
 </html>
