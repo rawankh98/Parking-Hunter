@@ -4,9 +4,15 @@
 <body>
 
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-<div th:each=""></div>
+<button value="10" id="here"></button>
+<input type="hidden" id="yourId" th:value="${array}"/>
 <p ></p>
-<script>
+<script th:inline="javascript">
+console.log("----------------------------------------------");
+
+console.log("----------------------------------------------");
+var y =/*[[${array}]]*/ 'default';
+console.log(y);
 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 var yValues = [55, 49, 44, 24, 15];
 var barColors = [
