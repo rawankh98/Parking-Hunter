@@ -31,7 +31,7 @@ public class MapController {
     private List<Location> coolLocations() {
         return List.of(
 
-                new Location(new double[]{35.93448795290056, 31.94958622949373}, "Monterey Bay Aquarium")
+                new Location(new double[]{35.93448795290056, 31.94958622949373}, "Jamea' Al-Husseini")
 
         );
     }

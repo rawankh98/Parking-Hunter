@@ -19,6 +19,7 @@
   <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 </head>
 <body>
+<value id="lonLat" th:value=""> </value>
 <div id='map' class='map'></div>
 <script th:inline="javascript">
  var map = tt.map({

@@ -69,7 +69,7 @@ public class ApplicationUserController {
         return "userShowParking";
     }
     @GetMapping("/userShowParking/{id}")
-    public String userShowDetails( Model model, @PathVariable Integer id) {
+    public String userShowDetails( Model model, @PathVariable Integer id,Principal principal) {
 
 
 //        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
