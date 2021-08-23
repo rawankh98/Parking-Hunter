@@ -18,7 +18,10 @@ public class DBUser {
 
     @OneToMany(mappedBy = "addingParking")
     private List<Parking> parkings;
+    @OneToMany(mappedBy = "mapParking")
+    private List<MappingParking> mappingParkings;
     public DBUser(){
+
 
     }
 

@@ -18,6 +18,7 @@ public class Parking {
     private String closingHour;
     private int pricePerHour;
     private String ownerName;
+    private String parkingPicture;
 
     @ManyToOne
     private DBUser addingParking;

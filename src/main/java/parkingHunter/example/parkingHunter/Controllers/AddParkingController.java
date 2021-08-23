@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Models.MappingParking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Models.Parking;
+import parkingHunter.example.parkingHunter.Repos.MappingParkingRepositoriy;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 
 import java.security.Principal;
@@ -19,14 +22,14 @@ public class AddParkingController {
     DBUserRepository DBUserRepository;
     @Autowired
     ParkingRepository parkingRepository;
-
+    @Autowired
+    MappingParkingRepositoriy mappingParkingRepositoriy;
     @GetMapping("/addparking")
     public String showAddparkingForm(){
         return "addParkingForm";
     }
     @PostMapping("/addparking")
-//    @ResponseBody
-    public String addParkingFromForm(
+    public RedirectView addParkingFromForm(
             @RequestParam(value = "parkingName") String parkingName,
             @RequestParam(value = "region") String region,
             @RequestParam(value = "numSpaces") String numSpaces,
@@ -40,8 +43,22 @@ public class AddParkingController {
         Parking newParking=new Parking(parkingName,region,lat,lon,numSpaces,openingHour,closingHour,pricePerHour,
                 newUser,user);
         parkingRepository.save(newParking);
-        System.out.println(newParking);
+        double lons=Double.parseDouble(lon);
+        System.out.println(lons);
+        double lats=Double.parseDouble(lat);
+        System.out.println(lats);
+        double [] lonlat=new double[2];
+        lonlat[0]=lons;
+        lonlat[1]=lats;
+//        Double lonlat []  = {lons,lats };
+        System.out.println(lonlat[0]);
+        System.out.println(lonlat[1]);
+        System.out.println(String.valueOf(lonlat));
 
-        return "homepage";
+        MappingParking mappingParking=new MappingParking(lonlat,region,parkingName,user);
+        mappingParkingRepositoriy.save(mappingParking);
+//        System.out.println(newParking);
+
+        return new RedirectView("/");
     }
 }

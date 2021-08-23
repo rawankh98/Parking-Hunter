@@ -19,6 +19,7 @@ import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Controller
 public class ReservationController {
@@ -43,6 +44,10 @@ public class ReservationController {
         String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(idP).get();
+        if (parking.getAvailableSpaces()>0){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()-1);
+        }
+
         String type="ROLE_USER";
         LocalTime t1 = LocalTime.parse(starTime);
         LocalTime t2 = LocalTime.parse(endTime);
@@ -61,6 +66,9 @@ public class ReservationController {
 //        String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(id).get();
+        if (parking.getAvailableSpaces()>0){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()-1);
+        }
         LocalDate dateLoacl= LocalDate.now();
         String date=dateLoacl.toString();
         LocalTime startingTime=LocalTime.now();
@@ -93,7 +101,12 @@ public class ReservationController {
     @GetMapping("/reserve/{id}")
     public  RedirectView deleteReservation(@RequestParam(value="id")Integer id){
 
+
         Reservation res = reservationRepository.findById(id).get();
+        Parking parking= parkingRepository.findById(res.getReserveSpace().getId()).get();
+        if (parking.getAvailableSpaces()>=0&&parking.getAvailableSpaces()<parking.getNumSpaces()){
+            parking.setAvailableSpaces(parking.getAvailableSpaces()+1);
+        }
 
 //        if(res.getEndTime().equals("ahmad")){
 //            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -114,13 +127,29 @@ public class ReservationController {
             Duration diff = Duration.between(t1, t2);
             long totalTime=diff.toHours();
             String type=res.getType();
-            Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,res.getReserveSpace());
+
+            if(totalTime < 0){
+                totalTime= totalTime*(-1);
+            }
+
+            double price = parking.getPricePerHour()*totalTime;
+        //System.out.println(price);
+
+        double newCommulative=0;
+        double oldPrices=0;
+
+            List<Dashboard> dashes= (List<Dashboard>) dashboardRepository.findAll();
+
+            for (Dashboard dash: dashes){
+                oldPrices=oldPrices+dash.getPrice();
+
+            }
+            newCommulative = price+oldPrices;
+
+            Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,price,newCommulative,res.getReserveSpace());
             dashboardRepository.save(dashboard);
-//        }
 
         reservationRepository.deleteById(id);
-
-      //  System.out.println(reservationRepository.findAll());
 
         return new RedirectView("/");
     }

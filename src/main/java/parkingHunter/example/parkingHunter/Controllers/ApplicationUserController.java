@@ -33,6 +33,78 @@ public class ApplicationUserController {
     @Autowired
     ReservationRepository reservationRepository;
 
+    @GetMapping("/dashbord")
+    public String dashbord(Model model,Principal principal){
+//        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
+//        model.addAttribute("userType",userType);
+//        model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+//        model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+       double numbers[]= new double[5];
+
+       numbers[0]=15;
+       numbers[1]=10;
+       numbers[2]=4;
+       numbers[3]=47;
+       numbers[4]=5;
+        model.addAttribute("array",numbers);
+        return "dashbord";
+    }
+    @GetMapping("/userShowParking")
+    public String userShowParking(Principal principal,Model model) {
+
+//
+            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
+            model.addAttribute("userType",userType);
+//            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+
+//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+
+            Iterable parking = parkingRepository.findAll();
+        System.out.println(parking);
+            model.addAttribute("parkings",parking);
+        System.out.println(parking);
+//            Iterable addingReviewId=reviewRepository.findAll();
+//            model.addAttribute("review",addingReviewId);
+//
+//            Iterable reservations= reservationRepository.findAll();
+//
+//
+//            Iterable oneReservations= reservationRepository.findByUserName(principal.getName());
+//
+//            model.addAttribute("allReservations",reservations);
+//            model.addAttribute("oneReservation",oneReservations);
+
+
+
+        return "userShowDetails";
+    }
+//    @GetMapping("/userShowParking/{id}")
+//    public String userShowDetails( Model model, @PathVariable Integer id) {
+//
+//
+////        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
+////        model.addAttribute("userType",userType);
+////        model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+//
+////            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+//
+////        Iterable parking = parkingRepository.findAll();
+////        model.addAttribute("parkings",parking);
+//        Iterable addingReviewId=reviewRepository.findAll();
+//        model.addAttribute("review",addingReviewId);
+//
+//        Iterable reservations= reservationRepository.findAll();
+//
+//
+//        Iterable oneReservations= reservationRepository.findByUserName(principal.getName());
+//
+//        model.addAttribute("allReservations",reservations);
+//        model.addAttribute("oneReservation",oneReservations);
+//
+//
+//
+//        return "userShowDetails";
+//    }
     @GetMapping("/")
     public String conect(Principal principal,Model model) {
 
@@ -41,8 +113,7 @@ public class ApplicationUserController {
            model.addAttribute("userType",userType);
            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
 
-            model.addAttribute("parkingsOwner",
-            parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
            Iterable parking = parkingRepository.findAll();
             model.addAttribute("parkings",parking);
@@ -64,10 +135,17 @@ public class ApplicationUserController {
         return "homepage";
     }
 
+
     @GetMapping("/owner")
     public String owner(Principal principal) {
         System.out.println(principal.getName());
         return "addParkingForm";
+    }
+
+    @GetMapping("/aboutus")
+    public String aboutus() {
+
+        return "aboutus";
     }
 
     @GetMapping("/adminpanel")
