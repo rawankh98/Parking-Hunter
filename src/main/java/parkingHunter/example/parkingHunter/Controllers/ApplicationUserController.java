@@ -45,14 +45,16 @@ public class ApplicationUserController {
     public String userShowParking(Principal principal,Model model) {
 
 //
-//            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
-//            model.addAttribute("userType",userType);
+            String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
+            model.addAttribute("userType",userType);
 //            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
 
 //            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
             Iterable parking = parkingRepository.findAll();
+        System.out.println(parking);
             model.addAttribute("parkings",parking);
+        System.out.println(parking);
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
 //
@@ -66,7 +68,7 @@ public class ApplicationUserController {
 
 
 
-        return "userShowParking";
+        return "userShowDetails";
     }
 //    @GetMapping("/userShowParking/{id}")
 //    public String userShowDetails( Model model, @PathVariable Integer id) {

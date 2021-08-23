@@ -414,18 +414,18 @@ color: white;
     <!--        </div>-->
     <!--    </div>-->
 
-    <!--    <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >-->
-    <!--        <p th:text="${parking.parkingName}"></p>-->
-    <!--        <p th:text="${parking.region}"></p>-->
-    <!--        <p th:text="${parking.latitude}"></p>-->
-    <!--        <p th:text="${parking.longitude}"></p>-->
-    <!--        <p th:text="${parking.numSpaces}"></p>-->
-    <!--        <p th:text="${parking.availableSpaces}"></p>-->
-    <!--        <p th:text="${parking.openingHour}"></p>-->
-    <!--        <p th:text="${parking.closingHour}"></p>-->
-    <!--        <p th:text="${parking.pricePerHour}"></p>-->
-    <!--        <p th:text="${parking.ownerName}"></p>-->
-    <!--        <br>-->
+<!--        <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >-->
+<!--            <p th:text="${parking.parkingName}"></p>-->
+<!--            <p th:text="${parking.region}"></p>-->
+<!--            <p th:text="${parking.latitude}"></p>-->
+<!--            <p th:text="${parking.longitude}"></p>-->
+<!--            <p th:text="${parking.numSpaces}"></p>-->
+<!--            <p th:text="${parking.availableSpaces}"></p>-->
+<!--            <p th:text="${parking.openingHour}"></p>-->
+<!--            <p th:text="${parking.closingHour}"></p>-->
+<!--            <p th:text="${parking.pricePerHour}"></p>-->
+<!--            <p th:text="${parking.ownerName}"></p>-->
+<!--            <br>-->
 
 
     <!--        <div th:each="reservation: ${oneReservation}">-->
@@ -436,10 +436,10 @@ color: white;
     <!--        </div>-->
 
 
-    <!--        <div class="stars">-->
-    <!--            <form action="/addReview" method="post" th:if="${userType=='ROLE_USER'}">-->
+<!--            <div class="stars">-->
+<!--                <form action="/addReview" method="post" th:if="${userType=='ROLE_USER'}">-->
 
-    <!--                <input name="body" type="text" placeholder="Review">-->
+<!--                    <input name="body" type="text" placeholder="Review">-->
     <!--                &lt;!&ndash;            <input class="star star-5" id="star-5" type="radio" name="star"/>&ndash;&gt;-->
     <!--                &lt;!&ndash;            <label class="star star-5" for="star-5"></label>&ndash;&gt;-->
     <!--                &lt;!&ndash;            <input class="star star-4" id="star-4" type="radio" name="star"/>&ndash;&gt;-->
@@ -450,17 +450,19 @@ color: white;
     <!--                &lt;!&ndash;            <label class="star star-2" for="star-2"></label>&ndash;&gt;-->
     <!--                &lt;!&ndash;            <input class="star star-1" id="star-1" type="radio" name="star"/>&ndash;&gt;-->
     <!--                &lt;!&ndash;            <label class="star star-1" for="star-1"></label>&ndash;&gt;-->
-    <!--                <button type="submit" name="idPark" th:value="${parking.id}" >add review</button>-->
-    <!--            </form>-->
-    <!--        </div>-->
+<!--                    <button type="submit" name="idPark" th:value="${parking.id}" >add review</button>-->
+<!--                </form>-->
+<!--            </div>-->
 
 
-    <!--        <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">-->
-    <!--            <div >-->
-    <!--                <p th:text="${reviews.dateTime}"></p>-->
-    <!--                <p th:text="${reviews.body}"></p>-->
-    <!--            </div>-->
-    <!--        </div>-->
+<!--            <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">-->
+<!--                <div >-->
+<!--                    <p th:text="${reviews.dateTime}"></p>-->
+<!--                    <p th:text="${reviews.body}"></p>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
 
 
     <!--        <form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">-->
@@ -500,7 +502,7 @@ color: white;
                         </form>
                         <div th:each="parking: ${parkingsOwner}" th:if="${userType=='ROLE_OWNER'}">
                             <a  style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9;"
-                                th:href="@{/sendparkingdetail/{id}(id=${parking.id})}" class="list-group-item list-group-item-action active py-3 lh-tight"
+                                th:href="@{/{id}(id=${parking.id})}" class="list-group-item list-group-item-action active py-3 lh-tight"
                                aria-current="true">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                     <strong style="text-transform:uppercase; margin-bottom: 7px;"
@@ -524,7 +526,7 @@ color: white;
                     <span class="fs-5 fw-semibold">Reviews</span>
                 </a>
                 <div class="scrollarea" style="height: 80vh">
-                    <div style="text-align: center;" th:each="reviews:${reviewsByBarkingId}" th:if="${1==reviews.addingReview.id }">
+                    <div style="text-align: center;" th:each="reviews:${review}" >
                         <div>
                             <img src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                                  width="50px" style="border-radius: 50%;" alt="img">
