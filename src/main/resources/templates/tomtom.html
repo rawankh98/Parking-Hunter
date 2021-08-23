@@ -44,6 +44,7 @@
     const marker = new tt.Marker().setLngLat(location.lnglat).addTo(map);
     const popup = new tt.Popup({offset: popupOffsets}).setHTML(location.description);
     marker.setPopup(popup).togglePopup();
+
   });
 </script>
 </body>
