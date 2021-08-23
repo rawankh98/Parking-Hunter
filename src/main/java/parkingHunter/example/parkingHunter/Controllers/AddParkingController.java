@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Models.Parking;
@@ -25,8 +26,7 @@ public class AddParkingController {
         return "addParkingForm";
     }
     @PostMapping("/addparking")
-//    @ResponseBody
-    public String addParkingFromForm(
+    public RedirectView addParkingFromForm(
             @RequestParam(value = "parkingName") String parkingName,
             @RequestParam(value = "region") String region,
             @RequestParam(value = "numSpaces") String numSpaces,
@@ -42,6 +42,6 @@ public class AddParkingController {
         parkingRepository.save(newParking);
         System.out.println(newParking);
 
-        return "homepage";
+        return new RedirectView("/");
     }
 }
