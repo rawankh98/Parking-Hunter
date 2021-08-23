@@ -74,7 +74,16 @@ text-align:center;
   border-radius: 50%;
 }
 
-.container:hover .overlay {
+.container1:hover .overlay {
+  opacity: .5;
+}
+.container2:hover .overlay {
+  opacity: .5;
+}
+.container3:hover .overlay {
+  opacity: .5;
+}
+.container4:hover .overlay {
   opacity: .5;
 }
 
@@ -94,7 +103,7 @@ text-align:center;
 </style>
 </head>
 <body>
-<header></header>
+<div replace="fragments/header.html :: header"></div>
 <main>
 
     <p> <strong>Parking-Hunter</strong> is an app that helps you find your parking spot and book it.
@@ -135,6 +144,6 @@ text-align:center;
 
 
 </main>
-<footer></footer>
+<div replace="fragments/footer.html :: footer"></div>
 </body>
 </html>
