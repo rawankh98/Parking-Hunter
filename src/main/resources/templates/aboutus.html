@@ -7,38 +7,58 @@
     *{
     text-align:center;
     }
-/* Tooltip container */
-.tooltip {
+
+.container {
   position: relative;
-  display: inline-block;
-  border-bottom: 1px solid white;
+   width: 15rem;
+  height: 15rem;
+  margin: 2rem;
+  padding: 1rem;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 30rem;
-  background-color: #47597E;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text - see examples below! */
+.image {
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
   position: absolute;
-  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.overlay {
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #2C394B;
+   width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
 }
 
-.tooltip .tooltiptext {
-  width: 120px;
-  top: 100%;
+.container:hover .overlay {
+  opacity: .5;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  margin-left: -60px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
+
 
 </style>
 </head>
@@ -46,30 +66,39 @@
 <header></header>
 <main>
 
-    <p> <strong>Parking-Hunter</strong> is an app that helps you find your parking spot and book it. Our vision is to have an organized parking system, streets without traffic. And our mission is to facilitate the process of finding parking spots in traffic places such as downtown </p>
+    <p> <strong>Parking-Hunter</strong> is an app that helps you find your parking spot and book it.
+        Our vision is to have an organized parking system, streets without traffic.
+        We are committed to be the leading service provider in managing and operating vehicular parking
+        for our clients and the motorists in general. Through investment in Technology and close monitoring
+        of our customers’ parking infrastructure, we are able to maximize the capacity and yield of each of the car
+        parks under our supervision and ensure a healthy return of investment to our customers. </p>
 
     <h1>Who Are We ... ?</h1>
 
-    <div class="tooltip"> <img th:src="@{./yaser.jpg}" width='100%' height='100%'>
-        <span class="tooltiptext">Yaser Ananbeh </span>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/81148992?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Ahmad Abu Sailik <br><br>Full-Stack Developer <br><br>github.com/AhmadSailik</div>
+        </div>
     </div>
-
-    <div class="tooltip"> <img th:src="@{./vicky.jpg}" width='100%' height='100%'>
-        <span class="tooltiptext">Victoria AbuZulof</span>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/81149514?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Victoria AbuZulof <br><br>Full-Stack Developer <br><br>github.com/Victoria-FZ-eng </div>
+        </div>
     </div>
-
-    <div class="tooltip"> <img th:src="@{./rawan.jpg}" width='100%' height='100%'>
-        <span class="tooltiptext">Rawan Khasawneh</span>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/81553123?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Rawan Khasawneh <br><br>Full-Stack Developer <br><br>github.com/rawankh98</div>
+        </div>
     </div>
-
-    <div class="tooltip"> <img th:src="@{./ahmad.jpg}" width='100%' height='100%'>
-        <span class="tooltiptext">Ahmad Abu Sailik</span>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/57394982?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Yaser Ananbeh <br><br>Full-Stack Developer <br><br>github.com/yaserananbeh </div>
+        </div>
     </div>
-
-
-    <i class="fab fa-facebook"></i>
-
-
 
 
 
