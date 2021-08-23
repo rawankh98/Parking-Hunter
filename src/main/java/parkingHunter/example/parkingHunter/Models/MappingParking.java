@@ -7,8 +7,9 @@ public class MappingParking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private double lat;
-    private double lon;
+//    private double lat;
+//    private double lon;
+    private  double lonlat [] ;
     private String region;
     private String parkingName;
     @ManyToOne
@@ -18,41 +19,38 @@ public class MappingParking {
 
     }
 
-    public MappingParking(String lat, String lon,String region, String parkingName, DBUser mapParking) {
-        this.lat = Double.parseDouble(lat);
-        this.lon = Double.parseDouble(lon);
-        this.region=region;
+    public MappingParking(double[] lonlat, String region, String parkingName, DBUser mapParking) {
+        this.lonlat = lonlat;
+        this.region = region;
         this.parkingName = parkingName;
         this.mapParking = mapParking;
     }
-
-
 
     public int getId() {
         return id;
     }
 
-    public double getLat() {
-        return lat;
+    public double[] getLonlat() {
+        return lonlat;
     }
 
-    public void setLat(int lat) {
-        this.lat = lat;
+    public void setLonlat(double[] lonlat) {
+        this.lonlat = lonlat;
     }
 
-    public double getLot() {
-        return lon;
+    public String getRegion() {
+        return region;
     }
 
-    public void setLot(int lot) {
-        this.lon = lot;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getParkingName() {
         return parkingName;
     }
 
-    public void setParkName(String parkingName) {
+    public void setParkingName(String parkingName) {
         this.parkingName = parkingName;
     }
 
