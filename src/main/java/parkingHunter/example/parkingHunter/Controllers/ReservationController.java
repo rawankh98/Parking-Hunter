@@ -19,6 +19,7 @@ import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Controller
 public class ReservationController {
@@ -126,14 +127,29 @@ public class ReservationController {
             Duration diff = Duration.between(t1, t2);
             long totalTime=diff.toHours();
             String type=res.getType();
-            Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,res.getReserveSpace());
+
+            if(totalTime < 0){
+                totalTime= totalTime*(-1);
+            }
+
+            double price = parking.getPricePerHour()*totalTime;
+        //System.out.println(price);
+
+        double newCommulative=0;
+        double oldPrices=0;
+
+            List<Dashboard> dashes= (List<Dashboard>) dashboardRepository.findAll();
+
+            for (Dashboard dash: dashes){
+                oldPrices=oldPrices+dash.getPrice();
+
+            }
+            newCommulative = price+oldPrices;
+
+            Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,price,newCommulative,res.getReserveSpace());
             dashboardRepository.save(dashboard);
-//        }
 
         reservationRepository.deleteById(id);
-
-
-      //  System.out.println(reservationRepository.findAll());
 
         return new RedirectView("/");
     }

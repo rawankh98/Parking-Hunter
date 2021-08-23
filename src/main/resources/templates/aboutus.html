@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    *{
+    text-align:center;
+    }
+
+.container{
+  position: relative;
+text-align:center;
+
+}
+
+.container1 {
+  position: absolute;
+  left: 0;
+   width: 15rem;
+  height: 15rem;
+  margin: 2rem;
+  padding: 1rem;
+}
+.container2 {
+  position: absolute;
+  left: 20rem;
+   width: 15rem;
+  height: 15rem;
+  margin: 2rem;
+  padding: 1rem;
+}
+.container3 {
+  position: absolute;
+  left:40rem;
+   width: 15rem;
+  height: 15rem;
+  margin: 2rem;
+  padding: 1rem;
+}
+.container4 {
+  position: absolute;
+  left:60rem;
+   width: 15rem;
+  height: 15rem;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.image {
+  display: block;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.overlay {
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #2C394B;
+   width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+
+.container1:hover .overlay {
+  opacity: .5;
+}
+.container2:hover .overlay {
+  opacity: .5;
+}
+.container3:hover .overlay {
+  opacity: .5;
+}
+.container4:hover .overlay {
+  opacity: .5;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+<div replace="fragments/header.html :: header"></div>
+<main>
+
+    <p> <strong>Parking-Hunter</strong> is an app that helps you find your parking spot and book it.
+        Our vision is to have an organized parking system, streets without traffic.
+        We are committed to be the leading service provider in managing and operating vehicular parking
+        for our clients and the motorists in general. Through investment in Technology and close monitoring
+        of our customers’ parking infrastructure, we are able to maximize the capacity and yield of each of the car
+        parks under our supervision and ensure a healthy return of investment to our customers. </p>
+
+    <h1>Who Are We ... ?</h1>
+
+    <div class="container">
+    <div class="container1">
+        <img src="https://avatars.githubusercontent.com/u/81148992?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Ahmad Abu Sailik <br><br>Full-Stack Developer <br><br>github.com/AhmadSailik</div>
+        </div>
+    </div>
+    <div class="container2">
+        <img src="https://avatars.githubusercontent.com/u/81149514?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Victoria AbuZulof <br><br>Full-Stack Developer <br><br>github.com/Victoria-FZ-eng </div>
+        </div>
+    </div>
+    <div class="container3">
+        <img src="https://avatars.githubusercontent.com/u/81553123?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Rawan Khasawneh <br><br>Full-Stack Developer <br><br>github.com/rawankh98</div>
+        </div>
+    </div>
+    <div class="container4">
+        <img src="https://avatars.githubusercontent.com/u/57394982?v=4"  class="image">
+        <div class="overlay">
+            <div class="text">Yaser Ananbeh <br><br>Full-Stack Developer <br><br>github.com/yaserananbeh </div>
+        </div>
+    </div></div>
+
+
+
+</main>
+<div replace="fragments/footer.html :: footer"></div>
+</body>
+</html>

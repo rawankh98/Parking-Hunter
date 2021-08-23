@@ -35,10 +35,18 @@ public class ApplicationUserController {
 
     @GetMapping("/dashbord")
     public String dashbord(Model model,Principal principal){
-        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
-        model.addAttribute("userType",userType);
-        model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
-        model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+//        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
+//        model.addAttribute("userType",userType);
+//        model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+//        model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+       double numbers[]= new double[5];
+
+       numbers[0]=15;
+       numbers[1]=10;
+       numbers[2]=4;
+       numbers[3]=47;
+       numbers[4]=5;
+        model.addAttribute("array",numbers);
         return "dashbord";
     }
     @GetMapping("/userShowParking")
@@ -132,6 +140,12 @@ public class ApplicationUserController {
     public String owner(Principal principal) {
         System.out.println(principal.getName());
         return "addParkingForm";
+    }
+
+    @GetMapping("/aboutus")
+    public String aboutus() {
+
+        return "aboutus";
     }
 
     @GetMapping("/adminpanel")
