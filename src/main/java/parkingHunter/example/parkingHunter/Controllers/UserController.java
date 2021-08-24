@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-
 @Controller
 public class UserController {
     @Autowired
@@ -44,6 +42,7 @@ public class UserController {
         Iterable parkings= parkingRepository.findAll();
         model.addAttribute("parkingsOwner",parkings);
         model.addAttribute("coolLocations", coolLocations());
+        
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
 //
@@ -93,9 +92,6 @@ public class UserController {
     }
 
 
-// map
-
-
     private List<MapController.Location> coolLocations() {
 
         List<Parking> parkings= (List<Parking>) parkingRepository.findAll();
@@ -131,5 +127,4 @@ public class UserController {
             return description;
         }
     }
-
 }
