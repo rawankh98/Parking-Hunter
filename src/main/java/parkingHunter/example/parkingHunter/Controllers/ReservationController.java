@@ -113,7 +113,10 @@ public class ReservationController {
         long totalTime=diff.toHours();
         res.setTotalTime(totalTime);
         reservationRepository.save(res);
-        return new RedirectView("/");
+
+        Integer controllerId=res.getReserveSpace().getId();
+        String url="http://localhost:8080/parkingcontroller/"+controllerId;
+        return new RedirectView(url);
     }
 
 
