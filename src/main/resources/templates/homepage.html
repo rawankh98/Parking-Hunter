@@ -362,10 +362,10 @@ padding-top: 65px;
 
                 <div class="select-box">
 
-                    <label for="select-box1" class="label select-box1"><span class="label-desc">Choose Region </span>
+                    <label for="sampleSelect" class="label select-box1"><span class="label-desc">Choose Region </span>
                     </label>
-                    <select id="select-box1" class="select">
-                        <option value="Choice 1">Downtown</option>
+                    <select id="sampleSelect" class="select">
+                        <option value="/userShowParking" >Downtown</option>
 <!--                        <option value="Choice 2">Germany</option>-->
 <!--                        <option value="Choice 3">Neverland</option>-->
                     </select>
@@ -591,7 +591,15 @@ $("select").on("change" , function() {
 
 });
 
-
+$("select").click(function() {
+  var open = $(this).data("isopen");
+  if(open) {
+    window.location.href = $(this).val()
+  }
+  //set isopen to opposite so next time when use clicked select box
+  //it wont trigger this event
+  $(this).data("isopen", !open);
+});
 
 
 </script>
