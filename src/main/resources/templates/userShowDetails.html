@@ -172,7 +172,7 @@ padding-top: 10px;
                             <a class="navbar-brand" th:href="@{/userShowParking/{id}(id=${parking.id})}" style="float:right;">DETAILS</a>
 
                             <form action="/bookingForm" method="get" >
-                                <button type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+                                <button class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
                             </form>
 
                         </div>
