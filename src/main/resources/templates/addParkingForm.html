@@ -25,8 +25,8 @@
     <input id="pricePerHour" name="pricePerHour" type="number" min="0"  required>
 
     <label >Location information :</label>
-    <input id="lat" name="lat" type="number" step="any" required>
-    <input id="lon" name="lon" type="number" step="any"  required >
+    <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" required>
+    <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" required >
     <button type="button" onclick="getLocation()">Add The Parking Location</button>
 
     <button type="submit">Add Parking</button>
