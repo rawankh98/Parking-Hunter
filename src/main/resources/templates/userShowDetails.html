@@ -144,7 +144,7 @@ padding-top: 10px;
                             <h5 class="card-title"style="float:right;"><span style="font-size:1rem">$</span><span th:text="${parking.pricePerHour}"></span></h5>
                             <h5 class="card-title"th:text="${parking.parkingName}" ></h5>
 
-                            <a class="navbar-brand" href="https://www.google.com/maps/place?q=31.94958622949373,35.93448795290056"style="float:right;color:black;">🗺️GPS Directions</a>
+                            <a class="navbar-brand" th:href=${parking.url} style="float:right;color:black;">🗺️GPS Directions</a>
                             <p class="card-text">🟢</p>
                             <a class="navbar-brand" th:href="@{/userShowParking/{id}(id=${parking.id})}" style="float:right;">DETAILS</a>
                             <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOK NOW</a>

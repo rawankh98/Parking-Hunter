@@ -35,6 +35,7 @@ public class UserController {
         System.out.println(parking);
         model.addAttribute("parkings",parking);
         System.out.println(parking);
+
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
 //
