@@ -63,7 +63,7 @@ public class MapController {
 
     }
 
-    private static class Location {
+    static class Location {
         private final double[] lnglat;
         private final String description;
 

@@ -352,22 +352,6 @@ form {
 margin:2rem 20rem 2rem 20rem ;
 }
 
-.btn2{
-margin:0 auto;
-background-color: #008CBA;
-color:white;
-ont-size: 24px;
-padding: 14px 40px;
-border-radius: 8px;
- transition-duration: 0.4s;
- font-size: 16px;
- margin: 8px 0;
-   cursor: pointer;
-}
-.btn2:hover{
- background-color: white;
-  color: #008CBA;
-}
 
 .note{
  color: #008CBA;
@@ -383,44 +367,25 @@ border-radius: 8px;
 <div th:replace="fragments/header.html :: header"></div>
 
 <main>
-<form method="POST" action="/addparking">
-    <fieldset>
-    <legend>Please add your parking information </legend>
-    <br>
-    <label for="parkingName">Parking Name :</label>
-    <input id="parkingName" name="parkingName" type="text" required>
-    <br>
-    <label for="region"> Region : </label>
-<!--    <select  id="region" class="select">-->
-<!--        <option value="Choice 1">Downtown</option>-->
-<!--        &lt;!&ndash;            <option value="Choice 2">Germany</option>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <option value="Choice 3">Neverland</option>&ndash;&gt;-->
-<!--    </select>-->
-    <input id="region" name="region" type="text" placeholder="Specify more details" required>
-    <br>
-    <label for="numSpaces">Number of spaces</label>
-    <input id="numSpaces" name="numSpaces" type="number" min="0" required>
-    <br>
-    <label for="openingHour">Opening Hour :</label>
-    <input id="openingHour" name="openingHour" type="time" required>
-    <br>
-    <label for="closingHour">Closing Hour :</label>
-    <input id="closingHour" name="closingHour" type="time" required>
-    <br>
-    <label for="pricePerHour">Price per hour :</label>
-    <input id="pricePerHour" name="pricePerHour" type="number" min="0"  required>
-    <br>
-    <label >Location information :</label>
-    <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
-    <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude" required >
-    <label class="note" >You are at the parking click here => </label>
-    <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
-    <br>
-    <button class="btn1" type="submit">Add Parking</button>
-    </fieldset>
-</form>
+    <form action="/reserve" method="POST">
+        <fieldset>
+            <legend>Please fill information below </legend>
+            <br>
+            <label for="date">Date</label>-->
+                        <input id="date" name="date" type="date">
 
-<script>
+                        <label for="starTime">Time In</label>
+                        <input id="starTime" name="starTime" type="time">
+
+                        <label for="endTime">Time Out</label>
+                        <input id="endTime" name="endTime" type="time">
+            <input id="id" hidden name="id" th:value="${parking.id}">
+
+            <input class="btn1" type="submit" name="id" >Confirm Booking</input>
+        </fieldset>
+    </form>
+
+    <script>
 let latinput = document.getElementById("lat");
 let loninput = document.getElementById("lon");
 
@@ -460,3 +425,19 @@ function showError(error) {
 <div th:replace="fragments/footer.html :: footer"></div>
 </body>
 </html>
+
+
+
+<!--<form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">&ndash;&gt;-->
+    <!--            <label for="date">Date</label>-->
+    <!--            <input id="date" name="date" type="date">-->
+
+    <!--            <label for="starTime">Time In</label>-->
+    <!--            <input id="starTime" name="starTime" type="time">-->
+
+    <!--            <label for="endTime">Time Out</label>-->
+    <!--            <input id="endTime" name="endTime" type="time">-->
+
+
+    <!--            <button type="submit" name="id" th:value="${parking.id}">reserve</button>-->
+    <!--        </form>-->

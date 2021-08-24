@@ -18,6 +18,7 @@ public class Parking {
     private String closingHour;
     private int pricePerHour;
     private String ownerName;
+    private String url;
     private String parkingPicture;
 
     @ManyToOne
@@ -35,7 +36,7 @@ public class Parking {
 
     }
     public Parking( String parkingName, String region, String latitude, String longitude, String numSpaces,
-                    String openingHour, String closingHour, String pricePerHour,String ownerName,DBUser addingParking) {
+                    String openingHour, String closingHour, String pricePerHour,String ownerName,String url,DBUser addingParking) {
         this.ownerName = ownerName;
         //int availableSpaces,
         this.parkingName = parkingName;
@@ -47,11 +48,20 @@ public class Parking {
         this.openingHour = openingHour;
         this.closingHour = closingHour;
         this.pricePerHour = Integer.parseInt(pricePerHour);
+        this.url=url;
         this.addingParking=addingParking;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getOwnerName() {

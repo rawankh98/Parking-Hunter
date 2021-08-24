@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:width="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +11,11 @@
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<!--    <link rel="stylesheet" th:href="@{/css/Index.css}">-->
 
+    <link rel='stylesheet' type='text/css'
+          href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
     <style>
-
     .dropdown-toggle{
     color: white;
     }
@@ -28,7 +33,7 @@ color: white;
 
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://miro.medium.com/max/5184/1*1hkixgqgbUvjZwmPCYIRZg.jpeg");
-  height: 600px;
+  height: 80vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -113,6 +118,7 @@ color: white;
   color:white;
   position: relative;
   bottom: 0;
+  max-height: 20vh;
 }
 
 .footer-clean h3 {
@@ -334,13 +340,17 @@ color: white;
     background-color: #0d6efd;
     border-color: #0d6efd;
 }
+body > main > div {
+
+padding-top: 65px;
+}
 
 
 
 
     </style>
 </head>
-
+<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 <body>
 <div th:replace="fragments/header.html :: header"></div>
 
@@ -355,9 +365,9 @@ color: white;
                     <label for="select-box1" class="label select-box1"><span class="label-desc">Choose Region </span>
                     </label>
                     <select id="select-box1" class="select">
-                        <option value="Choice 1">Falkland Islands</option>
-                        <option value="Choice 2">Germany</option>
-                        <option value="Choice 3">Neverland</option>
+                        <option value="Choice 1">Downtown</option>
+<!--                        <option value="Choice 2">Germany</option>-->
+<!--                        <option value="Choice 3">Neverland</option>-->
                     </select>
 
                 </div>
@@ -392,26 +402,26 @@ color: white;
     <!--            </div>-->
     <!--        </div>-->
     <!--        <h3>Reservations</h3>-->
-    <!--        <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">-->
+<!--            <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">-->
 
-    <!--            <p th:text="${reservation.date}"></p>-->
-    <!--            <p th:text="${reservation.starTime}"></p>-->
-    <!--            <p th:text="${reservation.endTime}"></p>-->
-    <!--            <p th:text="${reservation.totalTime}"></p>-->
-    <!--            <p th:text="${reservation.userName}"></p>-->
+<!--                <p th:text="${reservation.date}"></p>-->
+<!--                <p th:text="${reservation.starTime}"></p>-->
+<!--                <p th:text="${reservation.endTime}"></p>-->
+<!--                <p th:text="${reservation.totalTime}"></p>-->
+<!--                <p th:text="${reservation.userName}"></p>-->
 
 
-    <!--            <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>-->
-    <!--            </form>-->
-    <!--            <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
-    <!--            </form>-->
-    <!--            <form action="/reserve/{id}" method="delete">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>-->
-    <!--            </form>-->
+<!--                <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>-->
+<!--                </form>-->
+<!--                <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
+<!--                </form>-->
+<!--                <form action="/reserve/{id}" method="delete">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>-->
+<!--                </form>-->
 
-    <!--        </div>-->
+<!--            </div>-->
     <!--    </div>-->
 
 <!--        <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >-->
@@ -464,20 +474,6 @@ color: white;
 
 <!--        </div>-->
 
-
-    <!--        <form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">-->
-    <!--            <label for="date">Date</label>-->
-    <!--            <input id="date" name="date" type="date">-->
-
-    <!--            <label for="starTime">Time In</label>-->
-    <!--            <input id="starTime" name="starTime" type="time">-->
-
-    <!--            <label for="endTime">Time Out</label>-->
-    <!--            <input id="endTime" name="endTime" type="time">-->
-
-
-    <!--            <button type="submit" name="id" th:value="${parking.id}">reserve</button>-->
-    <!--        </form>-->
 
     <!--    </div>-->
     <!--    <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
@@ -544,7 +540,7 @@ color: white;
                 </a>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">My Map</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>

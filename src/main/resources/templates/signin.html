@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <style>
 
+
+    body{
+    background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80');
+    opacity: 0.75;
+    }
+
  .dropdown-toggle{
     color: white;
     }
@@ -28,11 +34,15 @@ padding-top: 10px;
 }
 
 .footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
+    padding: 30px 0;
+    background-color: #222;
+    color: white;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    left: 0;
+    right: 0
+    max-height: 20vh;
 }
 
 .footer-clean h3 {
@@ -64,18 +74,18 @@ padding-top: 10px;
   text-align:right;
 }
 
-@media (max-width:767px) {
-  .footer-clean .item {
-    text-align:center;
-    padding-bottom:20px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item {-->
+<!--    text-align:center;-->
+<!--    padding-bottom:20px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width: 768px) {
-  .footer-clean .item.social {
-    text-align:center;
-  }
-}
+<!--@media (max-width: 768px) {-->
+<!--  .footer-clean .item.social {-->
+<!--    text-align:center;-->
+<!--  }-->
+<!--}-->
 
 .footer-clean .item.social > a {
   font-size:24px;
@@ -96,17 +106,17 @@ padding-top: 10px;
   opacity:0.9;
 }
 
-@media (max-width:991px) {
-  .footer-clean .item.social > a {
-    margin-top:40px;
-  }
-}
+<!--@media (max-width:991px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:40px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width:767px) {
-  .footer-clean .item.social > a {
-    margin-top:10px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:10px;-->
+<!--  }-->
+<!--}-->
 
 
 .footer-clean .copyright {
@@ -115,22 +125,29 @@ padding-top: 10px;
   font-size:13px;
   opacity:0.6;
 }
+form {
+margin: 0 80px;
+margin-bottom: 14px;
+}
     h1, form, input, p {
       padding: 0;
-      margin: 10px;
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 16px;
       color: #666;
       }
-      h1 {
-      padding: 10px 0;
-      font-size: 32px;
-      font-weight: 300;
-      text-align: center;
-      }
+     h1 {
+    padding: 10px 0;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 0px;
+    color: black;
+}
       p {
       font-size: 12px;
+      color: black;
       }
       hr {
       color: #a9a9a9;
@@ -138,17 +155,20 @@ padding-top: 10px;
       }
       .main-block {
       max-width: 460px;
-      min-height: 500px;
+      min-height: 400px;
       padding: 10px 0;
       margin: 70px auto;
       border-radius: 5px;
-      border: solid 1px #ccc;
+      border: solid 1.5px #ccc;
       box-shadow: 1px 2px 5px rgba(0,0,0,.31);
-      background: #ebebeb;
+      background-color: transparent;
       }
-      form {
-      margin: 0 30px;
-      }
+        form {
+margin: 0 80px;
+margin-bottom: 14px;
+
+}
+
       .account-type, .gender {
       margin: 15px 0;
       }
@@ -203,9 +223,11 @@ padding-top: 10px;
       border: solid 1px #cbc9c9;
       box-shadow: 1px 2px 5px rgba(0,0,0,.09);
       background: #fff;
+      color: black
       }
       input[type=password] {
       margin-bottom: 15px;
+      color: black;
       }
       #icon {
       display: inline-block;
@@ -220,7 +242,8 @@ padding-top: 10px;
       text-align: center;
       }
       button {
-      width: 100%;
+      width: 100px;
+      height: 50px;
       padding: 10px 0;
       margin: 10px auto;
       border-radius: 5px;
@@ -233,6 +256,18 @@ padding-top: 10px;
       button:hover {
       background: #26a9e0;
       }
+      label{
+      color: black;
+      }
+<!--.MyA:hover{-->
+<!--      text-decoration: none;-->
+<!--    background-color: black;-->
+<!--    color: blue;-->
+<!--      }-->
+
+body > main {
+padding-top: 40px;
+}
     </style>
 </head>
 <body>
