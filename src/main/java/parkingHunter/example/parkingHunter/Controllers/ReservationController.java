@@ -2,6 +2,7 @@ package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,18 @@ public class ReservationController {
     @Autowired
     DashboardRepository dashboardRepository;
 
+    @GetMapping("/bookingForm")
+    public String book(@RequestParam(value ="id") String  idP, Model m){
+        System.out.println("----------------------------");
+        System.out.println(idP);
+        int x = Integer.parseInt(idP);
+        System.out.println(x);
+        System.out.println(idP);
+        Parking parking= parkingRepository.findById(x).get();
+        m.addAttribute("parking",parking);
+        return "userBookingForm";
+    }
+
     @PostMapping("/reserve")
     public RedirectView reserve(@RequestParam(value ="id") Integer idP, @RequestParam(value ="date") String date,
                                 @RequestParam(value ="starTime") String starTime,
@@ -60,6 +73,8 @@ public class ReservationController {
 
      return new RedirectView("/");
     }
+
+
     @PostMapping("/custmerOfOwner")
     public RedirectView custmerOfOwner(@RequestParam(value ="id") Integer id,@RequestParam(value ="userName") String userName){
         System.out.println(id +" "+ userName);
@@ -83,6 +98,8 @@ public class ReservationController {
         String url= "/parkingcontroller/"+controllerId;
         return new RedirectView(url);
     }
+
+
     @GetMapping("/editcustmerOfOwner/{id}")
     public RedirectView updateTimecustmerOfOwner(@RequestParam(value="id")Integer id){
         Reservation res=reservationRepository.findById(id).get();
