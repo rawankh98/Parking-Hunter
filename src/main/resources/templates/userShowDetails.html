@@ -170,7 +170,11 @@ padding-top: 10px;
                             <a class="navbar-brand" th:href=${parking.url} style="float:right;color:black;">🗺️GPS Directions</a>
                             <p class="card-text">🟢</p>
                             <a class="navbar-brand" th:href="@{/userShowParking/{id}(id=${parking.id})}" style="float:right;">DETAILS</a>
-                            <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOK NOW</a>
+
+                            <form action="/bookingForm" method="get" >
+                                <button type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+                            </form>
+
                         </div>
                         <!--                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
 
