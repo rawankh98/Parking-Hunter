@@ -338,7 +338,10 @@ color: white;
 
 
 
-    </style>
+
+
+
+  </style>
 </head>
 
 <body>
@@ -488,8 +491,8 @@ color: white;
   <!--    </form>-->
 
 
-  <div class="container" >
-<!--    th:if="${userType=='ROLE_OWNER'}"-->
+  <div class="container">
+    <!--    th:if="${userType=='ROLE_OWNER'}"-->
     <div class="row">
       <div class="col">
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
@@ -498,14 +501,22 @@ color: white;
             <span class="fs-5 fw-semibold">Parkings</span>
           </a>
           <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
-<!--            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
-<!--              <button type="submit" class="btn btn-outline-primary">Add Parking</button>-->
-<!--            </form>-->
-            <a href="http://localhost:8080/">SHOW ALL</a>
+            <!--            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
+            <!--              <button type="submit" class="btn btn-outline-primary">Add Parking</button>-->
+            <!--            </form>-->
+            <form th:if="${userType=='ROLE_OWNER'}" action="http://localhost:8080/">
+              <button type="submit" class="btn btn-outline-primary">SHOW ALL</button>
+            </form>
+
+            <form th:if="${userType=='ROLE_OWNER'}" th:action="@{/parkingcontroller/{id}(id=${parkingsOwner.id})}"  >
+              <button type="submit" class="btn btn-outline-primary">Parking Controller</button>
+            </form>
+
             <div th:each="parking: ${parkingsOwner}" th:if="${userType=='ROLE_OWNER'}">
-              <a  style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9;"
-                  th:href="@{/{id}(id=${parking.id})}" class="list-group-item list-group-item-action active py-3 lh-tight"
-                  aria-current="true">
+              <a style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9;"
+                 th:href="@{/{id}(id=${parking.id})}"
+                 class="list-group-item list-group-item-action active py-3 lh-tight"
+                 aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                   <strong style="text-transform:uppercase; margin-bottom: 7px;"
                           th:text="${parking.parkingName}"></strong>
@@ -519,6 +530,7 @@ color: white;
               </a>
             </div>
 
+
           </div>
         </div>
       </div>
@@ -528,7 +540,7 @@ color: white;
           <span class="fs-5 fw-semibold">Reviews</span>
         </a>
         <div class="scrollarea" style="height: 80vh">
-          <div style="text-align: center;" th:each="reviews:${reviewsByBarkingId}" >
+          <div style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
             <div>
               <img src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                    width="50px" style="border-radius: 50%;" alt="img">
@@ -596,6 +608,9 @@ $("select").on("change" , function() {
   label.find(".label-desc").html(selection);
 
 });
+
+
+
 
 
 
