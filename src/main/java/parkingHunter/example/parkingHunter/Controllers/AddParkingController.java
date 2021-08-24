@@ -44,16 +44,16 @@ public class AddParkingController {
                 newUser,user);
         parkingRepository.save(newParking);
         double lons=Double.parseDouble(lon);
-        System.out.println(lons);
+//        System.out.println(lons);
         double lats=Double.parseDouble(lat);
-        System.out.println(lats);
+//        System.out.println(lats);
         double [] lonlat=new double[2];
         lonlat[0]=lons;
         lonlat[1]=lats;
 //        Double lonlat []  = {lons,lats };
-        System.out.println(lonlat[0]);
-        System.out.println(lonlat[1]);
-        System.out.println(String.valueOf(lonlat));
+//        System.out.println(lonlat[0]);
+//        System.out.println(lonlat[1]);
+//        System.out.println(String.valueOf(lonlat));
 
         MappingParking mappingParking=new MappingParking(lonlat,region,parkingName,user);
         mappingParkingRepositoriy.save(mappingParking);

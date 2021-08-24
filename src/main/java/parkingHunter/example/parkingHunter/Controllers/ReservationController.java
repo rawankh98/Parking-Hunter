@@ -3,6 +3,7 @@ package parkingHunter.example.parkingHunter.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -61,11 +62,12 @@ public class ReservationController {
     }
     @PostMapping("/custmerOfOwner")
     public RedirectView custmerOfOwner(@RequestParam(value ="id") Integer id,@RequestParam(value ="userName") String userName){
-
+        System.out.println(id +" "+ userName);
 //        DBUser userNames=dbUserRepository.findByUsername(principal.getName());
 //        String userName=userNames.getUsername();
 
         Parking parking= parkingRepository.findById(id).get();
+        Integer controllerId=parking.getId();
         if (parking.getAvailableSpaces()>0){
             parking.setAvailableSpaces(parking.getAvailableSpaces()-1);
         }
@@ -78,7 +80,8 @@ public class ReservationController {
         long totalTime=0;
         Reservation newReservation = new Reservation(userName,totalTime,date,starTime,endTime,type,parking);
         reservationRepository.save(newReservation);
-        return new RedirectView("/");
+        String url= "/parkingcontroller/"+controllerId;
+        return new RedirectView(url);
     }
     @GetMapping("/editcustmerOfOwner/{id}")
     public RedirectView updateTimecustmerOfOwner(@RequestParam(value="id")Integer id){
@@ -99,10 +102,9 @@ public class ReservationController {
 
 
     @GetMapping("/reserve/{id}")
-    public  RedirectView deleteReservation(@RequestParam(value="id")Integer id){
-
-
+    public  RedirectView deleteReservation(@PathVariable(value="id")Integer id){
         Reservation res = reservationRepository.findById(id).get();
+        Integer controllerId=res.getReserveSpace().getId();
         Parking parking= parkingRepository.findById(res.getReserveSpace().getId()).get();
         if (parking.getAvailableSpaces()>=0&&parking.getAvailableSpaces()<parking.getNumSpaces()){
             parking.setAvailableSpaces(parking.getAvailableSpaces()+1);
@@ -150,16 +152,20 @@ public class ReservationController {
             dashboardRepository.save(dashboard);
 
         reservationRepository.deleteById(id);
+        String url= "/parkingcontroller/"+controllerId;
 
-        return new RedirectView("/");
+        return new RedirectView(url);
     }
 
     @GetMapping("/editReserve/{id}")
     public RedirectView updateTime(@RequestParam(value="id")Integer id){
 
 //        System.out.println("*********************************************************");
-
         Reservation res=reservationRepository.findById(id).get();
+        Integer controllerId=res.getReserveSpace().getId();
+//        System.out.println(controllerId);
+//        System.out.println(id);
+
 
         LocalTime time = LocalTime.parse(res.getEndTime());
 
@@ -185,8 +191,9 @@ public class ReservationController {
 //        System.out.println(dash.getTotalTime());
 //        dashboardRepository.save(dash);
 ////        Dashboard dashboard=dashboardRepository.
-
-        return new RedirectView("/");
+//{id}(id=${parking.id})}
+       String url= "/parkingcontroller/"+controllerId;
+        return new RedirectView(url);
     }
 
 

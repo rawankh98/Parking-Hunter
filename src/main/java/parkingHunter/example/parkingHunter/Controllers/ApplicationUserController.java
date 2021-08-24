@@ -60,9 +60,9 @@ public class ApplicationUserController {
 //            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
             Iterable parking = parkingRepository.findAll();
-        System.out.println(parking);
+//        System.out.println(parking);
             model.addAttribute("parkings",parking);
-        System.out.println(parking);
+//        System.out.println(parking);
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
 //
