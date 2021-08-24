@@ -1,6 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +13,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel='stylesheet' type='text/css'
+          href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
     <title>Title</title>
     <style>
+
+    .container{
+    position:relative;
+    left:2rem;
+    }
+
+     #map {
+     position: absolute;
+     top:4rem;
+     right:0;
+
+     width: 40vw;
+     height: 50vh;
+   }
 
  .dropdown-toggle{
     color: white;
@@ -117,6 +139,7 @@ padding-top: 10px;
   opacity:0.6;
 }
 </style>
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: header"></div>
@@ -159,8 +182,48 @@ padding-top: 10px;
     </div>
     </div>
      </div>
+
+        <div id='map' class='map' ></div>
     </div>
-   <!--    </div>-->
+
+
+
+
+    <script th:inline="javascript" >
+const objectsOfParkings =  /*[[${parkingsOwner}]]*/ 'default';
+console.log(objectsOfParkings);
+console.log(objectsOfParkings.length);
+
+console.log("hello");
+ var map = tt.map({
+   key: 'ZMaJ7IeOvM2dcAAcqxNAWzSF1fL0G166', // this will be replaced by Thymeleaf at runtime
+    container: 'map',
+ style: 'tomtom://vector/1/basic-main',
+ center: [35.93448795290056, 31.94958622949373],
+ zoom: 12
+ });
+ map.addControl(new tt.FullscreenControl());
+ map.addControl(new tt.NavigationControl());
+   const popupOffsets = {
+    top: [0, 0],
+    bottom: [0, -50],
+    'bottom-right': [0, -70],
+    'bottom-left': [0, -70],
+    left: [25, -35],
+    right: [-25, -35]
+  }
+  const coolLocations = /*[[${coolLocations}]]*/ 'default';
+console.log(coolLocations);
+  coolLocations.forEach(location => {
+    const marker = new tt.Marker().setLngLat(location.lnglat).addTo(map);
+    const popup = new tt.Popup({offset: popupOffsets}).setHTML(location.description);
+    marker.setPopup(popup).togglePopup();
+  });
+
+</script>
+
+
+    <!--    </div>-->
     <!--    <div class="container">-->
     <!--        <div class="row row-cols-1">-->
     <!--            <div class="col" >-->

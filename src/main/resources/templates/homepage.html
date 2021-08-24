@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:width="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 <!--    <link rel="stylesheet" th:href="@{/css/Index.css}">-->
-    <style>
 
+    <link rel='stylesheet' type='text/css'
+          href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
+    <style>
     .dropdown-toggle{
     color: white;
     }
@@ -340,7 +345,7 @@ color: white;
 
     </style>
 </head>
-
+<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 <body>
 <div th:replace="fragments/header.html :: header"></div>
 
@@ -355,9 +360,9 @@ color: white;
                     <label for="select-box1" class="label select-box1"><span class="label-desc">Choose Region </span>
                     </label>
                     <select id="select-box1" class="select">
-                        <option value="Choice 1">Falkland Islands</option>
-                        <option value="Choice 2">Germany</option>
-                        <option value="Choice 3">Neverland</option>
+                        <option value="Choice 1">Downtown</option>
+<!--                        <option value="Choice 2">Germany</option>-->
+<!--                        <option value="Choice 3">Neverland</option>-->
                     </select>
 
                 </div>
@@ -544,7 +549,7 @@ color: white;
                 </a>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">My Map</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>

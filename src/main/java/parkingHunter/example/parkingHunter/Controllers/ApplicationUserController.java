@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
-import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 import parkingHunter.example.parkingHunter.Repos.ReservationRepository;
@@ -73,6 +75,26 @@ public class ApplicationUserController {
 
             model.addAttribute("allReservations",reservations);
             model.addAttribute("oneReservation",oneReservations);
+
+
+//            List<Parking> owners = (List<Parking>) parkingRepository.findAllByAddingParking(
+//                    dbUserRepository.findByUsername(principal.getName()));
+//            List<MapController.Location> all = coolLocations();
+//            List<MapController.Location> ownLocation = new ArrayList<>();
+//
+//            //System.out.println("--------------------------------------------------");
+//            for (MapController.Location location : all) {
+//                for (Parking owner : owners) {
+//                    if(String.valueOf(owner.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
+//                            String.valueOf(owner.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))){
+//                       // System.out.println(true);
+//                        ownLocation.add(location);
+//                    }
+//                }
+//            }
+//            model.addAttribute("parkingsOwner",owners);
+//            model.addAttribute("coolLocations", ownLocation);
+
         } else {
             System.out.println("not authenticated");
         }
@@ -141,6 +163,6 @@ public class ApplicationUserController {
 
     }
 
-    
+
 
 }
