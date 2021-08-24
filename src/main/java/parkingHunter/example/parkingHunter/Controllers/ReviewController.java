@@ -14,6 +14,8 @@ import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 import parkingHunter.example.parkingHunter.Repos.ReviewRepository;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,7 +47,7 @@ public class ReviewController {
 
     @RequestMapping("/addReview")
     @PostMapping("/addReview")
-    public RedirectView addReview( String body,  int idPark, Principal principal){
+    public RedirectView addReview( String body,  int idPark, Principal principal) throws MalformedURLException {
        //int stars, String parkName,
         DBUser userNames=dbUserRepository.findByUsername(principal.getName());
         String userName=userNames.getUsername();
@@ -57,7 +59,11 @@ public class ReviewController {
         String parkName=addingReview.getParkingName();
         Review review=new Review(userName,body,dateTime,parkName,addingReview);
         reviewRepository.save(review);
-       return new RedirectView("/");
+//        URL ahmad=new URL("https://canvas.instructure.com/login/canvas");
+////        URL url="/userShowParking/{idPark}";
+        String ahmad="/userShowParking/"+idPark;
+        System.out.println(ahmad);
+       return new RedirectView(ahmad);
    }
 
 
