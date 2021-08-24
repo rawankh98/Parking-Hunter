@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
     <style>
+     body{
+    background-image: url('https://www.xmple.com/wallpaper/blue-gradient-white-highlight-linear-1920x1080-c2-ffffff-add8e6-l-50-a-120-f-21.svg');
+    }
     main{
     min-height: 80vh;
-    }
+     }
      .dropdown-toggle{
     color: white;
     }
@@ -21,11 +24,15 @@ color: white;
 }
 
 .footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
+  padding: 30px 0;
+    background-color: #222;
+    color: white;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+    max-height: 20vh;
 }
 
 .footer-clean h3 {
@@ -111,7 +118,6 @@ color: white;
 
       h1, form, input, p {
       padding: 0;
-      margin: 10px;
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 16px;
@@ -122,9 +128,13 @@ color: white;
       font-size: 32px;
       font-weight: 300;
       text-align: center;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    color: black;
       }
       p {
       font-size: 12px;
+      color: black
       }
       hr {
       color: #a9a9a9;
@@ -136,13 +146,15 @@ color: white;
       padding: 10px 0;
       margin: 70px auto;
       border-radius: 5px;
-      border: solid 1px #ccc;
-      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
-      background: #ebebeb;
+      border: solid 1.5px #ccc;
+      box-shadow: 3px 3px 3px 0px rgba(0.3,0.3,0.3,0.3);
+      background-color: transparent;
       }
       form {
-      margin: 0 30px;
-      }
+margin: 0 80px;
+margin-bottom: 14px;
+
+}
       .account-type, .gender {
       margin: 15px 0;
       }
@@ -150,8 +162,8 @@ color: white;
       display: none;
       }
       label#icon {
-      margin: 0;
       border-radius: 5px 0 0 5px;
+      margin-bottom: 13px;
       }
       label.radio {
       position: relative;
@@ -197,9 +209,11 @@ color: white;
       border: solid 1px #cbc9c9;
       box-shadow: 1px 2px 5px rgba(0,0,0,.09);
       background: #fff;
+      color: black;
       }
       input[type=password] {
       margin-bottom: 15px;
+      color :black;
       }
       #icon {
       display: inline-block;
@@ -214,7 +228,8 @@ color: white;
       text-align: center;
       }
       button {
-      width: 100%;
+      width: 100px;
+      height: 50px;
       padding: 10px 0;
       margin: 10px auto;
       border-radius: 5px;
@@ -227,6 +242,13 @@ color: white;
       button:hover {
       background: #26a9e0;
       }
+      label{
+      color: black;
+      }
+      body > main {
+      padding-top: 20px;
+      }
+
     </style>
 </head>
 <body>
@@ -244,7 +266,7 @@ color: white;
             <input type="password" name="secondpass" id="secondpass" placeholder="Retype Password" required/>
             <hr>
             <label for="userType">Sign Up As A:</label>
-            <select name="userType" id="userType" required>
+            <select style="color: black;" name="userType" id="userType" required>
                 <option value="ROLE_USER" selected>User</option>
                 <option value="ROLE_OWNER">Parking Owner</option></select>
             <hr>
