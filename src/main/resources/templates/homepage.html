@@ -423,26 +423,26 @@ color: white;
     <!--            </div>-->
     <!--        </div>-->
     <!--        <h3>Reservations</h3>-->
-    <!--        <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">-->
+<!--            <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">-->
 
-    <!--            <p th:text="${reservation.date}"></p>-->
-    <!--            <p th:text="${reservation.starTime}"></p>-->
-    <!--            <p th:text="${reservation.endTime}"></p>-->
-    <!--            <p th:text="${reservation.totalTime}"></p>-->
-    <!--            <p th:text="${reservation.userName}"></p>-->
+<!--                <p th:text="${reservation.date}"></p>-->
+<!--                <p th:text="${reservation.starTime}"></p>-->
+<!--                <p th:text="${reservation.endTime}"></p>-->
+<!--                <p th:text="${reservation.totalTime}"></p>-->
+<!--                <p th:text="${reservation.userName}"></p>-->
 
 
-    <!--            <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>-->
-    <!--            </form>-->
-    <!--            <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
-    <!--            </form>-->
-    <!--            <form action="/reserve/{id}" method="delete">-->
-    <!--                <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>-->
-    <!--            </form>-->
+<!--                <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>-->
+<!--                </form>-->
+<!--                <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
+<!--                </form>-->
+<!--                <form action="/reserve/{id}" method="delete">-->
+<!--                    <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>-->
+<!--                </form>-->
 
-    <!--        </div>-->
+<!--            </div>-->
     <!--    </div>-->
 
 <!--        <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >-->
@@ -495,20 +495,6 @@ color: white;
 
 <!--        </div>-->
 
-
-    <!--        <form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">-->
-    <!--            <label for="date">Date</label>-->
-    <!--            <input id="date" name="date" type="date">-->
-
-    <!--            <label for="starTime">Time In</label>-->
-    <!--            <input id="starTime" name="starTime" type="time">-->
-
-    <!--            <label for="endTime">Time Out</label>-->
-    <!--            <input id="endTime" name="endTime" type="time">-->
-
-
-    <!--            <button type="submit" name="id" th:value="${parking.id}">reserve</button>-->
-    <!--        </form>-->
 
     <!--    </div>-->
     <!--    <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->

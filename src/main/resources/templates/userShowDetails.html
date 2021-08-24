@@ -146,31 +146,34 @@ padding-top: 10px;
 <main>
 <!--    <div style="height:800px;overflow-y: auto;max-width: 500px;background-color:red;">-->
     <div class="container" >
-        <!--    th:if="${userType=='ROLE_OWNER'}"-->
         <div class="row">
             <div class="col">
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 500px;">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
         <a href="#"
            class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"style="margin-bottom:1rem;">
             <span class="fs-5 fw-semibold">Parkings</span>
         </a>
         <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
-        <div class="card mb-2" style="max-width: 500px;max-height: 150px;background-color:	#bdbdbd;"th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" >
+        <div class="card mb-2 "  style="max-width: 500px;max-height:15%;background-color:#bdbdbd;"th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" >
             <div class="row g-0">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <img src="https://media.istockphoto.com/photos/letter-p-parking-sign-picture-id496031452?k=6&m=496031452&s=612x612&w=0&h=_nJsMtqQl5fSAZN1Bg056TlWbXp0J68Td_GxwYzqK5s=" class="img-fluid rounded-start" alt="...">
 
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-6">
                     <div class="card-body">
                         <div>
                             <h5 class="card-title"style="float:right;"><span style="font-size:1rem">$</span><span th:text="${parking.pricePerHour}"></span></h5>
                             <h5 class="card-title"th:text="${parking.parkingName}" ></h5>
 
-                            <a class="navbar-brand" href="https://www.google.com/maps/place?q=31.94958622949373,35.93448795290056"style="float:right;color:black;">🗺️GPS Directions</a>
+                            <a class="navbar-brand" th:href=${parking.url} style="float:right;color:black;">🗺️GPS Directions</a>
                             <p class="card-text">🟢</p>
                             <a class="navbar-brand" th:href="@{/userShowParking/{id}(id=${parking.id})}" style="float:right;">DETAILS</a>
-                            <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOK NOW</a>
+
+                            <form action="/bookingForm" method="get" >
+                                <button class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+                            </form>
+
                         </div>
                         <!--                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
 
