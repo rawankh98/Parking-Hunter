@@ -40,7 +40,7 @@ public class AddParkingController {
             @RequestParam(value = "lon") String lon, Principal principal){
         String newUser= DBUserRepository.findByUsername(principal.getName()).getUsername();
         DBUser user= DBUserRepository.findByUsername(principal.getName());
-        String url="https://www.google.com/maps/place?q="+lat+"+"+lon;
+        String url="https://www.google.com/maps/place?q="+lon+"+"+lat;
         System.out.println(url);
         Parking newParking=new Parking(parkingName,region,lat,lon,numSpaces,openingHour,closingHour,pricePerHour,
                 newUser,url,user);
