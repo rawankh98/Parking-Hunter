@@ -23,7 +23,7 @@
                     <li><a href="/aboutus" class="nav-link px-2">About Us</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right"><li th:if="${userType!=null} "><a href="#" th:text="${user.username}"><span class="glyphicon glyphicon-user"></span>User: </a></li></ul>
+                <ul class="nav navbar-nav navbar-right"><li class="MyA"th:if="${userType!=null} "><a style="color: white;" th:text="${user.username}"><span class="glyphicon glyphicon-user"></span>User: </a></li></ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${userType==null} "><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a>
                         <ul class="dropdown-menu">
