@@ -77,7 +77,7 @@ public class ApplicationUserController {
     @GetMapping("/aboutus")
     public String aboutus() {
 
-        return "aboutus";
+        return "About.html";
     }
 
     @GetMapping("/adminpanel")
