@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
@@ -101,7 +102,29 @@ public class UserController {
 
 
         } else {
-            System.out.println("not authenticated");
+            NotUser user=new NotUser("Guest");
+
+            model.addAttribute("user",user);
+
+            model.addAttribute("userType", "notUser");
+            Parking parking = parkingRepository.findById(id).get();
+            model.addAttribute("parking", parking);
+            Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
+            System.out.println(addingReviewId);
+            model.addAttribute("reviewsByBarkingId", addingReviewId);
+
+
+            List<MapController.Location> all = coolLocations();
+            List<MapController.Location> oneLocation = new ArrayList<>();
+            for (MapController.Location location : all) {
+                if (String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
+                        String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
+                    oneLocation.add(location);
+                }
+                System.out.println(oneLocation);
+            }
+            model.addAttribute("parkingsOwner", parking);
+            model.addAttribute("coolLocations", oneLocation);
         }
         return "detailsOfParking";
     }

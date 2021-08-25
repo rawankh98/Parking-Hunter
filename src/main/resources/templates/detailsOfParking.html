@@ -182,72 +182,71 @@ padding-top: 10px;
 
 
     </style>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
+  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: header"></div>
-<main>
-    <div id="container" style="height:800px;max-width: 500px;" th:if="${userType!='ROLE_OWNER'}">
-        <div class="container">
-            <div class="row">
-                <div class="col " style="max-height:80vh;">
-                    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 500px;">
-                        <a href="#"
-                           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
-                           style="margin-bottom:1rem;">
-                            <span class="fs-5 fw-semibold" th:text="${parking.parkingName}"></span>
-                        </a>
-                        <div>
-                            <a class="btn btn secondary" href="http://localhost:8080/userShowParking"
-                               role="button" style="border-bottom: 1px solid white; border-radius: 10px; background-color: #1c87c9; width:100%;height:60px background-color:cray">View All</a>
-                        </div>
-                        <div style="border-bottom: 1px solid white; border-radius: 10px; background-color: #1c87c9;color:white;">
-                            <h5 style="float:left;padding:15px;"><span>Open Time: </span><span
-                                    th:text="${parking.openingHour}"></span></h5>
-                            <h5 style="float:left;padding:15px;"><span>Close Time: </span><span
-                                    th:text="${parking.closingHour}"></span></h5>
-                            <h5 style="float:left;padding:15px;"><span>price: $</span><span
-                                    th:text="${parking.pricePerHour}"></span></h5>
+<main style="padding-top : 10vh">
+  <div id="container" style="height:800px;max-width: 500px;" th:if="${userType!='ROLE_OWNER'}">
+    <div class="container">
+      <div class="row">
+        <div class="col " style="max-height:80vh;">
+          <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 500px;">
+            <a href="#"
+               class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
+               style="margin-bottom:1rem;">
+              <span class="fs-5 fw-semibold" style="text-transform: uppercase;" th:text="${parking.parkingName}"></span>
+            </a>
+            <div>
+              <a class="btn btn secondary" href="http://localhost:8080/userShowParking"
+                 role="button" style="border-bottom: 1px solid white; border-radius: 10px; background-color: #1c87c9; width:100%;height:60px background-color:cray">View All</a>
+            </div>
+            <div style="border-bottom: 1px solid white; border-radius: 10px; margin: 15px 0; background-color: #6c757d;color:white;">
+              <h5 style="float:left;padding:15px;"><span>Open Time: </span><span
+                      th:text="${parking.openingHour}"></span></h5>
+              <h5 style="float:left;padding:15px;"><span>Close Time: </span><span
+                      th:text="${parking.closingHour}"></span></h5>
+              <h5 style="float:left;padding:15px;"><span>price: $</span><span
+                      th:text="${parking.pricePerHour}"></span></h5>
 
-                        </div>
-                        <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button"
-                           aria-pressed="true">BOOK NOW</a>
-                        <hr>
-                        <form action="/addReview" method="post" th:if="${userType=='ROLE_USER'}">
+            </div>
+            <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button"
+               aria-pressed="true">BOOK NOW</a>
+            <hr>
+            <form action="/addReview" method="post" th:if="${userType!='ROLE_OWNER'}">
 
-                            <div class="input-group mb-3" style="position:relative;">
-                                <button style="position:absolute; top:0;border-radius: 10px; right:0;height:50px;z-index:5;" class="btn btn-secondary btn-lg" name="idPark" th:value="${parking.id}" type="submit" id="button-addon1" >ADD REVIEW</button>
-                                <input style="position:absolute; top:0;border-radius: 10px;left:0;height:50px;"type="text" class="form-control" name="body" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                            </div>
+              <div class="input-group mb-3" style="position:relative;">
+                <button style="position:absolute; top:0;border-radius: 10px; right:0;height:50px;z-index:5;" class="btn btn-secondary btn-lg" name="idPark" th:value="${parking.id}" type="submit" id="button-addon1" >ADD REVIEW</button>
+                <input style="position:absolute; top:0;border-radius: 10px;left:0;height:50px;"type="text" class="form-control" name="body" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              </div>
 
-                        </form>
-                        <hr>
-                    </div>
-                    <a style="margin-bottom: 30px;" href="/"
-                       class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                        <span class="fs-5 fw-semibold">Reviews</span>
-                    </a>
-                    <div class="scrollarea" style="max-height: 20vh;">
-                        <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
-                            <div>
-                                <img class="imgProfile"
-                                     src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
-                                     width="50px" style="border-radius: 50%;" alt="img">
+            </form>
+            <hr>
+          </div>
+          <a style="margin-bottom: 30px; max-width:50vh" href="#"
+             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Reviews</span>
+          </a>
+          <div class="overflow-auto" style="max-height: 50vh; max-width:50vh">
+            <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
+              <div>
+                <img class="imgProfile"
+                     src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
+                     width="50px" style="border-radius: 50%;" alt="img">
 
-                                <p style="font-size:1.5rem; font-style:bold;" class="revName"
-                                   th:text="${reviews.userName}"></p>
-                                <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
-                                <p class="revBody" th:text="${reviews.body}"></p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <p style="font-size:1.5rem; font-style:bold;" class="revName"
+                   th:text="${reviews.userName}"></p>
+                <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
+                <p class="revBody" th:text="${reviews.body}"></p>
+              </div>
 
             </div>
         </div>
-        <div id='map' class='map'></div>
-        <script th:inline="javascript">
+
+      </div>
+    </div>
+    <div id='map' class='map'></div>
+    <script th:inline="javascript">
 const objectsOfParkings =  /*[[${parkingsOwner}]]*/ 'default';
 console.log(objectsOfParkings);
 console.log(objectsOfParkings.length);
@@ -281,7 +280,7 @@ console.log(coolLocations);
 
 
         </script>
-    </div>
+  </div>
 </main>
 <div th:replace="fragments/footer.html :: footer"></div>
 </body>
