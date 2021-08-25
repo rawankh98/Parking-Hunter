@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    form{
+    width: 50rem;
+
+    }
+     label{
+        display:inline-block;
+        width: 9rem;
+
+        padding-left:1rem;
+        }
+
+        input{
+        width: 12rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="main-block">
+    <form method="POST" action="/addparking">
+        <fieldset>
+            <legend ><h2>Please add your parking information </h2></legend>
+            <br>
+            <row>
+                <col>
+            <label for="parkingName" style="display:inline-block;">Parking Name :</label>
+            <input id="parkingName" name="parkingName" type="text" required>
+                </col>
+                <col>
+            <label for="region"  > Region : </label>
+            <input id="region" name="region" type="text" placeholder="Specify more details" required>
+                </col>
+            </row>
+            <br>
+            <br>
+            <row>
+                <col>
+                <label for="numSpaces">Number of spaces :</label>
+                <input id="numSpaces" name="numSpaces" type="number" min="0" required>
+                </col>
+
+                <col>
+                <label for="pricePerHour">Price per hour :</label>
+                <input id="pricePerHour" name="pricePerHour" type="number" min="0" required>
+                </col>
+
+            </row>
+            <br>
+            <br>
+
+            <row>
+                <col>
+                <label for="openingHour">Opening hour :</label>
+                <input id="openingHour" name="openingHour" type="time" required>
+                </col>
+                <col>
+                <label for="closingHour">Closing hour :</label>
+                <input id="closingHour" name="closingHour" type="time" required>
+                </col>
+
+            </row>
+            <br>
+            <br>
+            <row>
+                <col>
+                <label class="note">You are at the parking</label>
+                <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
+                </col>
+
+                <col>
+                <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude" required>
+                </col>
+
+                <col>
+                <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
+                </col>
+            </row>
+
+
+            <br>
+            <br>
+            <button class="btn1" type="submit">Add Parking</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
