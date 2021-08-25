@@ -30,60 +30,13 @@
         <fieldset>
             <legend ><h2>Please add your parking information </h2></legend>
             <br>
-            <row>
-                <col>
-            <label for="parkingName" style="display:inline-block;">Parking Name :</label>
-            <input id="parkingName" name="parkingName" type="text" required>
-                </col>
-                <col>
-            <label for="region"  > Region : </label>
-            <input id="region" name="region" type="text" placeholder="Specify more details" required>
-                </col>
-            </row>
-            <br>
-            <br>
-            <row>
-                <col>
-                <label for="numSpaces">Number of spaces :</label>
-                <input id="numSpaces" name="numSpaces" type="number" min="0" required>
-                </col>
 
-                <col>
-                <label for="pricePerHour">Price per hour :</label>
-                <input id="pricePerHour" name="pricePerHour" type="number" min="0" required>
-                </col>
-
-            </row>
-            <br>
-            <br>
-
-            <row>
-                <col>
                 <label for="openingHour">Opening hour :</label>
                 <input id="openingHour" name="openingHour" type="time" required>
-                </col>
-                <col>
+               <br>
                 <label for="closingHour">Closing hour :</label>
                 <input id="closingHour" name="closingHour" type="time" required>
-                </col>
 
-            </row>
-            <br>
-            <br>
-            <row>
-                <col>
-                <label class="note">You are at the parking</label>
-                <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
-                </col>
-
-                <col>
-                <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude" required>
-                </col>
-
-                <col>
-                <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
-                </col>
-            </row>
 
 
             <br>
@@ -94,3 +47,25 @@
 </div>
 </body>
 </html>
+
+
+
+
+<form action="/reserve" method="POST">
+    <fieldset>
+        <legend>Please fill information below </legend>
+        <br>
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date">
+
+        <label for="starTime">Time In</label>
+        <input id="starTime" name="starTime" type="time">
+
+        <label for="endTime">Time Out</label>
+        <input id="endTime" name="endTime" type="time">
+
+        <input id="id" hidden name="id" th:value="${parking.id}">
+
+        <input class="btn1" type="submit" name="id" >Confirm Booking</input>
+    </fieldset>
+</form>

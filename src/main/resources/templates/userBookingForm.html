@@ -11,6 +11,145 @@
     <title>Add parking</title>
     <style>
 
+      body{
+    background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80');
+<!--    opacity: 0.75;-->
+    min-height: 70vh;
+    }
+
+      h1, form, input, p {
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+       hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+      }
+      .main-block {
+      max-width: 800px;
+      min-height: 400px;
+      padding: 1px 0;
+      margin: 70px auto;
+      border-radius: 5px;
+      border: solid 1.5px #ccc;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background-color: #222222de;
+      }
+      form {
+margin: 0 80px;
+margin-bottom: 7px;
+
+}
+   label.radio {
+      position: relative;
+      display: inline-block;
+      padding-top: 4px;
+      margin-right: 20px;
+      text-indent: 30px;
+      overflow: visible;
+      cursor: pointer;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1c87c9;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 4px;
+      top: 8px;
+      left: 4px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }  #icon {
+      display: inline-block;
+      padding: 9.3px 15px;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #1c87c9;
+      color: #fff;
+      text-align: center;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+    FONT-VARIANT: JIS04;
+    width: 120px;
+    height: 40px;
+    padding: 10px 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: none;
+    background: #1c87c9;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+      button:hover {
+      background: #26a9e0;
+      }
+      label{
+      color: white;
+      }
+      body > main {
+      padding-top: 20px;
+      }
+
+.copyright{
+color: white;
+}
+h2{
+font-size: 25px;
+}
+     div > ul:nth-child(3) > li > a:hover{
+      background:inherit !important;
+      }
+
+
+    form{
+    width: 100rem;
+
+    }
+     label{
+        display:inline-block;
+        width: 16rem;
+
+        padding-left:1rem;
+        }
+
+        input{
+        width: 16rem;
+        }
+
+      legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #e5e5e5;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+
+
+
     .dropdown-toggle{
     color: white;
     }
@@ -345,13 +484,11 @@ input, select{
   box-sizing: border-box;
 }
 form {
-
-
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 90rem;
-margin:2rem 20rem 2rem 20rem ;
+    border-radius: 5px;
+    background-color: #222222de;
+    padding: 20px;
+    width: 90rem;
+    margin: 8rem 20rem 8rem 20rem;
 }
 
 
@@ -376,18 +513,19 @@ margin:2rem 20rem 2rem 20rem ;
         <fieldset>
             <legend>Please fill information below </legend>
             <br>
-            <label for="date">Date</label>-->
-                        <input id="date" name="date" type="date">
-
+            <row>
+            <label for="date">Date</label>
+                        <input id="date" name="date" type="date"></row>
+                  <row>
                         <label for="starTime">Time In</label>
-                        <input id="starTime" name="starTime" type="time">
-
+                        <input id="starTime" name="starTime" type="time"></row>
+                 <row>
                         <label for="endTime">Time Out</label>
-                        <input id="endTime" name="endTime" type="time">
+                        <input id="endTime" name="endTime" type="time"></row>
 
             <input id="id" hidden name="id" th:value="${parking.id}">
 
-            <input class="btn1" type="submit" name="id" >Confirm Booking</input>
+<!--          <input class="btn1" type="submit" name="id" >Confirm Booking</input>-->
         </fieldset>
     </form>
 
