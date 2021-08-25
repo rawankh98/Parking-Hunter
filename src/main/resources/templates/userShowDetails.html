@@ -199,7 +199,7 @@ padding-top: 10px;
                        style="margin-bottom:1rem;">
                         <span class="fs-5 fw-semibold" style="color:#F3F0D7">Parkings</span>
                     </a>
-                    <div style="max-height: 80vh;border-radius: 20px; " class="list-group list-group-flush  overflow-auto">
+                    <div style="max-height: 80vh;border-radius: 20px; " class="list-group list-group-flush overflow-auto  scrollarea">
                         <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
                             <a style=" border-radius: 0; background-color: #EEEEEE; width:100%;"
                                th:href="@{/userShowParking/{id}(id=${parking.id})}"
@@ -273,7 +273,7 @@ console.log(coolLocations);
 
 
 </main>
-<div th:replace="fragments/footer.html :: footer"></div>
+<!--<div th:replace="fragments/footer.html :: footer"></div>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
