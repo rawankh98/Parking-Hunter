@@ -97,7 +97,24 @@ public class UserController {
 
 
         } else {
-            System.out.println("not authenticated");
+            Parking parking = parkingRepository.findById(id).get();
+            model.addAttribute("parking", parking);
+            Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
+            System.out.println(addingReviewId);
+            model.addAttribute("reviewsByBarkingId", addingReviewId);
+
+
+            List<MapController.Location> all = coolLocations();
+            List<MapController.Location> oneLocation = new ArrayList<>();
+            for (MapController.Location location : all) {
+                if (String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
+                        String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
+                    oneLocation.add(location);
+                }
+                System.out.println(oneLocation);
+            }
+            model.addAttribute("parkingsOwner", parking);
+            model.addAttribute("coolLocations", oneLocation);
         }
         return "detailsOfParking";
     }
