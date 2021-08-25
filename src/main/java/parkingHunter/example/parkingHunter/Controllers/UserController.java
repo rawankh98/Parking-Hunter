@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
@@ -26,18 +27,16 @@ public class UserController {
 
     @GetMapping("/userShowParking")
     public String userShowParking(Principal principal, Model model) {
-//
-//
-
-
-//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository
-//            .findByUsername(principal.getName())));
         if (principal == null) {
 
             Iterable parking = parkingRepository.findAll();
             System.out.println(parking);
             model.addAttribute("parkings", parking);
             System.out.println(parking);
+
+            Iterable parkings = parkingRepository.findAll();
+            model.addAttribute("parkingsOwner", parkings);
+            model.addAttribute("coolLocations", coolLocations());
         } else {
             String userType = dbUserRepository.findByUsername(principal.getName()).getAuthority();
             model.addAttribute("userType", userType);
@@ -46,12 +45,14 @@ public class UserController {
             System.out.println(parking);
             model.addAttribute("parkings", parking);
             System.out.println(parking);
+            Iterable parkings = parkingRepository.findAll();
+            model.addAttribute("parkingsOwner", parkings);
+            model.addAttribute("coolLocations", coolLocations());
+
 
         }
 //
-//        Iterable parkings = parkingRepository.findAll();
-//        model.addAttribute("parkingsOwner", parkings);
-//        model.addAttribute("coolLocations", coolLocations());
+
 
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
@@ -97,6 +98,11 @@ public class UserController {
 
 
         } else {
+            NotUser user=new NotUser("Guest");
+
+            model.addAttribute("user",user);
+
+            model.addAttribute("userType", "notUser");
             Parking parking = parkingRepository.findById(id).get();
             model.addAttribute("parking", parking);
             Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
