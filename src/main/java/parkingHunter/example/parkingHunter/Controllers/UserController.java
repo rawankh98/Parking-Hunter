@@ -25,8 +25,9 @@ public class UserController {
     @Autowired
     ReviewRepository reviewRepository;
 
-    @GetMapping("/userReservation")
-    public String userReservation(){
+    @GetMapping("/userReservation/{id}")
+    public String userReservation(Model model){
+
         return "userBookingForm";
     }
     @GetMapping("/userShowParking")
