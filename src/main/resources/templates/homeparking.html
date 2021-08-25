@@ -11,6 +11,52 @@
 
   <style>
 
+
+   .revs{
+    background-color: #E8E8E8;
+  width: 30rem;
+  height:15rem;
+  border: 1px solid black;
+  padding: 3rem;
+margin:2rem;
+border-radius:5px;
+position: relative;
+    }
+
+    .revs p{
+    font- color:#334257;
+    font-size:medium;
+    }
+    .imgProfile{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    }
+    .revText{
+        font-size:100px;
+    position: absolute;
+    color: #787A91;
+     margin:1px;
+         left:65px;
+         top: 50px;
+    }
+    .revBody{
+    position: absolute;
+    top:9rem;
+
+    text-align:left;
+
+    }
+
+.revName{
+font-style:bold;
+position:absolute;
+left:65px;
+top: 20px;
+
+}
+
+
     .dropdown-toggle{
     color: white;
     }
@@ -339,8 +385,14 @@ body > main{
 padding-top: 65px;
 }
 
-
-
+     div > ul:nth-child(3) > li > a:hover{
+      background:inherit !important;
+      }
+.divparkingDetails{
+    padding: 10px;
+    border-bottom: 1px solid;
+    margin-top: 15px;
+}
 
 
 
@@ -362,136 +414,16 @@ padding-top: 65px;
           </label>
           <select id="select-box1" class="select">
             <option value="Choice 1">Downtown</option>
-<!--            <option value="Choice 2">Germany</option>-->
-<!--            <option value="Choice 3">Neverland</option>-->
+
           </select>
 
         </div>
 
       </form>
-      <!--&lt;!&ndash;            <button>Hire me</button>&ndash;&gt;-->
     </div>
 
   </div>
-  <!--    <div th:each="parking: ${parkingsOwner}"  th:if="${userType=='ROLE_OWNER'}">-->
-  <!--        <ul >-->
-  <!--            <li th:text="${parking.parkingName}" />-->
-  <!--            <li th:text="${parking.region}" />-->
-  <!--            <li th:text="${parking.latitude}" />-->
-  <!--            <li th:text="${parking.longitude}" />-->
-  <!--            <li th:text="${parking.numSpaces}" />-->
-  <!--            <li th:text="${parking.availableSpaces}" />-->
-  <!--            <li th:text="${parking.openingHour}" />-->
-  <!--            <li th:text="${parking.closingHour}" />-->
-  <!--            <li th:text="${parking.pricePerHour}" />-->
-  <!--            <li th:text="${parking.ownerName}" />-->
-  <!--            <br>-->
-  <!--        </ul>-->
-  <!--        <form action="/custmerOfOwner" method="post">-->
-  <!--            <input name="userName" type="text" placeholder="Add Client">-->
-  <!--            <button type="submit" name="id" th:value="${parking.id}">Add Client</button>-->
-  <!--        </form>-->
-  <!--        <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">-->
-  <!--            <div >-->
-  <!--                <p th:text="${reviews.dateTime}"></p>-->
-  <!--                <p th:text="${reviews.body}"></p>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--        <h3>Reservations</h3>-->
-  <!--        <div  th:each="reservation: ${allReservations}" th:if="${parking.id==reservation.reserveSpace.id }">-->
 
-  <!--            <p th:text="${reservation.date}"></p>-->
-  <!--            <p th:text="${reservation.starTime}"></p>-->
-  <!--            <p th:text="${reservation.endTime}"></p>-->
-  <!--            <p th:text="${reservation.totalTime}"></p>-->
-  <!--            <p th:text="${reservation.userName}"></p>-->
-
-
-  <!--            <form action="/editReserve/{id}" method="put"th:if="${reservation.type=='ROLE_USER' }">-->
-  <!--                <button type="submit" name="id" th:value="${reservation.id}">Add Hour</button>-->
-  <!--            </form>-->
-  <!--            <form action="/editcustmerOfOwner/{id}" method="put"th:if="${reservation.type=='ROLE_OUTER' }">-->
-  <!--                <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
-  <!--            </form>-->
-  <!--            <form action="/reserve/{id}" method="delete">-->
-  <!--                <button type="submit" name="id" th:value="${reservation.id}">End Reservation</button>-->
-  <!--            </form>-->
-
-  <!--        </div>-->
-  <!--    </div>-->
-
-  <!--        <div th:each="parking: ${parkings}" th:if="${userType=='ROLE_USER'}" >-->
-  <!--            <p th:text="${parking.parkingName}"></p>-->
-  <!--            <p th:text="${parking.region}"></p>-->
-  <!--            <p th:text="${parking.latitude}"></p>-->
-  <!--            <p th:text="${parking.longitude}"></p>-->
-  <!--            <p th:text="${parking.numSpaces}"></p>-->
-  <!--            <p th:text="${parking.availableSpaces}"></p>-->
-  <!--            <p th:text="${parking.openingHour}"></p>-->
-  <!--            <p th:text="${parking.closingHour}"></p>-->
-  <!--            <p th:text="${parking.pricePerHour}"></p>-->
-  <!--            <p th:text="${parking.ownerName}"></p>-->
-  <!--            <br>-->
-
-
-  <!--        <div th:each="reservation: ${oneReservation}">-->
-  <!--            <p th:text="${reservation.date}"></p>-->
-  <!--            <p th:text="${reservation.starTime}"></p>-->
-  <!--            <p th:text="${reservation.endTime}"></p>-->
-
-  <!--        </div>-->
-
-
-  <!--            <div class="stars">-->
-  <!--                <form action="/addReview" method="post" th:if="${userType=='ROLE_USER'}">-->
-
-  <!--                    <input name="body" type="text" placeholder="Review">-->
-  <!--                &lt;!&ndash;            <input class="star star-5" id="star-5" type="radio" name="star"/>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <label class="star star-5" for="star-5"></label>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <input class="star star-4" id="star-4" type="radio" name="star"/>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <label class="star star-4" for="star-4"></label>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <input class="star star-3" id="star-3" type="radio" name="star"/>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <label class="star star-3" for="star-3"></label>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <input class="star star-2" id="star-2" type="radio" name="star"/>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <label class="star star-2" for="star-2"></label>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <input class="star star-1" id="star-1" type="radio" name="star"/>&ndash;&gt;-->
-  <!--                &lt;!&ndash;            <label class="star star-1" for="star-1"></label>&ndash;&gt;-->
-  <!--                    <button type="submit" name="idPark" th:value="${parking.id}" >add review</button>-->
-  <!--                </form>-->
-  <!--            </div>-->
-
-
-  <!--            <div th:each="reviews:${review}"th:if="${parking.id==reviews.addingReview.id }">-->
-  <!--                <div >-->
-  <!--                    <p th:text="${reviews.dateTime}"></p>-->
-  <!--                    <p th:text="${reviews.body}"></p>-->
-  <!--                </div>-->
-  <!--            </div>-->
-
-  <!--        </div>-->
-
-
-  <!--        <form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">-->
-  <!--            <label for="date">Date</label>-->
-  <!--            <input id="date" name="date" type="date">-->
-
-  <!--            <label for="starTime">Time In</label>-->
-  <!--            <input id="starTime" name="starTime" type="time">-->
-
-  <!--            <label for="endTime">Time Out</label>-->
-  <!--            <input id="endTime" name="endTime" type="time">-->
-
-
-  <!--            <button type="submit" name="id" th:value="${parking.id}">reserve</button>-->
-  <!--        </form>-->
-
-  <!--    </div>-->
-  <!--    <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
-  <!--        <button type="submit">Add parking</button>-->
-  <!--    </form>-->
-  <!--<form th:if="${userType=='ROLE_OWNER'}" action="/viewparkings">-->
-  <!--        <button type="submit">view parking</button>-->
-  <!--    </form>-->
 
 
   <div class="container">
@@ -504,9 +436,7 @@ padding-top: 65px;
             <span class="fs-5 fw-semibold">Parkings</span>
           </a>
           <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
-            <!--            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
-            <!--              <button type="submit" class="btn btn-outline-primary">Add Parking</button>-->
-            <!--            </form>-->
+
             <form th:if="${userType=='ROLE_OWNER'}" action="http://localhost:8080/">
               <button type="submit" class="btn btn-outline-primary">SHOW ALL</button>
             </form>
@@ -538,38 +468,49 @@ padding-top: 65px;
         </div>
       </div>
       <div class="col">
+        <a href="/"
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+          <span class="fs-5 fw-semibold">Details</span>
+        </a>
+        <div class="parkingDetailsH1" style="margin-top:15px">
+          <div class="divparkingDetails">
+            <h4> Parking Name   </h4> <span th:text="${parkingsOwner.parkingName}"></span>
+          </div>
+          <div class="divparkingDetails">
+            <h4> Parking Region  </h4> <span th:text="${parkingsOwner.region}"></span>
+          </div>
+          <div class="divparkingDetails"><h4> Parking Opening Hours    </h4><span th:text="${parkingsOwner.openingHour}"></span></div>
+          <div class="divparkingDetails">          <h4> Parking Closing Hours   </h4><span th:text="${parkingsOwner.closingHour}"></span>
+          </div>
+          <div class="divparkingDetails">
+            <h4> Parking Price Per Hours   </h4><span th:text="${parkingsOwner.pricePerHour}"></span>
+          </div>
+          <div class="divparkingDetails">
+            <h4> Owner Name </h4> <span th:text="${parkingsOwner.ownerName}"></span>
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
         <a style="margin-bottom: 30px;" href="/"
            class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
           <span class="fs-5 fw-semibold">Reviews</span>
         </a>
         <div class="scrollarea" style="height: 80vh">
-          <div style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
+          <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
             <div>
-              <img src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
+              <img class="imgProfile" src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                    width="50px" style="border-radius: 50%;" alt="img">
-              <p th:text="${reviews.body}"></p>
-              <p th:text="${reviews.dateTime}"></p>
-            </div>
+               <p style="font-size:1.5rem; font-style:bold;" class="revName" th:text="${reviews.userName}"></p>
+               <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
+               <p class="revBody" th:text="${reviews.body}"></p>
+
+                          </div>
 
           </div>
         </div>
       </div>
-      <div class="col">
-        <a href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span class="fs-5 fw-semibold">Details</span>
-        </a>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-              additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.320892679372!2d35.89917991493054!3d31.95219013288905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca089d46534e9%3A0xdb08c23bed71b111!2sIbn%20Khaldoun%20St.%2061-55%2C%20Amman!5e0!3m2!1sen!2sjo!4v1629712685731!5m2!1sen!2sjo"
-                  width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-      </div>
+
     </div>
   </div>
 

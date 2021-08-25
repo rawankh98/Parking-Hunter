@@ -23,20 +23,16 @@ public class SendParkingDetail {
     ReviewRepository reviewRepository;
     @GetMapping("/{id}")
     public String sendparkingdetail(@PathVariable Integer id , Principal principal, Model model){
-//        System.out.println(id);
         if (principal != null) {
             String userType= dbUserRepository.findByUsername(principal.getName()).getAuthority();
             model.addAttribute("userType",userType);
             model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
-//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
             Parking parking=parkingRepository.findById(id).get();
             model.addAttribute("parkingsOwner",parking);
             Iterable addingReviewId=reviewRepository.findByaddingReviewId(id);
-//            System.out.println(addingReviewId);
             model.addAttribute("reviewsByBarkingId",addingReviewId);
 
         } else {
-            System.out.println("not authenticated");
         }
         return "homeparking" ;
     }

@@ -39,11 +39,9 @@ public class ReservationController {
 
     @GetMapping("/bookingForm")
     public String book(@RequestParam(value ="id") String  idP, Model m){
-        System.out.println("----------------------------");
-        System.out.println(idP);
+
         int x = Integer.parseInt(idP);
-        System.out.println(x);
-        System.out.println(idP);
+
         Parking parking= parkingRepository.findById(x).get();
         m.addAttribute("parking",parking);
         return "userBookingForm";
@@ -77,9 +75,7 @@ public class ReservationController {
 
     @PostMapping("/custmerOfOwner")
     public RedirectView custmerOfOwner(@RequestParam(value ="id") Integer id,@RequestParam(value ="userName") String userName){
-        System.out.println(id +" "+ userName);
-//        DBUser userNames=dbUserRepository.findByUsername(principal.getName());
-//        String userName=userNames.getUsername();
+
 
         Parking parking= parkingRepository.findById(id).get();
         Integer controllerId=parking.getId();
@@ -101,10 +97,8 @@ public class ReservationController {
 
 
     @GetMapping("/editcustmerOfOwner/{id}")
-    public RedirectView updateTimecustmerOfOwner(@RequestParam(value="id")Integer id){
+    public RedirectView updateTimecustmerOfOwner(@RequestParam(value="id")Integer id ,Model model){
         Reservation res=reservationRepository.findById(id).get();
-//        LocalTime endtingTime=LocalTime.now();
-//        String endingsTime=endtingTime.toString();
 
         res.setEndTime(LocalTime.now().toString());
         LocalTime t1 = LocalTime.parse(res.getStarTime());
@@ -130,20 +124,6 @@ public class ReservationController {
             parking.setAvailableSpaces(parking.getAvailableSpaces()+1);
         }
 
-//        if(res.getEndTime().equals("ahmad")){
-//            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
-//            LocalTime startingTime=LocalTime.now();
-//            String starTime=startingTime.toString();
-//            res.setEndTime(starTime);
-//
-//            LocalTime t1 = LocalTime.parse(res.getStarTime());
-//            LocalTime t2 = LocalTime.parse(res.getEndTime());
-//            Duration diff = Duration.between(t1, t2);
-//            long totalTime=diff.toHours();
-//            String type="notUser";
-//            Dashboard dashboard=new Dashboard(res.getDate(),totalTime,type,res.getReserveSpace());
-//            dashboardRepository.save(dashboard);
-//        }else {
             LocalTime t1 = LocalTime.parse(res.getStarTime());
             LocalTime t2 = LocalTime.parse(res.getEndTime());
             Duration diff = Duration.between(t1, t2);
@@ -155,7 +135,6 @@ public class ReservationController {
             }
 
             double price = parking.getPricePerHour()*totalTime;
-        //System.out.println(price);
 
         double newCommulative=0;
         double oldPrices=0;
@@ -180,11 +159,9 @@ public class ReservationController {
     @GetMapping("/editReserve/{id}")
     public RedirectView updateTime(@RequestParam(value="id")Integer id){
 
-//        System.out.println("*********************************************************");
         Reservation res=reservationRepository.findById(id).get();
         Integer controllerId=res.getReserveSpace().getId();
-//        System.out.println(controllerId);
-//        System.out.println(id);
+
 
 
         LocalTime time = LocalTime.parse(res.getEndTime());
@@ -197,21 +174,7 @@ public class ReservationController {
         long totalTime=diff.toHours();
         res.setTotalTime(totalTime);
         reservationRepository.save(res);
-//        System.out.println(res);
 
-//        LocalTime t1 = LocalTime.parse(res.getStarTime());
-//        Duration diff = Duration.between(t1, updatedTime);
-//        long totalTime=diff.toHours();
-//       // String type="appUser";
-//        System.out.println("*****************************");
-//        //System.out.println(totalTime);
-//        Dashboard dash=dashboardRepository.findByDashbordrepoId(id);
-//       // System.out.println("1111111111111111111111111111111111111111");
-//        dash.setTotalTime(totalTime);
-//        System.out.println(dash.getTotalTime());
-//        dashboardRepository.save(dash);
-////        Dashboard dashboard=dashboardRepository.
-//{id}(id=${parking.id})}
        String url= "/parkingcontroller/"+controllerId;
         return new RedirectView(url);
     }

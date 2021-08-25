@@ -2,12 +2,14 @@ package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
 import parkingHunter.example.parkingHunter.Models.MappingParking;
+import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.MappingParkingRepositoriy;
@@ -25,7 +27,15 @@ public class AddParkingController {
     @Autowired
     MappingParkingRepositoriy mappingParkingRepositoriy;
     @GetMapping("/addparking")
-    public String showAddparkingForm(){
+    public String showAddparkingForm(Principal principal, Model model){
+        if (principal != null) {
+            model.addAttribute("userType", "Guest");
+            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+
+        }else {
+            NotUser user = new NotUser("Guest");
+            model.addAttribute("user", user);
+        }
         return "addParkingForm";
     }
     @PostMapping("/addparking")
@@ -41,26 +51,19 @@ public class AddParkingController {
         String newUser= DBUserRepository.findByUsername(principal.getName()).getUsername();
         DBUser user= DBUserRepository.findByUsername(principal.getName());
         String url="https://www.google.com/maps/place?q="+lon+"+"+lat;
-        System.out.println(url);
         Parking newParking=new Parking(parkingName,region,lat,lon,numSpaces,openingHour,closingHour,pricePerHour,
                 newUser,url,user);
 
         parkingRepository.save(newParking);
         double lons=Double.parseDouble(lon);
-//        System.out.println(lons);
         double lats=Double.parseDouble(lat);
-//        System.out.println(lats);
         double [] lonlat=new double[2];
         lonlat[0]=lons;
         lonlat[1]=lats;
-//        Double lonlat []  = {lons,lats };
-//        System.out.println(lonlat[0]);
-//        System.out.println(lonlat[1]);
-//        System.out.println(String.valueOf(lonlat));
+
 
         MappingParking mappingParking=new MappingParking(lonlat,region,parkingName,user);
         mappingParkingRepositoriy.save(mappingParking);
-//        System.out.println(newParking);
 
         return new RedirectView("/");
     }

@@ -1,114 +1,60 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <title>Add parking</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
-    .dropdown-toggle{
+  <style>
+    body{
+    background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80');
+<!--    opacity: 0.75;-->
+    min-height: 70vh;
+    }
+
+ .dropdown-toggle{
     color: white;
+    font-size: 19px;
+font-weight: bold;
     }
 .nav-link{
 color: white;
+font-size: 19px;
+font-weight: bold;
 }
-    body{
-    height: 100%;
-    }
     main{
-    min-height: 80vh;
-
+    margin-top: 97px
     }
-
-
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  width: 100%;
+      .navbar{
+margin: 0;
+border-radius: 0;
+border-style: none;
+height: 70px;
+padding-top: 10px;
 }
 
-.hero-text button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 25px;
-  color: black;
-  background-color: #ddd;
-  text-align: center;
-  cursor: pointer;
-}
-
-.hero-text button:hover {
-  background-color: #555;
-  color: white;
-}
-
-.select-box {
-  cursor: pointer;
-  position : relative;
-  margin: 5em auto;
-  width: 300px;
-}
-
-.select,
-.label {
-  color: #414141;
-  display: block;
-  font: 400 17px/2em 'Source Sans Pro', sans-serif;
-}
-
-.select {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  padding: 5px 0;
-  height: 40px;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  background: none transparent;
-  border: 0 none;
-}
-.select-box1 {
-  background: #ececec;
-}
-
-.label {
-  position: relative;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-.open .label::after {
-   content: "▲";
-}
-.label::after {
-  content: "▼";
-  font-size: 12px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 5px 15px;
-  border-left: 5px solid #fff;
-}
 .footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
+    padding: 15px 0;
+    background-color: #222;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0
+    max-height: 30vh;
+<!--    height: 70%;-->
 }
 
 .footer-clean h3 {
-  margin-top:0;
-  margin-bottom:12px;
+<!--  margin-top:0;-->
+<!--  margin-bottom:12px;-->
   font-weight:bold;
   font-size:16px;
 }
@@ -118,7 +64,7 @@ color: white;
   list-style:none;
   line-height:1.6;
   font-size:14px;
-  margin-bottom:0;
+<!--  margin-bottom:0;-->
 }
 
 .footer-clean ul a {
@@ -135,18 +81,18 @@ color: white;
   text-align:right;
 }
 
-@media (max-width:767px) {
-  .footer-clean .item {
-    text-align:center;
-    padding-bottom:20px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item {-->
+<!--    text-align:center;-->
+<!--    padding-bottom:20px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width: 768px) {
-  .footer-clean .item.social {
-    text-align:center;
-  }
-}
+<!--@media (max-width: 768px) {-->
+<!--  .footer-clean .item.social {-->
+<!--    text-align:center;-->
+<!--  }-->
+<!--}-->
 
 .footer-clean .item.social > a {
   font-size:24px;
@@ -157,8 +103,8 @@ color: white;
   text-align:center;
   border-radius:50%;
   border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
+<!--  margin-left:10px;-->
+<!--  margin-top:22px;-->
   color:inherit;
   opacity:0.75;
 }
@@ -167,259 +113,222 @@ color: white;
   opacity:0.9;
 }
 
-@media (max-width:991px) {
-  .footer-clean .item.social > a {
-    margin-top:40px;
-  }
-}
+<!--@media (max-width:991px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:40px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width:767px) {
-  .footer-clean .item.social > a {
-    margin-top:10px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:10px;-->
+<!--  }-->
+<!--}-->
 
 
 .footer-clean .copyright {
-  margin-top:14px;
-  margin-bottom:0;
+<!--  margin-top:14px;-->
+<!--  margin-bottom:0;-->
   font-size:13px;
   opacity:0.6;
+  color: white;
 }
-
-  .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-  height: 3rem;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: var(--bs-dark);
-  border-color: var(--bs-gray);
-}
-.form-control-dark:focus {
-  color: #fff;
-  background-color: var(--bs-dark);
-  border-color: #fff;
-  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
-}
-
-.bi {
-  vertical-align: -.125em;
-  fill: currentColor;
-}
-
-.text-small {
-  font-size: 85%;
-}
-
-.dropdown-toggle {
-  outline: 0;
-}
-.b-example-divider {
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, .1);
-  border: solid rgba(0, 0, 0, .15);
-  border-width: 1px 0;
-  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-}
-
-.bi {
-  vertical-align: -.125em;
-  pointer-events: none;
-  fill: currentColor;
-}
-
-.dropdown-toggle { outline: 0; }
-
-.nav-flush .nav-link {
-  border-radius: 0;
-}
-
-.btn-toggle {
-  display: inline-flex;
-  align-items: center;
-  padding: .25rem .5rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, .65);
-  background-color: transparent;
-  border: 0;
-}
-.btn-toggle:hover,
-.btn-toggle:focus {
-  color: rgba(0, 0, 0, .85);
-  background-color: #d2f4ea;
-}
-
-.btn-toggle::before {
-  width: 1.25em;
-  line-height: 0;
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-  transition: transform .35s ease;
-  transform-origin: .5em 50%;
-}
-
-.btn-toggle[aria-expanded="true"] {
-  color: rgba(0, 0, 0, .85);
-}
-.btn-toggle[aria-expanded="true"]::before {
-  transform: rotate(90deg);
-}
-.btn-toggle-nav a {
-  display: inline-flex;
-  padding: .1875rem .5rem;
-  margin-top: .125rem;
-  margin-left: 1.25rem;
-  text-decoration: none;
-}
-.btn-toggle-nav a:hover,
-.btn-toggle-nav a:focus {
-  background-color: #d2f4ea;
-}
-
-.scrollarea {
-  overflow-y: auto;
-}
-
-.fw-semibold { font-weight: 600; }
-.lh-tight { line-height: 1.25; }
-  .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-
-.btn1{
-margin:0 auto;
-background-color: #008CBA;
-color:white;
-ont-size: 24px;
-padding: 14px 40px;
-border-radius: 8px;
- transition-duration: 0.4s;
- font-size: 16px;
+body > div:nth-child(3) > div > footer > div {
 width: 100%;
- margin: 8px 0;
-   cursor: pointer;
-}
-.btn1:hover{
- background-color: white;
-  color: #008CBA;
 }
 
-input, select{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-form {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 90rem;
-margin:2rem 20rem 2rem 20rem ;
-}
+      h1, form, input, p {
+      padding: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+      h1 {
+      padding: 10px 0;
+      font-size: 32px;
+      font-weight: 300;
+      text-align: center;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    color: white;
+      }
+      p {
+      font-size: 16px;
+      color: white;
+      }
+      hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+      }
+      .main-block {
+      max-width: 600px;
+      min-height: 500px;
+      padding: 10px 0;
+      margin: 70px auto;
+      border-radius: 5px;
+      border: solid 1.5px #ccc;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background-color: #222222de;
+      }
+      form {
+margin: 0 80px;
+margin-bottom: 14px;
 
-.btn2{
-margin:0 auto;
-background-color: #008CBA;
-color:white;
-ont-size: 24px;
-padding: 14px 40px;
-border-radius: 8px;
- transition-duration: 0.4s;
- font-size: 16px;
- margin: 8px 0;
-   cursor: pointer;
 }
-.btn2:hover{
- background-color: white;
-  color: #008CBA;
+      .account-type, .gender {
+      margin: 15px 0;
+      }
+      input[type=radio] {
+      display: none;
+      }
+      label#icon {
+      border-radius: 5px 0 0 5px;
+      margin-bottom: 13px;
+      }
+      label.radio {
+      position: relative;
+      display: inline-block;
+      padding-top: 4px;
+      margin-right: 20px;
+      text-indent: 30px;
+      overflow: visible;
+      cursor: pointer;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1c87c9;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 4px;
+      top: 8px;
+      left: 4px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after {
+      opacity: 1;
+      }
+      input[type=text], input[type=number], input[type=time] {
+      width: calc(100% - 57px);
+      height: 36px;
+      margin: 13px 0 0 -5px;
+      padding-left: 10px;
+      border-radius: 0 5px 5px 0;
+      border: solid 1px #cbc9c9;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #fff;
+      color: black;
+      }
+      input[type=password] {
+      margin-bottom: 15px;
+      color :black;
+      }
+      #icon {
+      display: inline-block;
+      padding: 9.3px 15px;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+      background: #1c87c9;
+      color: #fff;
+      text-align: center;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 100px;
+      height: 50px;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px;
+      border: none;
+      background: #1c87c9;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #26a9e0;
+      }
+      label{
+      color: white;
+      }
+      body > main {
+      padding-top: 20px;
+      }
+
+.copyright{
+color: white;
 }
-
-.note{
- color: #008CBA;
+h2{
+font-size: 25px;
 }
+     div > ul:nth-child(3) > li > a:hover{
+      background:inherit !important;
+      }
 
-    </style>
-
+  </style>
 </head>
-
-
 <body>
-
+<!--<h1 th:text="${errormesssage}"></h1>-->
 <div th:replace="fragments/header.html :: header"></div>
-
 <main>
-<form method="POST" action="/addparking">
-    <fieldset>
-    <legend>Please add your parking information </legend>
-    <br>
-    <label for="parkingName">Parking Name :</label>
-    <input id="parkingName" name="parkingName" type="text" required>
-    <br>
-    <label for="region"> Region : </label>
-<!--    <select  id="region" class="select">-->
-<!--        <option value="Choice 1">Downtown</option>-->
-<!--        &lt;!&ndash;            <option value="Choice 2">Germany</option>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <option value="Choice 3">Neverland</option>&ndash;&gt;-->
-<!--    </select>-->
-    <input id="region" name="region" type="text" placeholder="Specify more details" required>
-    <br>
-    <label for="numSpaces">Number of spaces</label>
-    <input id="numSpaces" name="numSpaces" type="number" min="0" required>
-    <br>
-    <label for="openingHour">Opening Hour :</label>
-    <input id="openingHour" name="openingHour" type="time" required>
-    <br>
-    <label for="closingHour">Closing Hour :</label>
-    <input id="closingHour" name="closingHour" type="time" required>
-    <br>
-    <label for="pricePerHour">Price per hour :</label>
-    <input id="pricePerHour" name="pricePerHour" type="number" min="0"  required>
-    <br>
-    <label >Location information :</label>
-    <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
-    <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude" required >
-    <label class="note" >You are at the parking click here => </label>
-    <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
-    <br>
-    <button class="btn1" type="submit">Add Parking</button>
-    </fieldset>
-</form>
+  <div class="main-block">
+    <form method="POST" action="/addparking">
+      <fieldset>
+        <legend style="color: white;"><h2>Please add your parking information </h2></legend>
+        <br>
+        <label for="parkingName">Parking Name :</label>
+        <input id="parkingName" name="parkingName" type="text" required>
+        <br>
+        <label for="region"> Region : </label><br>
+        <!--    <select  id="region" class="select">-->
+        <!--        <option value="Choice 1">Downtown</option>-->
+        <!--        &lt;!&ndash;            <option value="Choice 2">Germany</option>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <option value="Choice 3">Neverland</option>&ndash;&gt;-->
+        <!--    </select>-->
+        <input id="region" name="region" type="text" placeholder="Specify more details" required>
+        <br><br>
+        <label for="numSpaces">Number of spaces</label><br>
+        <input id="numSpaces" name="numSpaces" type="number" min="0" required>
+        <br><br>
+        <label for="openingHour">Opening Hour :</label><br>
+        <input id="openingHour" name="openingHour" type="time" required>
+        <br><br>
+        <label for="closingHour">Closing Hour :</label><br>
+        <input id="closingHour" name="closingHour" type="time" required>
+        <br><br>
+        <label for="pricePerHour">Price per hour :</label><br>
+        <input id="pricePerHour" name="pricePerHour" type="number" min="0" required>
+        <br><br>
 
+        <label>Location information :</label><br>
+        <br>
+        <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude"
+               required><br>
+        <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
+        <br>
+        <label class="note">You are at the parking click here => </label>
+        <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
+        <br>
+        <button class="btn1" type="submit">Add Parking</button>
+      </fieldset>
+    </form>
+  </div>
+</main>
 <script>
 let latinput = document.getElementById("lat");
 let loninput = document.getElementById("lon");
@@ -456,7 +365,21 @@ function showError(error) {
 
 </script>
 
-</main>
 <div th:replace="fragments/footer.html :: footer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>
+
+
+
+
+
+
+
