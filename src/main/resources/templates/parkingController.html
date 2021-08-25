@@ -11,14 +11,14 @@
   <style>
     .dropdown-toggle{
     color: white;
+    font-size: 19px;
+font-weight: bold;
     }
 .nav-link{
 color: white;
+font-size: 19px;
+font-weight: bold;
 }
-    main{
-    min-height: 80vh;
-    padding-top:10vh;
-    }
       .navbar{
 margin: 0;
 border-radius: 0;
@@ -26,18 +26,26 @@ border-style: none;
 height: 70px;
 padding-top: 10px;
 }
+    main{
+    height: 85vh;
+    padding-top:10vh;
+    }
+
 
 .footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
+    background-color: #222;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 15vh;
 }
 
 .footer-clean h3 {
-  margin-top:0;
-  margin-bottom:12px;
+<!--  margin-top:0;-->
+<!--  margin-bottom:12px;-->
   font-weight:bold;
   font-size:16px;
 }
@@ -47,7 +55,7 @@ padding-top: 10px;
   list-style:none;
   line-height:1.6;
   font-size:14px;
-  margin-bottom:0;
+<!--  margin-bottom:0;-->
 }
 
 .footer-clean ul a {
@@ -63,6 +71,24 @@ padding-top: 10px;
 .footer-clean .item.social {
   text-align:right;
 }
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+<!--  margin-left:10px;-->
+<!--  margin-top:22px;-->
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
 
 @media (max-width:767px) {
   .footer-clean .item {
@@ -75,26 +101,14 @@ padding-top: 10px;
   .footer-clean .item.social {
     text-align:center;
   }
+}.footer-clean .copyright {
+<!--  margin-top:14px;-->
+<!--  margin-bottom:0;-->
+  font-size:13px;
+  opacity:0.6;
+  color: white;
 }
 
-.footer-clean .item.social > a {
-  font-size:24px;
-  width:40px;
-  height:40px;
-  line-height:40px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
-  color:inherit;
-  opacity:0.75;
-}
-
-.footer-clean .item.social > a:hover {
-  opacity:0.9;
-}
 
 @media (max-width:991px) {
   .footer-clean .item.social > a {
@@ -107,17 +121,19 @@ padding-top: 10px;
     margin-top:10px;
   }
 }
-
-
-.footer-clean .copyright {
-  margin-top:14px;
-  margin-bottom:0;
-  font-size:13px;
-  opacity:0.6;
+      .copyright{
+color: white;
 }
      div > ul:nth-child(3) > li > a:hover{
       background:inherit !important;
       }
+
+body > div:nth-child(3) > div > footer {
+height: 15vh;
+}
+body {
+height: 100vh;
+}
 
 
 
