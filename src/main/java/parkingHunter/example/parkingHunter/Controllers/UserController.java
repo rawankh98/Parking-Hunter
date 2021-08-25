@@ -24,6 +24,10 @@ public class UserController {
     @Autowired
     ReviewRepository reviewRepository;
 
+    @GetMapping("/userReservation")
+    public String userReservation(){
+        return "userBookingForm";
+    }
     @GetMapping("/userShowParking")
     public String userShowParking(Principal principal, Model model) {
         if (principal == null) {
@@ -50,7 +54,7 @@ public class UserController {
 
 
         }
-//
+
 
 
 //            Iterable addingReviewId=reviewRepository.findAll();

@@ -36,6 +36,7 @@
      #map {
      width: 100%;
      height: 100%;
+     border-radius: 20px;;
    }
 
  .dropdown-toggle{
@@ -48,6 +49,7 @@ color: white;
     min-height: 80vh;
     width:100%;
     padding-top:10vh;
+    background-color: #C0C0C0;
     }
       .navbar{
 margin: 0;
@@ -181,13 +183,13 @@ padding-top: 10px;
         <div class="row">
 
             <div class="col-3"style="border-radius: 20px;background-color: #6495ED; ">
-                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"style="border-radius: 20px">
                     <a href="#"
                        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
                        style="margin-bottom:1rem;">
                         <span class="fs-5 fw-semibold">Parkings</span>
                     </a>
-                    <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
+                    <div style="height: 80vh;border-radius: 20px; " class="list-group list-group-flush scrollarea">
                         <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
                             <a style="border-bottom: 1px solid white; border-radius: 0; background-color: #B0C4DE; width:100%;"
                                th:href="@{/userShowParking/{id}(id=${parking.id})}"
@@ -204,10 +206,11 @@ padding-top: 10px;
                                 </div>
                             </a>
                             <a class="btn btn-outline-secondary"style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
-                            <a href="#"
+                            <a th:href="@{/userReservation}"
                                style="border-bottom: 1px solid white; border-radius: 10px; background-color: #5F9EA0; width:100%;"
                                class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOKING
                                 NOW</a>
+
                         </div>
                     </div>
                 </div>
