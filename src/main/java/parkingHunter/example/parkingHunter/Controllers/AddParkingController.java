@@ -2,12 +2,14 @@ package parkingHunter.example.parkingHunter.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
 import parkingHunter.example.parkingHunter.Models.MappingParking;
+import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.MappingParkingRepositoriy;
@@ -25,7 +27,15 @@ public class AddParkingController {
     @Autowired
     MappingParkingRepositoriy mappingParkingRepositoriy;
     @GetMapping("/addparking")
-    public String showAddparkingForm(){
+    public String showAddparkingForm(Principal principal, Model model){
+        if (principal != null) {
+            model.addAttribute("userType", "Guest");
+            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+
+        }else {
+            NotUser user = new NotUser("Guest");
+            model.addAttribute("user", user);
+        }
         return "addParkingForm";
     }
     @PostMapping("/addparking")

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 import parkingHunter.example.parkingHunter.Models.DBUser;
+import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
 import parkingHunter.example.parkingHunter.Repos.ReservationRepository;
@@ -38,27 +39,28 @@ public class ApplicationUserController {
 
 
     @GetMapping("/")
-    public String conect(Principal principal,Model model) {
+    public String conect(Principal principal, Model model) {
 
         if (principal != null) {
-           String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
-           model.addAttribute("userType",userType);
-           model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+            String userType = DBUserRepository.findByUsername(principal.getName()).getAuthority();
+            model.addAttribute("userType", userType);
+            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
 
-            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
+            model.addAttribute("parkingsOwner",
+                    parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
-           Iterable parking = parkingRepository.findAll();
-            model.addAttribute("parkings",parking);
-            Iterable addingReviewId=reviewRepository.findAll();
-            model.addAttribute("review",addingReviewId);
+            Iterable parking = parkingRepository.findAll();
+            model.addAttribute("parkings", parking);
+            Iterable addingReviewId = reviewRepository.findAll();
+            model.addAttribute("review", addingReviewId);
 
-            Iterable reservations= reservationRepository.findAll();
+            Iterable reservations = reservationRepository.findAll();
 
 
-            Iterable oneReservations= reservationRepository.findByUserName(principal.getName());
+            Iterable oneReservations = reservationRepository.findByUserName(principal.getName());
 
-            model.addAttribute("allReservations",reservations);
-            model.addAttribute("oneReservation",oneReservations);
+            model.addAttribute("allReservations", reservations);
+            model.addAttribute("oneReservation", oneReservations);
 
 
         } else {
@@ -75,8 +77,16 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/aboutus")
-    public String aboutus() {
+    public String aboutus(Model model, Principal principal) {
 
+        if (principal != null) {
+            model.addAttribute("userType", "Guest");
+            model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
+
+        }else {
+            NotUser user = new NotUser("Guest");
+        model.addAttribute("user", user);
+        }
         return "About.html";
     }
 
@@ -108,24 +118,24 @@ public class ApplicationUserController {
                                @RequestParam(value = "secondpass") String secondpass,
                                @RequestParam(value = "userType") String authority, Model model
     ) {
-        if (password.equals(secondpass)){
-        try {
-            String pictureUrl = "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg";
-            DBUser newUser = new DBUser(username, bCryptPasswordEncoder.encode(password), authority,pictureUrl);
-            DBUserRepository.save(newUser);
-            return new RedirectView("/");
-        } catch (Exception e) {
-                    model.addAttribute("errormesssage","the user is exist");
+        if (password.equals(secondpass)) {
+            try {
+                String pictureUrl = "https://t4.ftcdn" +
+                        ".net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg";
+                DBUser newUser = new DBUser(username, bCryptPasswordEncoder.encode(password), authority, pictureUrl);
+                DBUserRepository.save(newUser);
+                return new RedirectView("/");
+            } catch (Exception e) {
+                model.addAttribute("errormesssage", "the user is exist");
 
-            return new RedirectView("/signup");
-        }
-        }else {
+                return new RedirectView("/signup");
+            }
+        } else {
             return new RedirectView("/signup");
         }
 
 
     }
-
 
 
 }

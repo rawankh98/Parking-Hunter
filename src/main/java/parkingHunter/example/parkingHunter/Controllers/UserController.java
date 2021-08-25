@@ -73,9 +73,9 @@ public class UserController {
             model.addAttribute("reviewsByBarkingId", addingReviewId);
 
 
-            List<MapController.Location> all = coolLocations();
-            List<MapController.Location> oneLocation = new ArrayList<>();
-            for (MapController.Location location : all) {
+            List<Location> all = coolLocations();
+            List<Location> oneLocation = new ArrayList<>();
+            for (Location location : all) {
                 if (String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
                         String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
                     oneLocation.add(location);
@@ -101,9 +101,9 @@ public class UserController {
             model.addAttribute("reviewsByBarkingId", addingReviewId);
 
 
-            List<MapController.Location> all = coolLocations();
-            List<MapController.Location> oneLocation = new ArrayList<>();
-            for (MapController.Location location : all) {
+            List<Location> all = coolLocations();
+            List<Location> oneLocation = new ArrayList<>();
+            for (Location location : all) {
                 if (String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
                         String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
                     oneLocation.add(location);
@@ -119,21 +119,22 @@ public class UserController {
     }
 
 
-    private List<MapController.Location> coolLocations() {
+    private List<Location> coolLocations() {
 
         List<Parking> parkings = (List<Parking>) parkingRepository.findAll();
-        List<MapController.Location> all = new ArrayList<>();
-        double lonLat[] = new double[2];
+        List<Location> all = new ArrayList<>();
         String name = "";
 
         for (int i = 0; i < parkings.size(); i++) {
+            double lonLat[] = new double[2];
             lonLat[0] = Double.parseDouble(parkings.get(i).getLatitude());
             lonLat[1] = Double.parseDouble(parkings.get(i).getLongitude());
             name = parkings.get(i).getParkingName();
 
-            all.add(new MapController.Location(lonLat, name));
+
+            all.add(new Location(lonLat, name));
         }
-        all.add(new MapController.Location(new double[]{35.93448795290056, 31.94958622949373}, "Husseini"));
+
         return all;
     }
 
