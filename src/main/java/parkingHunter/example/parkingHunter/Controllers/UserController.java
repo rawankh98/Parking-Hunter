@@ -9,6 +9,7 @@ import parkingHunter.example.parkingHunter.Models.NotUser;
 import parkingHunter.example.parkingHunter.Models.Parking;
 import parkingHunter.example.parkingHunter.Repos.DBUserRepository;
 import parkingHunter.example.parkingHunter.Repos.ParkingRepository;
+import parkingHunter.example.parkingHunter.Repos.ReservationRepository;
 import parkingHunter.example.parkingHunter.Repos.ReviewRepository;
 
 import java.security.Principal;
@@ -25,6 +26,14 @@ public class UserController {
     @Autowired
     ReviewRepository reviewRepository;
 
+    @Autowired
+    ReservationRepository reservationRepository;
+
+    @GetMapping("/userReservation/{id}")
+    public String userReservation(Model model){
+
+        return "userBookingForm";
+    }
     @GetMapping("/userShowParking")
     public String userShowParking(Principal principal, Model model) {
         if (principal == null) {
@@ -75,6 +84,10 @@ public class UserController {
             model.addAttribute("parkingsOwner", parking);
             model.addAttribute("coolLocations", oneLocation);
 
+            Iterable res = reservationRepository.findByUserName(principal.getName());
+
+            model.addAttribute("res",res);
+
 
         } else {
             NotUser user=new NotUser("Guest");
@@ -99,6 +112,9 @@ public class UserController {
             model.addAttribute("parkingsOwner", parking);
             model.addAttribute("coolLocations", oneLocation);
         }
+
+
+
         return "detailsOfParking";
     }
 
