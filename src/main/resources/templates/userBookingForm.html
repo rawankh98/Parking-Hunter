@@ -356,7 +356,9 @@ margin:2rem 20rem 2rem 20rem ;
 .note{
  color: #008CBA;
 }
-
+     div > ul:nth-child(3) > li > a:hover{
+      background:inherit !important;
+      }
     </style>
 
 </head>
@@ -423,21 +425,15 @@ function showError(error) {
 
 </main>
 <div th:replace="fragments/footer.html :: footer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 </body>
 </html>
 
 
 
-<!--<form th:if="${userType !='ROLE_OWNER' && userType !='ROLE_ADMIN'}" action="/reserve" method="POST">&ndash;&gt;-->
-    <!--            <label for="date">Date</label>-->
-    <!--            <input id="date" name="date" type="date">-->
-
-    <!--            <label for="starTime">Time In</label>-->
-    <!--            <input id="starTime" name="starTime" type="time">-->
-
-    <!--            <label for="endTime">Time Out</label>-->
-    <!--            <input id="endTime" name="endTime" type="time">-->
-
-
-    <!--            <button type="submit" name="id" th:value="${parking.id}">reserve</button>-->
-    <!--        </form>-->

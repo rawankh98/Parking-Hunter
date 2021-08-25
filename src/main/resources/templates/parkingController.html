@@ -17,6 +17,7 @@ color: white;
 }
     main{
     min-height: 80vh;
+    padding-top:10vh;
     }
       .navbar{
 margin: 0;
@@ -114,8 +115,9 @@ padding-top: 10px;
   font-size:13px;
   opacity:0.6;
 }
-
-
+     div > ul:nth-child(3) > li > a:hover{
+      background:inherit !important;
+      }
 
 
 
@@ -145,7 +147,13 @@ padding-top: 10px;
               <button type="submit" class="btn btn-outline-primary">Return to all parkings</button>
             </form>
 
-            <div th:each="oneReservation: ${oneReservation}" th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_USER'}"  style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9; padding:7px">
+            <div th:each="oneReservation: ${oneReservation}"
+                 th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_USER'}"
+                 style="border-bottom: 1px solid white;
+    background-color: #1c87c9;
+        padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;">
 
               <div class="d-flex w-100 align-items-center justify-content-between">
                 <strong style="text-transform:uppercase; margin-bottom: 7px;"
@@ -161,18 +169,29 @@ padding-top: 10px;
                 <label>End Time : </label>&nbsp;<p style="display: inline-block;"
                                                    th:text="${oneReservation.endTime}"></p>
               </div>
-              <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }">
-                <button type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
-                </button>
+              <div class="row" style="margin: 0;
+    width: 100%;">
+                <div class="col" style="margin: 0;
+    padding: 0;">
+                  <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }">
+                    <button style="width: 100%;"  type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
+                    </button>
+                  </form>
+                </div>
+                <div class="col" style="margin: 0;
+    padding: 0;">
+                  <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" method="delete">
+                    <button style="width: 100%;" class="btn btn-primary" type="submit" name="id" th:value="${oneReservation.id}">Delete
+                      Reservation
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <form action="/editcustmerOfOwner/{id}" method="put" th:if="${oneReservation.type=='ROLE_OUTER' }">
+                <button type="submit" class="btn btn-primary" name="id" th:value="${oneReservation.id}">finish</button>
               </form>
-              <form action="/editcustmerOfOwner/{id}" method="put"th:if="${oneReservation.type=='ROLE_OUTER' }">
-             <button type="submit"class="btn btn-primary"  name="id" th:value="${oneReservation.id}">finish</button>
-               </form>
-              <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" method="delete">
-                <button class="btn btn-primary" type="submit" name="id" th:value="${oneReservation.id}">Delete
-                  Reservation
-                </button>
-              </form>
+
             </div>
           </div>
         </div>
@@ -184,58 +203,57 @@ padding-top: 10px;
         </a>
 
 
-        <!--        ////////////////-->
-        <!--        <form style="background: #dadada;border-radius: 5px;padding: 11px;">-->
-        <!--          <div class="mb-3" action="/custmerOfOwner" method="post">-->
-        <!--            <label for="carNumber" class="form-label">Add New Car</label>-->
-        <!--            <input type="text" class="form-control" id="carNumber" name="userName" placeholder="Add Client Car number" required>-->
-        <!--          </div>-->
+        <form style="background: #dadada;border-radius: 5px;padding: 11px;" action="/custmerOfOwner" method="post">
+          <div class="mb-3">
+            <label for="carNumber" class="form-label">Add New Car</label>
+            <input type="text" class="form-control" id="carNumber" name="userName" placeholder="Add Client Car number"
+                   required>
+          </div>
 
-        <!--          <button type="submit" class="btn btn-primary" name="id" th:value="${parkingsOwner}">Add Client</button>-->
-        <!--        </form>-->
-        <!--        ////////////-->
-
-        <form action="/custmerOfOwner" method="post">
-          <input name="userName" type="text" placeholder="Add Client">
-          <button type="submit" name="id" th:value="${parkingsOwner.id}">Add Client</button>
+          <button type="submit" class="btn btn-primary" name="id" th:value="${parkingsOwner.id}">Add Client</button>
         </form>
-<!--        <form action="/editcustmerOfOwner/{id}" method="put" th:if="${reservation.type=='ROLE_OUTER' }">-->
-<!--          <button type="submit" name="id" th:value="${reservation.id}">finish</button>-->
-<!--        </form>-->
+
       </div>
       <div class="col">
         <a href="/"
            class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
           <span class="fs-5 fw-semibold">Details</span>
         </a>
-        <div th:each="oneReservation: ${oneReservation}" th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_OUTER'}"  style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9; padding:7px">
+        <div style=" max-height : 80vh" class="overflow-auto">
+          <div th:each="oneReservation: ${oneReservation}"
+               th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_OUTER'}" style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9; padding: 10px;
+                margin-top: 15px;
+                border-radius: 7px; ">
 
-          <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong style="text-transform:uppercase; margin-bottom: 7px;"
-                    th:text="${oneReservation.userName}"></strong>
-            <small>Wed</small>
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong style="text-transform:uppercase; margin-bottom: 7px;"
+                      th:text="${oneReservation.userName}"></strong>
+              <small>Wed</small>
+            </div>
+            <div class="col-10 mb-1 small">
+              <label>Start Time :
+              </label>&nbsp;
+              <p
+                      style="display: inline-block;" th:text="${oneReservation.starTime}">
+              </p>&nbsp;
+              <label>End Time : </label>&nbsp;<p style="display: inline-block;"
+                                                 th:text="${oneReservation.endTime}"></p>
+            </div>
+            <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }">
+              <button type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
+              </button>
+            </form>
+            <form action="/editcustmerOfOwner/{id}" method="put"
+                  th:if="${oneReservation.type=='ROLE_OUTER' &&oneReservation.endTime=='' }">
+              <button type="submit" class="btn btn-secondary" name="id" th:value="${oneReservation.id}">finish</button>
+            </form>
+            <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" th:if="${oneReservation.endTime!='' }"
+                  method="delete">
+              <button class="btn btn-secondary" type="submit" name="id" th:value="${oneReservation.id}">Delete
+                Reservation
+              </button>
+            </form>
           </div>
-          <div class="col-10 mb-1 small">
-            <label>Start Time :
-            </label>&nbsp;
-            <p
-                    style="display: inline-block;" th:text="${oneReservation.starTime}">
-            </p>&nbsp;
-            <label>End Time : </label>&nbsp;<p style="display: inline-block;"
-                                               th:text="${oneReservation.endTime}"></p>
-          </div>
-          <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }">
-            <button type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
-            </button>
-          </form>
-          <form action="/editcustmerOfOwner/{id}" method="put"th:if="${oneReservation.type=='ROLE_OUTER' }">
-            <button type="submit"class="btn btn-primary"  name="id" th:value="${oneReservation.id}">finish</button>
-          </form>
-          <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" method="delete">
-            <button class="btn btn-primary" type="submit" name="id" th:value="${oneReservation.id}">Delete
-              Reservation
-            </button>
-          </form>
         </div>
       </div>
     </div>
@@ -243,6 +261,13 @@ padding-top: 10px;
 
 </main>
 <div th:replace="fragments/footer.html :: footer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
 
 
 </script>

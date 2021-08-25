@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <style>
-    </style>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <style>
+  </style>
 </head>
 <body>
 <div th:fragment="header" style="width: 100%;">
-    <header style="width:100%; background-color: #222222bd; position: absolute; top:0; margin:0; z-index: 5;" class="p-3">
-        <div style="padding: 0; width: 100%;" class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-<!--                    <img src="../static/images/logo.png" width="100" th:src="@{images/logo.png}"/>-->
-                    <img th:src="@{/images/logo.png}" width="100" alt="logo" class="logo-img">
-                </a>
+  <header style="width:100%; background-color: #222222bd; position: absolute; top:0; margin:0; z-index: 5;" class="p-3">
+    <div style="padding: 0; width: 100%;" class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <!--                    <img src="../static/images/logo.png" width="100" th:src="@{images/logo.png}"/>-->
+          <img th:src="@{/images/logo.png}" width="100" alt="logo" class="logo-img">
+        </a>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 topnav-centered">
-                    <li><a href="/" class="nav-link px-2">Home</a></li>
-                    <li><a href="#" class="nav-link px-2">Services</a></li>
-                    <li><a href="/aboutus" class="nav-link px-2">About Us</a></li>
-                </ul>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 topnav-centered">
+          <li><a href="/" class="nav-link px-2">Home</a></li>
+          <!--                    <li><a href="#" class="nav-link px-2">Services</a></li>-->
+          <li><a href="/aboutus" class="nav-link px-2">About Us</a></li>
+        </ul>
 
-                <ul class="nav navbar-nav navbar-right"><li class="MyA"th:if="${userType!=null} "><a style="color: white;" th:text="${user.username}"><span class="glyphicon glyphicon-user"></span>User: </a></li></ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li th:if="${userType==null} "><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/signup">Sign Up</a></li>
-                        </ul>
-                    </li>
-                    <li th:if="${userType!=null} "><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Settings</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                            <li><a href="/perform_logout">Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+        <ul class="nav navbar-nav ">
+          <li class="MyA" th:if="${userType!=null} "><a style="color: white;" th:text="${user.username}"><span
+                  class="glyphicon glyphicon-user"></span>User: </a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li th:if="${userType==null} "><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a>
+            <ul class="dropdown-menu">
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign Up</a></li>
+            </ul>
+          </li>
+          <li th:if="${userType!=null} "><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                  class="glyphicon glyphicon-wrench"></span> Settings</a>
+            <ul class="dropdown-menu">
+              <!--                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>-->
+              <li><a href="/perform_logout">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
 </div>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->

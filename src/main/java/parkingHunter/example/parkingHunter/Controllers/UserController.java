@@ -30,9 +30,7 @@ public class UserController {
         if (principal == null) {
 
             Iterable parking = parkingRepository.findAll();
-            System.out.println(parking);
             model.addAttribute("parkings", parking);
-            System.out.println(parking);
 
             Iterable parkings = parkingRepository.findAll();
             model.addAttribute("parkingsOwner", parkings);
@@ -42,29 +40,13 @@ public class UserController {
             model.addAttribute("userType", userType);
             model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
             Iterable parking = parkingRepository.findAll();
-            System.out.println(parking);
             model.addAttribute("parkings", parking);
-            System.out.println(parking);
             Iterable parkings = parkingRepository.findAll();
             model.addAttribute("parkingsOwner", parkings);
             model.addAttribute("coolLocations", coolLocations());
 
 
         }
-//
-
-
-//            Iterable addingReviewId=reviewRepository.findAll();
-//            model.addAttribute("review",addingReviewId);
-//
-//            Iterable reservations= reservationRepository.findAll();
-//
-//
-//            Iterable oneReservations= reservationRepository.findByUserName(principal.getName());
-//
-//            model.addAttribute("allReservations",reservations);
-//            model.addAttribute("oneReservation",oneReservations);
-
 
         return "userShowDetails";
     }
@@ -75,12 +57,10 @@ public class UserController {
             String userType = dbUserRepository.findByUsername(principal.getName()).getAuthority();
             model.addAttribute("userType", userType);
             model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
-//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository
-//            .findByUsername(principal.getName())));
+
             Parking parking = parkingRepository.findById(id).get();
             model.addAttribute("parking", parking);
             Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
-            System.out.println(addingReviewId);
             model.addAttribute("reviewsByBarkingId", addingReviewId);
 
 
@@ -91,7 +71,6 @@ public class UserController {
                         String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
                     oneLocation.add(location);
                 }
-                System.out.println(oneLocation);
             }
             model.addAttribute("parkingsOwner", parking);
             model.addAttribute("coolLocations", oneLocation);
@@ -106,7 +85,6 @@ public class UserController {
             Parking parking = parkingRepository.findById(id).get();
             model.addAttribute("parking", parking);
             Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
-            System.out.println(addingReviewId);
             model.addAttribute("reviewsByBarkingId", addingReviewId);
 
 
@@ -117,7 +95,6 @@ public class UserController {
                         String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
                     oneLocation.add(location);
                 }
-                System.out.println(oneLocation);
             }
             model.addAttribute("parkingsOwner", parking);
             model.addAttribute("coolLocations", oneLocation);

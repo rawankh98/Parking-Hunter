@@ -36,22 +36,6 @@ public class ApplicationUserController {
     @Autowired
     ReservationRepository reservationRepository;
 
-//    @GetMapping("/dashbord")
-//    public String dashbord(Model model,Principal principal){
-////        String userType= DBUserRepository.findByUsername(principal.getName()).getAuthority();
-////        model.addAttribute("userType",userType);
-////        model.addAttribute("user", DBUserRepository.findByUsername(principal.getName()));
-////        model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
-//       double numbers[]= new double[5];
-//
-//       numbers[0]=15;
-//       numbers[1]=10;
-//       numbers[2]=4;
-//       numbers[3]=47;
-//       numbers[4]=5;
-//        model.addAttribute("array",numbers);
-//        return "dashbord";
-//    }
 
     @GetMapping("/")
     public String conect(Principal principal,Model model) {
@@ -77,26 +61,7 @@ public class ApplicationUserController {
             model.addAttribute("oneReservation",oneReservations);
 
 
-//            List<Parking> owners = (List<Parking>) parkingRepository.findAllByAddingParking(
-//                    dbUserRepository.findByUsername(principal.getName()));
-//            List<MapController.Location> all = coolLocations();
-//            List<MapController.Location> ownLocation = new ArrayList<>();
-//
-//            //System.out.println("--------------------------------------------------");
-//            for (MapController.Location location : all) {
-//                for (Parking owner : owners) {
-//                    if(String.valueOf(owner.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
-//                            String.valueOf(owner.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))){
-//                       // System.out.println(true);
-//                        ownLocation.add(location);
-//                    }
-//                }
-//            }
-//            model.addAttribute("parkingsOwner",owners);
-//            model.addAttribute("coolLocations", ownLocation);
-
         } else {
-            System.out.println("not authenticated");
         }
 
 
@@ -106,7 +71,6 @@ public class ApplicationUserController {
 
     @GetMapping("/owner")
     public String owner(Principal principal) {
-        System.out.println(principal.getName());
         return "addParkingForm";
     }
 
@@ -156,7 +120,6 @@ public class ApplicationUserController {
             return new RedirectView("/signup");
         }
         }else {
-            System.out.println("The two passwords not match");
             return new RedirectView("/signup");
         }
 

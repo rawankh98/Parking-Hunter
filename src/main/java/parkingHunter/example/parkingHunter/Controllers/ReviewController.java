@@ -30,19 +30,13 @@ public class ReviewController {
     DBUserRepository dbUserRepository;
    @GetMapping("/parkinkp")
    public String parkinkp(Model model){
-//       Iterable parkink=parkingRepository.findAll();
-//       model.addAttribute("parking",parkink);
+
        Iterable addingReviewId=reviewRepository.findAll();
        model.addAttribute("review",addingReviewId);
 
     return "parkingp";
    }
-//    @GetMapping("/showReview")
-//    public String parkinkps(){
-//
-//       Iterable addingReviewId=reviewRepository.findByaddingReviewId();
-//    return "review";
-//    }
+
 
 
     @RequestMapping("/addReview")
@@ -59,10 +53,8 @@ public class ReviewController {
         String parkName=addingReview.getParkingName();
         Review review=new Review(userName,body,dateTime,parkName,addingReview);
         reviewRepository.save(review);
-//        URL ahmad=new URL("https://canvas.instructure.com/login/canvas");
-////        URL url="/userShowParking/{idPark}";
+
         String ahmad="/userShowParking/"+idPark;
-        System.out.println(ahmad);
        return new RedirectView(ahmad);
    }
 
