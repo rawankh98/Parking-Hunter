@@ -86,9 +86,9 @@ top: 20px;
 color: white;
 }
     main{
-    min-height: 100vh;
+    min-height: 85vh;
     width:100%;
-    padding-top:10vh;
+    padding-top:11.3vh;
     }
       .navbar{
 margin: 0;
@@ -189,6 +189,26 @@ padding-top: 10px;
      div > ul:nth-child(3) > li > a:hover{
       background:inherit !important;
       }
+      .bg-white {
+    --bs-bg-opacity: 1;
+    background-color: #222222bd!important;
+}
+
+element.style {
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    margin: 15px 0;
+    background-color: #EEEEEE;
+    color: black;
+}
+
+
+.btn-info {
+    color: #fff;
+    background-color: #1c87c9;
+    border-color: #1c87c9;
+}
+
 
 
     </style>
@@ -217,7 +237,7 @@ padding-top: 10px;
 
       </div>
       <div class="row">
-        <div class="col-3 " style="max-height:100vh;">
+        <div class="col-4 " style="max-height:100vh;">
           <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 100%;">
             <a href="#"
                class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
@@ -226,9 +246,9 @@ padding-top: 10px;
             </a>
             <div>
               <a class="btn btn secondary" href="http://localhost:8080/userShowParking"
-                 role="button" style="border-bottom: 1px solid white; border-radius: 10px; background-color: #1c87c9; width:100%;height:60px background-color:cray">View All</a>
+                 role="button" style=" border-radius: 5px; background-color: #1c87c9; width:100%;height:60px background-color:white">View All</a>
             </div>
-            <div style="border-bottom: 1px solid white; border-radius: 10px; margin: 15px 0; background-color: #6c757d;color:white;">
+            <div style="border-bottom: 1px solid white; border-radius: 5px; margin: 10px 0; background-color: #eeeeee;color:black;">
               <h5 style="float:left;padding:15px;"><span>Open Time: </span><span
                       th:text="${parking.openingHour}"></span></h5>
               <h5 style="float:left;padding:15px;"><span>Close Time: </span><span
@@ -275,7 +295,7 @@ padding-top: 10px;
         </div>
 
       </div>
-        <div class="col-9">
+        <div class="col-8">
           <div id='map' class='map'></div>
         </div>
     </div>
