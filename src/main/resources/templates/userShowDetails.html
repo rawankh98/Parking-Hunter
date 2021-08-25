@@ -201,15 +201,16 @@ padding-top: 10px;
                                     <large><span>$</span><span th:text="${parking.pricePerHour}"></span></large>
 
                                 </div>
-                                <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;<p
-                                        style="display: inline-block;">🟢</p>&nbsp;
+                                <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;
+                                    <p style="display: inline-block;" th:if="${parking.availableSpaces} != 0">🟢</p>&nbsp;
+                                    <p  style="display: inline-block;" th:if="${parking.availableSpaces} == 0"> 🔴 </p>&nbsp;
                                 </div>
                             </a>
                             <a class="btn btn-outline-secondary"style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
-                            <a th:action="@{/userReservation/{id}(id=${parking.id})}"
-                               style="border-bottom: 1px solid white; border-radius: 10px; background-color: #5F9EA0; width:100%;"
-                               class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOKING
-                                NOW</a>
+
+                            <form action="/bookingForm" method="get" th:if="${userType =='ROLE_USER'}">
+                                <button style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+                            </form>
 
 
                         </div>

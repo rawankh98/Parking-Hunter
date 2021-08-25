@@ -194,6 +194,23 @@ padding-top: 10px;
 <main style="padding-top : 10vh">
   <div  th:if="${userType!='ROLE_OWNER'}">
     <div class="containers">
+      <div class="row" th:if="${userType =='ROLE_USER'}" >
+
+        <div class="card" th:each="oneRes:${res}" th:if="${oneRes.reserveSpace.id == parking.id}" >
+          <div class="card-header">
+            TICKET
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p th:text="${oneRes.userName}"></p>
+              <footer class="blockquote-footer"> <span>Date: </span><span th:text="${oneRes.date}"></span>
+                <span>Time: </span>  <span th:text="${oneRes.starTime}"></span>
+                <span> --> </span> <span th:text="${oneRes.endTime}"></span></footer>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
       <div class="row">
         <div class="col-3 " style="max-height:100vh;">
           <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 100%;">
@@ -215,14 +232,18 @@ padding-top: 10px;
                       th:text="${parking.pricePerHour}"></span></h5>
 
             </div>
-            <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button"
-               aria-pressed="true">BOOK NOW</a>
+            <form action="/bookingForm" method="get" th:if="${userType =='ROLE_USER'}">
+              <button class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+            </form>
+            <form method="GET" action="/login" th:if="${userType !='ROLE_USER' && userType !='ROLE_OWNER'}">
+              <button style="width:100%;" class="btn btn-info" type="submit"  name="id" th:value=${parking.id} >BOOK NOW</button>
+            </form>
             <hr>
             <form action="/addReview" method="post" th:if="${userType!='ROLE_OWNER'}">
 
-              <div class="input-group mb-3" style="position:relative;">
+              <div class="input-group mb-3" style="position:relative;" th:if="${userType =='ROLE_USER'}">
                 <button style="position:absolute; top:0;border-radius: 10px; right:0;height:50px;z-index:5;" class="btn btn-secondary btn-lg" name="idPark" th:value="${parking.id}" type="submit" id="button-addon1" >ADD REVIEW</button>
-                <input style="position:absolute; top:0;border-radius: 10px;left:0;height:50px;"type="text" class="form-control" name="body" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                <input style="position:absolute; top:0;border-radius: 10px;left:0;height:50px;"type="text" class="form-control" name="body" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
               </div>
 
             </form>

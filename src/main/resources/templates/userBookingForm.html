@@ -345,6 +345,8 @@ input, select{
   box-sizing: border-box;
 }
 form {
+
+
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -367,6 +369,7 @@ margin:2rem 20rem 2rem 20rem ;
 <div th:replace="fragments/header.html :: header"></div>
 
 <main>
+    <div style="position:relative;"></div>
     <form action="/reserve" method="POST">
         <fieldset>
             <legend>Please fill information below </legend>
@@ -379,6 +382,7 @@ margin:2rem 20rem 2rem 20rem ;
 
                         <label for="endTime">Time Out</label>
                         <input id="endTime" name="endTime" type="time">
+
             <input id="id" hidden name="id" th:value="${parking.id}">
 
             <input class="btn1" type="submit" name="id" >Confirm Booking</input>
