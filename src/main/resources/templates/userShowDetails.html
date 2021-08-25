@@ -169,9 +169,17 @@ padding-top: 10px;
       background:inherit !important;
       }
 
+.bg-white {
+    --bs-bg-opacity: 1;
+    background-color: #222222bd !important;
+}
 
-
-
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #0d6efd;
+    /* border-color: #0d6efd; */
+}
 
 
     </style>
@@ -181,37 +189,37 @@ padding-top: 10px;
 <div th:replace="fragments/header.html :: header"></div>
 <main>
     <!--    <div style="height:800px;overflow-y: auto;max-width: 500px;background-color:red;">-->
-    <div class="containers">
+    <div class="containers" style="color:black;">
         <div class="row">
 
-            <div class="col-3"style="border-radius: 20px;background-color: #6495ED; ">
-                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"style="border-radius: 20px">
+            <div class="col-4"style="border-radius: 5px; ">
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"style="border-radius: 5px">
                     <a href="#"
                        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
                        style="margin-bottom:1rem;">
-                        <span class="fs-5 fw-semibold">Parkings</span>
+                        <span class="fs-5 fw-semibold" style="color:#F3F0D7">Parkings</span>
                     </a>
                     <div style="max-height: 80vh;border-radius: 20px; " class="list-group list-group-flush  overflow-auto">
                         <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
-                            <a style="border-bottom: 1px solid white; border-radius: 0; background-color: #B0C4DE; width:100%;"
+                            <a style=" border-radius: 0; background-color: #EEEEEE; width:100%;"
                                th:href="@{/userShowParking/{id}(id=${parking.id})}"
                                class="list-group-item list-group-item-action active py-3 lh-tight"
                                aria-current="true">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
-                                    <strong style="text-transform:uppercase; margin-bottom: 7px;"
+                                    <strong style="text-transform:uppercase; margin-bottom: 7px; color:black;"
                                             th:text="${parking.parkingName}"></strong>
-                                    <large><span>$</span><span th:text="${parking.pricePerHour}"></span></large>
+                                    <large style="color:black;"><span >$</span><span th:text="${parking.pricePerHour}"></span></large>
 
                                 </div>
-                                <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;
+                                <div class="col-10 mb-1 small"><label style="color:black;">Available Spaces </label>&nbsp;
                                     <p style="display: inline-block;" th:if="${parking.availableSpaces} != 0">🟢</p>&nbsp;
                                     <p  style="display: inline-block;" th:if="${parking.availableSpaces} == 0"> 🔴 </p>&nbsp;
                                 </div>
                             </a>
-                            <a class="btn btn-outline-secondary"style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
+                            <a class="btn btn-outline-secondary"style="color:white; border-bottom: 1px solid white; border-radius: 1px; background-color: #4387ca; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
 
                             <form action="/bookingForm" method="get" th:if="${userType =='ROLE_USER'}">
-                                <button style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
+                                <button style="border-bottom: 1px solid white; border-radius: 5px; background-color: #4387ca; width:100%; color:white;" class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
                             </form>
 
 
@@ -219,7 +227,7 @@ padding-top: 10px;
                     </div>
                 </div>
             </div>
-            <div class="col-9"style="border-radius: 20px; ">
+            <div class="col-8"style="border-radius: 20px; ">
                 <div id='map' class='map'></div>
             </div>
         </div>

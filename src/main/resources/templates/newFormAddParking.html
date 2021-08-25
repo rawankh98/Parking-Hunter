@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    form{
+    width: 50rem;
+
+    }
+     label{
+        display:inline-block;
+        width: 9rem;
+
+        padding-left:1rem;
+        }
+
+        input{
+        width: 12rem;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="main-block">
+    <form method="POST" action="/addparking">
+        <fieldset>
+            <legend ><h2>Please add your parking information </h2></legend>
+            <br>
+
+                <label for="openingHour">Opening hour :</label>
+                <input id="openingHour" name="openingHour" type="time" required>
+               <br>
+                <label for="closingHour">Closing hour :</label>
+                <input id="closingHour" name="closingHour" type="time" required>
+
+
+
+            <br>
+            <br>
+            <button class="btn1" type="submit">Add Parking</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+<form action="/reserve" method="POST">
+    <fieldset>
+        <legend>Please fill information below </legend>
+        <br>
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date">
+
+        <label for="starTime">Time In</label>
+        <input id="starTime" name="starTime" type="time">
+
+        <label for="endTime">Time Out</label>
+        <input id="endTime" name="endTime" type="time">
+
+        <input id="id" hidden name="id" th:value="${parking.id}">
+
+        <input class="btn1" type="submit" name="id" >Confirm Booking</input>
+    </fieldset>
+</form>
