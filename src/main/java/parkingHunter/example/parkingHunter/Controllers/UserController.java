@@ -26,23 +26,33 @@ public class UserController {
 
     @GetMapping("/userShowParking")
     public String userShowParking(Principal principal, Model model) {
+        if (principal == null) {
 
+            Iterable parking = parkingRepository.findAll();
+            System.out.println(parking);
+            model.addAttribute("parkings", parking);
+            System.out.println(parking);
+
+            Iterable parkings = parkingRepository.findAll();
+            model.addAttribute("parkingsOwner", parkings);
+            model.addAttribute("coolLocations", coolLocations());
+        } else {
+            String userType = dbUserRepository.findByUsername(principal.getName()).getAuthority();
+            model.addAttribute("userType", userType);
+            model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
+            Iterable parking = parkingRepository.findAll();
+            System.out.println(parking);
+            model.addAttribute("parkings", parking);
+            System.out.println(parking);
+            Iterable parkings = parkingRepository.findAll();
+            model.addAttribute("parkingsOwner", parkings);
+            model.addAttribute("coolLocations", coolLocations());
+
+
+        }
 //
-        String userType= dbUserRepository.findByUsername(principal.getName()).getAuthority();
-        model.addAttribute("userType",userType);
-        model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
 
-//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
 
-        Iterable parking = parkingRepository.findAll();
-        System.out.println(parking);
-        model.addAttribute("parkings",parking);
-        System.out.println(parking);
-
-        Iterable parkings= parkingRepository.findAll();
-        model.addAttribute("parkingsOwner",parkings);
-        model.addAttribute("coolLocations", coolLocations());
-        
 //            Iterable addingReviewId=reviewRepository.findAll();
 //            model.addAttribute("review",addingReviewId);
 //
@@ -55,33 +65,34 @@ public class UserController {
 //            model.addAttribute("oneReservation",oneReservations);
 
 
-
         return "userShowDetails";
     }
+
     @GetMapping("/userShowParking/{id}")
-    public String detailsOfParking(@PathVariable Integer id , Principal principal, Model model){
+    public String detailsOfParking(@PathVariable Integer id, Principal principal, Model model) {
         if (principal != null) {
-            String userType= dbUserRepository.findByUsername(principal.getName()).getAuthority();
-            model.addAttribute("userType",userType);
+            String userType = dbUserRepository.findByUsername(principal.getName()).getAuthority();
+            model.addAttribute("userType", userType);
             model.addAttribute("user", dbUserRepository.findByUsername(principal.getName()));
-//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository.findByUsername(principal.getName())));
-            Parking parking=parkingRepository.findById(id).get();
-            model.addAttribute("parking",parking);
-            Iterable addingReviewId=reviewRepository.findByaddingReviewId(id);
+//            model.addAttribute("parkingsOwner", parkingRepository.findAllByAddingParking(dbUserRepository
+//            .findByUsername(principal.getName())));
+            Parking parking = parkingRepository.findById(id).get();
+            model.addAttribute("parking", parking);
+            Iterable addingReviewId = reviewRepository.findByaddingReviewId(id);
             System.out.println(addingReviewId);
-            model.addAttribute("reviewsByBarkingId",addingReviewId);
+            model.addAttribute("reviewsByBarkingId", addingReviewId);
 
 
             List<MapController.Location> all = coolLocations();
             List<MapController.Location> oneLocation = new ArrayList<>();
             for (MapController.Location location : all) {
-                if(String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
-                        String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))){
+                if (String.valueOf(parking.getLatitude()).equals(String.valueOf(location.getLnglat()[0])) &&
+                        String.valueOf(parking.getLongitude()).equals(String.valueOf(location.getLnglat()[1]))) {
                     oneLocation.add(location);
                 }
                 System.out.println(oneLocation);
             }
-            model.addAttribute("parkingsOwner",parking);
+            model.addAttribute("parkingsOwner", parking);
             model.addAttribute("coolLocations", oneLocation);
 
 
@@ -94,17 +105,17 @@ public class UserController {
 
     private List<MapController.Location> coolLocations() {
 
-        List<Parking> parkings= (List<Parking>) parkingRepository.findAll();
+        List<Parking> parkings = (List<Parking>) parkingRepository.findAll();
         List<MapController.Location> all = new ArrayList<>();
         double lonLat[] = new double[2];
-        String name="";
+        String name = "";
 
         for (int i = 0; i < parkings.size(); i++) {
-            lonLat[0]=Double.parseDouble(parkings.get(i).getLatitude());
-            lonLat[1]=Double.parseDouble(parkings.get(i).getLongitude());
-            name=parkings.get(i).getParkingName();
+            lonLat[0] = Double.parseDouble(parkings.get(i).getLatitude());
+            lonLat[1] = Double.parseDouble(parkings.get(i).getLongitude());
+            name = parkings.get(i).getParkingName();
 
-            all.add(new MapController.Location( lonLat, name)) ;
+            all.add(new MapController.Location(lonLat, name));
         }
         all.add(new MapController.Location(new double[]{35.93448795290056, 31.94958622949373}, "Husseini"));
         return all;

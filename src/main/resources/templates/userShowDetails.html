@@ -19,7 +19,19 @@
     <title>Title</title>
     <style>
 
+<!-- .container{-->
+<!-- position:relative;-->
+<!-- left:2rem;-->
+<!-- }-->
 
+<!--  #map {-->
+<!--  position: absolute;-->
+<!--  top:4rem;-->
+<!--  right:0;-->
+
+<!--  width: 40vw;-->
+<!--  height: 50vh;-->
+<!--}-->
 
      #map {
      width: 100%;
@@ -35,6 +47,7 @@ color: white;
     main{
     min-height: 80vh;
     width:100%;
+    padding-top:10vh;
     }
       .navbar{
 margin: 0;
@@ -132,7 +145,7 @@ padding-top: 10px;
   font-size:13px;
   opacity:0.6;
 }
-.container {
+.containers {
 
     width: 100% !important;
     margin: 0 !important;
@@ -144,12 +157,16 @@ padding-top: 10px;
     margin: 0 !important;
     padding: 0 !important;
 }
-@media (min-width: 1400px)
-.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-max-width: 1320px;
-    max-width: 100% !important;
-    background-color:red;
-}
+<!--@media (min-width: 1400px)-->
+<!--.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {-->
+<!--&lt;!&ndash;max-width: 1320px;&ndash;&gt;-->
+<!--    max-width: 100% !important;-->
+<!--    background-color:red;-->
+<!--}-->
+
+
+
+
 
 
 
@@ -160,9 +177,10 @@ max-width: 1320px;
 <div th:replace="fragments/header.html :: header"></div>
 <main>
     <!--    <div style="height:800px;overflow-y: auto;max-width: 500px;background-color:red;">-->
-    <div class="container" >
+    <div class="containers">
         <div class="row">
-            <div class="col-3">
+
+            <div class="col-3"style="border-radius: 20px;background-color: #6495ED; ">
                 <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                     <a href="#"
                        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
@@ -170,8 +188,8 @@ max-width: 1320px;
                         <span class="fs-5 fw-semibold">Parkings</span>
                     </a>
                     <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
-                        <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}"style="padding:.5rem;">
-                            <a style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9; width:100%;"
+                        <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
+                            <a style="border-bottom: 1px solid white; border-radius: 0; background-color: #B0C4DE; width:100%;"
                                th:href="@{/userShowParking/{id}(id=${parking.id})}"
                                class="list-group-item list-group-item-action active py-3 lh-tight"
                                aria-current="true">
@@ -182,19 +200,25 @@ max-width: 1320px;
 
                                 </div>
                                 <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;<p
-                                        style="display: inline-block;" >🟢</p>&nbsp;
+                                        style="display: inline-block;">🟢</p>&nbsp;
                                 </div>
                             </a>
-                            <a href="#" style="border-bottom: 1px solid white; border-radius: 10px; background-color: black; width:300px;"class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOKING NOW</a>
+                            <a class="btn btn-outline-secondary"style="border-bottom: 1px solid white; border-radius: 10px; background-color: #6495ED; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
+                            <a href="#"
+                               style="border-bottom: 1px solid white; border-radius: 10px; background-color: #5F9EA0; width:100%;"
+                               class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">BOOKING
+                                NOW</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-9"style="border-radius: 20px; ">
                 <div id='map' class='map'></div>
             </div>
         </div>
     </div>
+
+
     <!--    <div  class="row" th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}"style="width:400px">-->
     <!--        <div class=" card mb-2 row" style="width: 400px;height:30%;background-color:#bdbdbd;"-->
     <!--             th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}">-->
@@ -219,7 +243,7 @@ max-width: 1320px;
     <!--                    </div>-->
     <!--                    <div class="row ">-->
 
-<!--                       </div>&ndash;&gt;-->
+    <!--                       </div>&ndash;&gt;-->
     <!--                </div>-->
     <!--            </div>-->
     <!--        </div>-->
@@ -227,7 +251,7 @@ max-width: 1320px;
     <!--                        </div>-->
     <!--                                &lt;!&ndash;                <div class="col-md-1">&ndash;&gt;-->
     <!--                                &lt;!&ndash;                    <div class="row g-0">&ndash;&gt;-->
-    <!--                                &lt;!&ndash;                        <a class="btn btn-outline-secondary" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true"style="width:100%;height:100%">🗺️</a>&ndash;&gt;-->
+    <!--                                &lt;!&ndash;                        &ndash;&gt;-->
     <!--                                &lt;!&ndash;                    </div>&ndash;&gt;-->
     <!--                                &lt;!&ndash;                    <div class="row g-0">&ndash;&gt;-->
     <!--                                &lt;!&ndash;                        <a class="btn btn-outline-secondary" th:href="@{/userShowParking/{id}(id=${parking.id})}" role="button" data-bs-toggle="button" aria-pressed="true"style="width:100%;height:100%">📜</a>&ndash;&gt;-->
@@ -248,7 +272,7 @@ max-width: 1320px;
 
     <!--                            <a class="navbar-brand" th:href=${parking.url} style="float:right;color:black;">🗺️GPS Directions</a>-->
     <!--                            <p class="card-text">🟢</p>-->
-    <!--                            <a class="navbar-brand" th:href="@{/userShowParking/{id}(id=${parking.id})}" style="float:right;">DETAILS</a>-->
+    <!--                            -->
 
     <!--                            <form action="/bookingForm" method="get" >-->
     <!--                                <button class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>-->
@@ -322,6 +346,10 @@ console.log(coolLocations);
     const popup = new tt.Popup({offset: popupOffsets}).setHTML(location.description);
     marker.setPopup(popup).togglePopup();
   });
+
+
+
+
 
 
 

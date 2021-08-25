@@ -16,24 +16,77 @@
     <link rel='stylesheet' type='text/css'
           href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
     <style>
+    .revs{
+    background-color: #E8E8E8;
+  width: 30rem;
+  height:15rem;
+  border: 1px solid black;
+  padding: 3rem;
+margin:2rem;
+border-radius:5px;
+position: relative;
+    }
+
+    .revs p{
+    font- color:#334257;
+    font-size:medium;
+    }
+    .imgProfile{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    }
+    .revText{
+        font-size:100px;
+    position: absolute;
+    color: #787A91;
+     margin:1px;
+         left:65px;
+         top: 50px;
+    }
+    .revBody{
+    position: absolute;
+    top:9rem;
+
+    text-align:left;
+
+    }
+
+.revName{
+font-style:bold;
+position:absolute;
+left:65px;
+top: 20px;
+
+}
+
+
     .dropdown-toggle{
     color: white;
+     font-size: 19px;
+font-weight: bold;
     }
 .nav-link{
 color: white;
+color: white;
+font-size: 19px;
+font-weight: bold;
+}
+body > div:nth-child(1) > header {
+background-color: #222 !important;
 }
     body{
     height: 100%;
     }
     main{
-    min-height: 80vh;
+    min-height: 70vh;
 <!--    margin-top: 30px;-->
 
     }
 
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://miro.medium.com/max/5184/1*1hkixgqgbUvjZwmPCYIRZg.jpeg");
-  height: 80vh;
+  height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -113,17 +166,20 @@ color: white;
   border-left: 5px solid #fff;
 }
 .footer-clean {
-  padding:50px 0;
+  padding:15px 0;
   background-color:#222;
   color:white;
   position: relative;
   bottom: 0;
-  max-height: 20vh;
+  max-height: 30vh;
+  width: 100%;
+    left: 0;
+    right: 0
 }
 
 .footer-clean h3 {
-  margin-top:0;
-  margin-bottom:12px;
+<!--  margin-top:0;-->
+<!--  margin-bottom:12px;-->
   font-weight:bold;
   font-size:16px;
 }
@@ -133,7 +189,7 @@ color: white;
   list-style:none;
   line-height:1.6;
   font-size:14px;
-  margin-bottom:0;
+<!--  margin-bottom:0;-->
 }
 
 .footer-clean ul a {
@@ -150,18 +206,18 @@ color: white;
   text-align:right;
 }
 
-@media (max-width:767px) {
-  .footer-clean .item {
-    text-align:center;
-    padding-bottom:20px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item {-->
+<!--    text-align:center;-->
+<!--    padding-bottom:20px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width: 768px) {
-  .footer-clean .item.social {
-    text-align:center;
-  }
-}
+<!--@media (max-width: 768px) {-->
+<!--  .footer-clean .item.social {-->
+<!--    text-align:center;-->
+<!--  }-->
+<!--}-->
 
 .footer-clean .item.social > a {
   font-size:24px;
@@ -172,8 +228,8 @@ color: white;
   text-align:center;
   border-radius:50%;
   border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
+<!--  margin-left:10px;-->
+<!--  margin-top:22px;-->
   color:inherit;
   opacity:0.75;
 }
@@ -182,24 +238,28 @@ color: white;
   opacity:0.9;
 }
 
-@media (max-width:991px) {
-  .footer-clean .item.social > a {
-    margin-top:40px;
-  }
-}
+<!--@media (max-width:991px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:40px;-->
+<!--  }-->
+<!--}-->
 
-@media (max-width:767px) {
-  .footer-clean .item.social > a {
-    margin-top:10px;
-  }
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:10px;-->
+<!--  }-->
+<!--}-->
 
 
 .footer-clean .copyright {
-  margin-top:14px;
-  margin-bottom:0;
+<!--  margin-top:14px;-->
+<!--  margin-bottom:0;-->
   font-size:13px;
   opacity:0.6;
+  color: white;
+}
+body > div:nth-child(3) > div > footer > div {
+width: 100%;
 }
 
   .bd-placeholder-img {
@@ -344,6 +404,12 @@ body > main > div {
 
 padding-top: 65px;
 }
+body > main {
+padding-top: 40px;
+}
+.copyright{
+color: white;
+}
 
 
 
@@ -362,10 +428,10 @@ padding-top: 65px;
 
                 <div class="select-box">
 
-                    <label for="select-box1" class="label select-box1"><span class="label-desc">Choose Region </span>
+                    <label for="sampleSelect" class="label select-box1"><span class="label-desc">Choose Region </span>
                     </label>
-                    <select id="select-box1" class="select">
-                        <option value="Choice 1">Downtown</option>
+                    <select id="sampleSelect" class="select">
+                        <option value="/userShowParking" >Downtown</option>
 <!--                        <option value="Choice 2">Germany</option>-->
 <!--                        <option value="Choice 3">Neverland</option>-->
                     </select>
@@ -507,8 +573,9 @@ padding-top: 65px;
                                 </div>
                                 <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;<p
                                         style="display: inline-block;" th:text="${parking.availableSpaces}"></p>&nbsp;
-                                    <label>Price Per Hour </label>&nbsp;<p style="display: inline-block;"
-                                                                           th:text="${parking.PricePerHour}"></p>
+                                    <label>Price Per Hour </label>&nbsp;
+                                    <p style="display: inline-block;"
+                                       th:text="${parking.PricePerHour}"></p>
                                 </div>
                             </a>
                         </div>
@@ -522,12 +589,14 @@ padding-top: 65px;
                     <span class="fs-5 fw-semibold">Reviews</span>
                 </a>
                 <div class="scrollarea" style="height: 80vh">
-                    <div style="text-align: center;" th:each="reviews:${review}" >
+                    <div class="revs" style="text-align: center;" th:each="reviews:${review}" >
                         <div>
-                            <img src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
+                            <img class="imgProfile" src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                                  width="50px" style="border-radius: 50%;" alt="img">
-                            <p th:text="${reviews.body}"></p>
-                            <p th:text="${reviews.dateTime}"></p>
+
+                            <p style="font-size:1.5rem; font-style:bold;" class="revName" th:text="${reviews.userName}"></p>
+                            <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
+                            <p class="revBody" th:text="${reviews.body}"></p>
                         </div>
 
                     </div>
@@ -591,7 +660,15 @@ $("select").on("change" , function() {
 
 });
 
-
+$("select").click(function() {
+  var open = $(this).data("isopen");
+  if(open) {
+    window.location.href = $(this).val()
+  }
+  //set isopen to opposite so next time when use clicked select box
+  //it wont trigger this event
+  $(this).data("isopen", !open);
+});
 
 
 </script>
