@@ -382,7 +382,7 @@ color: white;
 }
 
 body > main{
-padding-top: 65px;
+padding-top: 15vh;
 }
 
      div > ul:nth-child(3) > li > a:hover{
@@ -402,7 +402,7 @@ padding-top: 65px;
 <body>
 <div th:replace="fragments/header.html :: header"></div>
 
-<main>
+<main style="color:white;background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80')">
   <div class="hero-image" th:if="${userType!='ROLE_OWNER'}">
     <div class="hero-text">
       <!-- Large button groups (default and split) -->
@@ -430,10 +430,10 @@ padding-top: 65px;
     <!--    th:if="${userType=='ROLE_OWNER'}"-->
     <div class="row">
       <div class="col">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-          <a href="/"
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 " style="width: 380px;">
+          <a href="#" style="margin: 0;padding: 0 !important;"
              class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-            <span class="fs-5 fw-semibold">Parkings</span>
+            <span class="fs-5 fw-semibold" th:text="${parkingsOwner.parkingName}" style="color:white;font-size:2.5rem !important"></span>
           </a>
           <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
 
@@ -469,8 +469,8 @@ padding-top: 65px;
       </div>
       <div class="col">
         <a href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span class="fs-5 fw-semibold">Details</span>
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="color:white;font-size:2.5rem !important">
+          <span class="fs-5 fw-semibold" >Details</span>
         </a>
         <div class="parkingDetailsH1" style="margin-top:15px">
           <div class="divparkingDetails">
@@ -493,8 +493,8 @@ padding-top: 65px;
       </div>
       <div class="col">
         <a style="margin-bottom: 30px;" href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span class="fs-5 fw-semibold">Reviews</span>
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" >
+          <span class="fs-5 fw-semibold" >Reviews</span>
         </a>
         <div class="scrollarea" style="height: 80vh">
           <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
