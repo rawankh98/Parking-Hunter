@@ -11,6 +11,52 @@
 
   <style>
 
+
+   .revs{
+    background-color: #E8E8E8;
+  width: 30rem;
+  height:15rem;
+  border: 1px solid black;
+  padding: 3rem;
+margin:2rem;
+border-radius:5px;
+position: relative;
+    }
+
+    .revs p{
+    font- color:#334257;
+    font-size:medium;
+    }
+    .imgProfile{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    }
+    .revText{
+        font-size:100px;
+    position: absolute;
+    color: #787A91;
+     margin:1px;
+         left:65px;
+         top: 50px;
+    }
+    .revBody{
+    position: absolute;
+    top:9rem;
+
+    text-align:left;
+
+    }
+
+.revName{
+font-style:bold;
+position:absolute;
+left:65px;
+top: 20px;
+
+}
+
+
     .dropdown-toggle{
     color: white;
     }
@@ -543,13 +589,15 @@ padding-top: 65px;
           <span class="fs-5 fw-semibold">Reviews</span>
         </a>
         <div class="scrollarea" style="height: 80vh">
-          <div style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
+          <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
             <div>
-              <img src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
+              <img class="imgProfile" src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                    width="50px" style="border-radius: 50%;" alt="img">
-              <p th:text="${reviews.body}"></p>
-              <p th:text="${reviews.dateTime}"></p>
-            </div>
+               <p style="font-size:1.5rem; font-style:bold;" class="revName" th:text="${reviews.userName}"></p>
+               <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
+               <p class="revBody" th:text="${reviews.body}"></p>
+
+                          </div>
 
           </div>
         </div>
