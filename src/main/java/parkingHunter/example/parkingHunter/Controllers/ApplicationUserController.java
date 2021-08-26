@@ -138,4 +138,11 @@ public class ApplicationUserController {
     }
 
 
+    // test forms
+
+    @GetMapping("/test")
+    public String form() {
+        return "newFormAddParking";
+    }
+
 }

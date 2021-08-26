@@ -15,7 +15,7 @@
     body{
     background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80');
 <!--    opacity: 0.75;-->
-    min-height: 70vh;
+    height: 100vh;
     }
 
  .dropdown-toggle{
@@ -28,9 +28,6 @@ color: white;
 font-size: 19px;
 font-weight: bold;
 }
-    main{
-    margin-top: 97px
-    }
       .navbar{
 margin: 0;
 border-radius: 0;
@@ -40,16 +37,14 @@ padding-top: 10px;
 }
 
 .footer-clean {
-    padding: 15px 0;
     background-color: #222;
     color: white;
     position: relative;
     bottom: 0;
     width: 100%;
     left: 0;
-    right: 0
-    max-height: 30vh;
-<!--    height: 70%;-->
+    right: 0;
+    height: 15vh;
 }
 
 .footer-clean h3 {
@@ -138,33 +133,33 @@ width: 100%;
 }
 
       h1, form, input, p {
-      padding: 0;
-      outline: none;
+<!--      padding: 0;-->
+<!--      outline: none;-->
       font-family: Roboto, Arial, sans-serif;
       font-size: 16px;
       color: #666;
       }
-      h1 {
-      padding: 10px 0;
-      font-size: 32px;
-      font-weight: 300;
-      text-align: center;
-    padding-bottom: 0px;
-    margin-top: 20px;
-    color: white;
-      }
-      p {
-      font-size: 16px;
-      color: white;
-      }
+<!--      h1 {-->
+<!--      padding: 10px 0;-->
+<!--      font-size: 32px;-->
+<!--      font-weight: 300;-->
+<!--      text-align: center;-->
+<!--    padding-bottom: 0px;-->
+<!--    margin-top: 20px;-->
+<!--    color: white;-->
+<!--      }-->
+<!--      p {-->
+<!--      font-size: 16px;-->
+<!--      color: white;-->
+<!--      }-->
       hr {
       color: #a9a9a9;
       opacity: 0.3;
       }
       .main-block {
-      max-width: 600px;
-      min-height: 500px;
-      padding: 10px 0;
+      max-width: 800px;
+      min-height: 400px;
+      padding: 1px 0;
       margin: 70px auto;
       border-radius: 5px;
       border: solid 1.5px #ccc;
@@ -173,19 +168,19 @@ width: 100%;
       }
       form {
 margin: 0 80px;
-margin-bottom: 14px;
+margin-bottom: 7px;
 
 }
       .account-type, .gender {
       margin: 15px 0;
       }
-      input[type=radio] {
-      display: none;
-      }
-      label#icon {
-      border-radius: 5px 0 0 5px;
-      margin-bottom: 13px;
-      }
+<!--      input[type=radio] {-->
+<!--      display: none;-->
+<!--      }-->
+<!--      label#icon {-->
+<!--      border-radius: 5px 0 0 5px;-->
+<!--      margin-bottom: 13px;-->
+<!--      }-->
       label.radio {
       position: relative;
       display: inline-block;
@@ -218,24 +213,24 @@ margin-bottom: 14px;
       transform: rotate(-45deg);
       opacity: 0;
       }
-      input[type=radio]:checked + label:after {
-      opacity: 1;
-      }
-      input[type=text], input[type=number], input[type=time] {
-      width: calc(100% - 57px);
-      height: 36px;
-      margin: 13px 0 0 -5px;
-      padding-left: 10px;
-      border-radius: 0 5px 5px 0;
-      border: solid 1px #cbc9c9;
-      box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-      background: #fff;
-      color: black;
-      }
-      input[type=password] {
-      margin-bottom: 15px;
-      color :black;
-      }
+<!--      input[type=radio]:checked + label:after {-->
+<!--      opacity: 1;-->
+<!--      }-->
+<!--      input[type=text], input[type=number], input[type=time] {-->
+<!--      width: calc(100% - 57px);-->
+<!--      height: 36px;-->
+<!--      margin: 13px 0 0 -5px;-->
+<!--      padding-left: 10px;-->
+<!--      border-radius: 0 5px 5px 0;-->
+<!--      border: solid 1px #cbc9c9;-->
+<!--      box-shadow: 1px 2px 5px rgba(0,0,0,.09);-->
+<!--      background: #fff;-->
+<!--      color: black;-->
+<!--      }-->
+<!--      input[type=password] {-->
+<!--      margin-bottom: 15px;-->
+<!--      color :black;-->
+<!--      }-->
       #icon {
       display: inline-block;
       padding: 9.3px 15px;
@@ -249,17 +244,18 @@ margin-bottom: 14px;
       text-align: center;
       }
       button {
-      width: 100px;
-      height: 50px;
-      padding: 10px 0;
-      margin: 10px auto;
-      border-radius: 5px;
-      border: none;
-      background: #1c87c9;
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      }
+    FONT-VARIANT: JIS04;
+    width: 120px;
+    height: 40px;
+    padding: 10px 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: none;
+    background: #1c87c9;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
       button:hover {
       background: #26a9e0;
       }
@@ -267,7 +263,8 @@ margin-bottom: 14px;
       color: white;
       }
       body > main {
-      padding-top: 20px;
+      padding-top: 60px;
+      height: 85vh;
       }
 
 .copyright{
@@ -280,6 +277,35 @@ font-size: 25px;
       background:inherit !important;
       }
 
+
+    form{
+    width: 100rem;
+
+    }
+     label{
+        display:inline-block;
+        width: 16rem;
+
+        padding-left:1rem;
+        }
+
+        input{
+        width: 16rem;
+        }
+
+        legend {
+    display: block;
+    width: 63%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
   </style>
 </head>
 <body>
@@ -287,46 +313,73 @@ font-size: 25px;
 <div th:replace="fragments/header.html :: header"></div>
 <main>
   <div class="main-block">
-    <form method="POST" action="/addparking">
-      <fieldset>
-        <legend style="color: white;"><h2>Please add your parking information </h2></legend>
-        <br>
-        <label for="parkingName">Parking Name :</label>
-        <input id="parkingName" name="parkingName" type="text" required>
-        <br>
-        <label for="region"> Region : </label><br>
-        <!--    <select  id="region" class="select">-->
-        <!--        <option value="Choice 1">Downtown</option>-->
-        <!--        &lt;!&ndash;            <option value="Choice 2">Germany</option>&ndash;&gt;-->
-        <!--        &lt;!&ndash;            <option value="Choice 3">Neverland</option>&ndash;&gt;-->
-        <!--    </select>-->
-        <input id="region" name="region" type="text" placeholder="Specify more details" required>
-        <br><br>
-        <label for="numSpaces">Number of spaces</label><br>
-        <input id="numSpaces" name="numSpaces" type="number" min="0" required>
-        <br><br>
-        <label for="openingHour">Opening Hour :</label><br>
-        <input id="openingHour" name="openingHour" type="time" required>
-        <br><br>
-        <label for="closingHour">Closing Hour :</label><br>
-        <input id="closingHour" name="closingHour" type="time" required>
-        <br><br>
-        <label for="pricePerHour">Price per hour :</label><br>
-        <input id="pricePerHour" name="pricePerHour" type="number" min="0" required>
-        <br><br>
 
-        <label>Location information :</label><br>
-        <br>
-        <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude"
-               required><br>
-        <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
-        <br>
-        <label class="note">You are at the parking click here => </label>
+
+  <form method="POST" action="/addparking">
+    <fieldset>
+      <legend style="color:white;"><h2>Please add your parking information </h2></legend>
+      <br>
+      <row>
+        <col>
+        <label for="parkingName" style="display:inline-block;">Parking Name :</label>
+        <input id="parkingName" name="parkingName" type="text" required>
+        </col>
+        <col>
+        <label for="region"  > Region : </label>
+        <input id="region" name="region" type="text" placeholder="Specify more details" required>
+        </col>
+      </row>
+      <br>
+      <br>
+      <row>
+        <col>
+        <label for="numSpaces">Number of spaces :</label>
+        <input id="numSpaces" name="numSpaces" type="number" min="0" required>
+        </col>
+
+        <col>
+        <label for="pricePerHour">Price per hour :</label>
+        <input id="pricePerHour" name="pricePerHour" type="number" min="0" required>
+        </col>
+
+      </row>
+      <br>
+      <br>
+
+      <row>
+        <col>
+        <label for="openingHour">Opening hour :</label>
+        <input id="openingHour" name="openingHour" type="time" required>
+        </col>
+        <col>
+        <label for="closingHour">Closing hour :</label>
+        <input id="closingHour" name="closingHour" type="time" required>
+        </col>
+
+      </row>
+      <br>
+      <br>
+      <row>
+        <col>
+        <label class="note">You are at the parking</label>
         <button class="btn2" type="button" onclick="getLocation()">Get Location!</button>
-        <br>
-        <button class="btn1" type="submit">Add Parking</button>
-      </fieldset>
-    </form>
+        </col>
+
+        <col>
+        <input id="lon" name="lon" type="number" step="any" min="31.94" max="31.96" placeholder="Longitude" required>
+        </col>
+
+        <col>
+        <input id="lat" name="lat" type="number" step="any" min="35.93" max="35.95" placeholder="Latitude" required>
+        </col>
+      </row>
+
+
+      <br>
+      <br>
+      <button class="btn1" type="submit">Add Parking</button>
+    </fieldset>
+  </form>
   </div>
 </main>
 <script>

@@ -29,7 +29,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.cors().disable().csrf().disable().authorizeRequests().antMatchers( "/login", "/signup","/","/aboutus","/userShowParking","/userShowParking/{id}").permitAll().antMatchers("/adminpanel").hasAuthority("ROLE_ADMIN").antMatchers("/owner","/addparking", "/css/**").hasAuthority("ROLE_OWNER").anyRequest().authenticated().and().formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/", true).failureUrl("/signup").and().logout().logoutUrl("/perform_logout").logoutSuccessUrl("/").deleteCookies("JSESSIONID");
+            http.cors().disable().csrf().disable().authorizeRequests().antMatchers( "/login", "/signup","/","/aboutus","/userShowParking","/userShowParking/{id}","/test").permitAll().antMatchers("/adminpanel").hasAuthority("ROLE_ADMIN").antMatchers("/owner","/addparking", "/css/**").hasAuthority("ROLE_OWNER").anyRequest().authenticated().and().formLogin().loginPage("/login").loginProcessingUrl("/perform_login").defaultSuccessUrl("/", true).failureUrl("/signup").and().logout().logoutUrl("/perform_logout").logoutSuccessUrl("/").deleteCookies("JSESSIONID");
         }
 
 }

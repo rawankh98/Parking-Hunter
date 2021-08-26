@@ -11,14 +11,14 @@
   <style>
     .dropdown-toggle{
     color: white;
+    font-size: 19px;
+font-weight: bold;
     }
 .nav-link{
 color: white;
+font-size: 19px;
+font-weight: bold;
 }
-    main{
-    min-height: 80vh;
-    padding-top:10vh;
-    }
       .navbar{
 margin: 0;
 border-radius: 0;
@@ -26,18 +26,26 @@ border-style: none;
 height: 70px;
 padding-top: 10px;
 }
+    main{
+    height: 85vh;
+    padding-top:10vh;
+    }
+
 
 .footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
+    background-color: #222;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 15vh;
 }
 
 .footer-clean h3 {
-  margin-top:0;
-  margin-bottom:12px;
+<!--  margin-top:0;-->
+<!--  margin-bottom:12px;-->
   font-weight:bold;
   font-size:16px;
 }
@@ -47,7 +55,7 @@ padding-top: 10px;
   list-style:none;
   line-height:1.6;
   font-size:14px;
-  margin-bottom:0;
+<!--  margin-bottom:0;-->
 }
 
 .footer-clean ul a {
@@ -63,6 +71,24 @@ padding-top: 10px;
 .footer-clean .item.social {
   text-align:right;
 }
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+<!--  margin-left:10px;-->
+<!--  margin-top:22px;-->
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
 
 @media (max-width:767px) {
   .footer-clean .item {
@@ -75,26 +101,14 @@ padding-top: 10px;
   .footer-clean .item.social {
     text-align:center;
   }
+}.footer-clean .copyright {
+<!--  margin-top:14px;-->
+<!--  margin-bottom:0;-->
+  font-size:13px;
+  opacity:0.6;
+  color: white;
 }
 
-.footer-clean .item.social > a {
-  font-size:24px;
-  width:40px;
-  height:40px;
-  line-height:40px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
-  color:inherit;
-  opacity:0.75;
-}
-
-.footer-clean .item.social > a:hover {
-  opacity:0.9;
-}
 
 @media (max-width:991px) {
   .footer-clean .item.social > a {
@@ -107,17 +121,19 @@ padding-top: 10px;
     margin-top:10px;
   }
 }
-
-
-.footer-clean .copyright {
-  margin-top:14px;
-  margin-bottom:0;
-  font-size:13px;
-  opacity:0.6;
+      .copyright{
+color: white;
 }
      div > ul:nth-child(3) > li > a:hover{
       background:inherit !important;
       }
+
+body > div:nth-child(3) > div > footer {
+height: 15vh;
+}
+body {
+height: 100vh;
+}
 
 
 
@@ -125,32 +141,30 @@ padding-top: 10px;
 
   </style>
 </head>
-<body>
+<body style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1495389564984-b1530db9afc2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80')">
 
 <div th:replace="fragments/header.html :: header"></div>
 
-<main>
+<main >
   <div class="container">
     <!--    th:if="${userType=='ROLE_OWNER'}"-->
     <div class="row">
       <div class="col">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-          <a href="/"
-             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-            <span class="fs-5 fw-semibold">Reservations</span>
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 380px;">
+          <a href="#"
+             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="    color: white;
+    font-size: 2.5rem !important;margin-bottom: 20px;">
+            <span class="fs-5 fw-semibold" style="color:white;font-size:2.5rem !important;font-weight:700">User Reservations</span>
           </a>
-          <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
-            <!--            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
-            <!--              <button type="submit" class="btn btn-outline-primary">Add Parking</button>-->
-            <!--            </form>-->
+          <div style="height: 60vh; " class="list-group list-group-flush scrollarea">
             <form th:if="${userType=='ROLE_OWNER'}" action="http://localhost:8080/">
-              <button type="submit" class="btn btn-outline-primary">Return to all parkings</button>
+              <button style="width:100%; height:50px; " type="submit" class="btn btn-primary">Return to all parkings</button>
             </form>
 
             <div th:each="oneReservation: ${oneReservation}"
                  th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_USER'}"
                  style="border-bottom: 1px solid white;
-    background-color: #1c87c9;
+    background-color: #dadada;
         padding: 10px;
     margin-top: 15px;
     border-radius: 5px;">
@@ -173,15 +187,17 @@ padding-top: 10px;
     width: 100%;">
                 <div class="col" style="margin: 0;
     padding: 0;">
-                  <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }">
-                    <button style="width: 100%;"  type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
+                  <form action="/editReserve/{id}" method="put" th:if="${oneReservation.type=='ROLE_USER' }" style="text-align: center;">
+                    <button  style="width: 85%;
+    height: 35px; " type="submit" name="id" th:value="${oneReservation.id}" class="btn btn-primary">Add Hour
                     </button>
                   </form>
                 </div>
                 <div class="col" style="margin: 0;
     padding: 0;">
-                  <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" method="delete">
-                    <button style="width: 100%;" class="btn btn-primary" type="submit" name="id" th:value="${oneReservation.id}">Delete
+                  <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" method="delete" style="text-align: center;">
+                    <button style="width: 85%;
+    height: 35px;" class="btn btn-secondary" type="submit" name="id" th:value="${oneReservation.id}">Delete
                       Reservation
                     </button>
                   </form>
@@ -189,7 +205,7 @@ padding-top: 10px;
               </div>
 
               <form action="/editcustmerOfOwner/{id}" method="put" th:if="${oneReservation.type=='ROLE_OUTER' }">
-                <button type="submit" class="btn btn-primary" name="id" th:value="${oneReservation.id}">finish</button>
+                <button type="submit" class="btn btn-primary" name="id" th:value="${oneReservation.id}">Finish</button>
               </form>
 
             </div>
@@ -197,9 +213,10 @@ padding-top: 10px;
         </div>
       </div>
       <div class="col">
-        <a style="margin-bottom: 30px;" href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span class="fs-5 fw-semibold">Reviews</span>
+        <a style="margin-bottom: 30px;     color: white;
+    font-size: 2.5rem !important;margin-bottom: 20px;" href="#"
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" >
+          <span class="fs-5 fw-semibold" style="color:white;font-size:2.5rem !important; font-weight:700">Car In</span>
         </a>
 
 
@@ -210,19 +227,20 @@ padding-top: 10px;
                    required>
           </div>
 
-          <button type="submit" class="btn btn-primary" name="id" th:value="${parkingsOwner.id}">Add Client</button>
+          <button type="submit" style="width:100%; height:50px; class="class="btn btn-primary" name="id" th:value="${parkingsOwner.id}">Add Client</button>
         </form>
 
       </div>
       <div class="col">
-        <a href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-          <span class="fs-5 fw-semibold">Details</span>
+        <a href="#"
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="    color: white;
+    font-size: 2.5rem !important;margin-bottom: 20px;">
+          <span class="fs-5 fw-semibold" style="color:white;font-size:2.5rem !important; font-weight:700">Car Out</span>
         </a>
-        <div style=" max-height : 80vh" class="overflow-auto">
+        <div style=" max-height : 60vh" class="overflow-auto">
           <div th:each="oneReservation: ${oneReservation}"
-               th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_OUTER'}" style="border-bottom: 1px solid white; border-radius: 0; background-color: #1c87c9; padding: 10px;
-                margin-top: 15px;
+               th:if="${userType=='ROLE_OWNER'&& oneReservation.type=='ROLE_OUTER'}" style="border-bottom: 1px solid white; border-radius: 0; background-color: #dadada; padding: 10px;
+                margin-bottom: 15px;
                 border-radius: 7px; ">
 
             <div class="d-flex w-100 align-items-center justify-content-between">
@@ -245,12 +263,12 @@ padding-top: 10px;
             </form>
             <form action="/editcustmerOfOwner/{id}" method="put"
                   th:if="${oneReservation.type=='ROLE_OUTER' &&oneReservation.endTime=='' }">
-              <button type="submit" class="btn btn-secondary" name="id" th:value="${oneReservation.id}">finish</button>
+              <button type="submit" class="btn btn-secondary" name="id" th:value="${oneReservation.id}">Finish</button>
             </form>
             <form th:action="@{/reserve/{id}(id=${oneReservation.id})}" th:if="${oneReservation.endTime!='' }"
                   method="delete">
               <button class="btn btn-secondary" type="submit" name="id" th:value="${oneReservation.id}">Delete
-                Reservation
+                Card
               </button>
             </form>
           </div>
