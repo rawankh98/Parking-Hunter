@@ -407,7 +407,9 @@ width: 100%;
 <!--}-->
 body > main {
 height: 85vh;
-margin-top: 10vh;
+
+
+
 }
 .copyright{
 color: white;
@@ -435,7 +437,9 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
 <div class="newdev" th:if="${userType=='ROLE_OWNER'}" >
 </div>
 
-<div th:replace="fragments/header.html :: header"></div>
+  <div th:replace="fragments/header.html :: header"></div>
+
+
 
 <main>
   <div th:if="${userType!='ROLE_OWNER'}">
@@ -458,7 +462,7 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
 
   </div>
 
-  <div class="containers" th:if="${userType=='ROLE_OWNER'}" >
+  <div class="containers" style="padding-top:30px" th:if="${userType=='ROLE_OWNER'}" >
 
     <div class="row" >
       <div class="col-3"></div>
@@ -469,13 +473,13 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
       <div class="col-6" style=" padding:3rem; margin-left=30rem; " >
         <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 600px;">
           <a href="/"
-             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="margin: 0;padding: 0 !important;">
+             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" >
             <span class="fs-5 fw-semibold" style="color:white">Owner Parkings</span>
           </a>
           <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
             <button style="width:100%; height:50px; " type="submit" class="btn btn-primary">Add Parking</button>
           </form>
-          <div style="margin-top:2rem; height: 60vh; background-color:#222222bd; " class="list-group list-group-flush scrollarea overflow-auto">
+          <div style=" height: 60vh; background-color:#222222bd; " class="list-group list-group-flush scrollarea ">
 
             <div th:each="parking: ${parkingsOwner}" th:if="${userType=='ROLE_OWNER'}" style="background-color: #252525;
     margin-top: 15px;">
