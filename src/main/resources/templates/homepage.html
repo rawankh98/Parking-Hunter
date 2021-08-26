@@ -407,7 +407,9 @@ width: 100%;
 <!--}-->
 body > main {
 height: 85vh;
-padding-top: 70px;
+
+
+
 }
 .copyright{
 color: white;
@@ -435,7 +437,9 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
 <div class="newdev" th:if="${userType=='ROLE_OWNER'}" >
 </div>
 
-<div th:replace="fragments/header.html :: header"></div>
+  <div th:replace="fragments/header.html :: header"></div>
+
+
 
 <main>
   <div th:if="${userType!='ROLE_OWNER'}">
@@ -458,31 +462,40 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
 
   </div>
 
-  <div class="container" th:if="${userType=='ROLE_OWNER'}">
-    <div class="row">
-      <div class="col-4">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 380px;">
+  <div class="containers" style="padding-top:30px" th:if="${userType=='ROLE_OWNER'}" >
+
+    <div class="row" >
+      <div class="col-3"></div>
+
+
+
+
+      <div class="col-6" style=" padding:3rem; margin-left=30rem; " >
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0" style="width: 600px;">
           <a href="/"
-             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="margin: 0;padding: 0 !important;">
+             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" >
             <span class="fs-5 fw-semibold" style="color:white">Owner Parkings</span>
           </a>
-          <div style="height: 60vh; " class="list-group list-group-flush scrollarea">
+          <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
+            <button style="width:100%; height:50px; " type="submit" class="btn btn-primary">Add Parking</button>
+          </form>
+          <div style=" height: 60vh; background-color:#222222bd; " class="list-group list-group-flush scrollarea ">
 
             <div th:each="parking: ${parkingsOwner}" th:if="${userType=='ROLE_OWNER'}" style="background-color: #252525;
     margin-top: 15px;">
-              <a style=" background-color: #252525; border : none;"
+              <a style=" background-color: #EEEEEE; border : none;"
                  th:href="@{/{id}(id=${parking.id})}"
                  class="list-group-item list-group-item-action active py-3 lh-tight"
                  aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
-                  <strong style="text-transform:uppercase; margin-bottom: 7px;"
+                  <strong style="text-transform:uppercase; margin-bottom: 7px; color:black;"
                           th:text="${parking.parkingName}"></strong>
-                  <small>Wed</small>
+                  <small >Wed</small>
                 </div>
-                <div class="col-10 mb-1 small"><label>Available Spaces </label>&nbsp;<p
-                        style="display: inline-block;" th:text="${parking.availableSpaces}"></p>&nbsp;
-                  <label>Price Per Hour </label>&nbsp;
-                  <p style="display: inline-block;"
+                <div class="col-10 mb-1 small" style="color:black;"><label>Available Spaces </label>&nbsp;<p
+                        style="display: inline-block; color:black;" th:text="${parking.availableSpaces} "></p>&nbsp;
+                  <label style="color:black;">Price Per Hour </label>&nbsp;
+                  <p style="display: inline-block; color:black;"
                      th:text="${parking.PricePerHour}"></p>
                 </div>
               </a>
@@ -492,24 +505,27 @@ background-image: url('https://images.unsplash.com/photo-1495389564984-b1530db9a
         </div>
       </div>
 
-      <div class="col-8" >
-        <a href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style=" margin: 0;;   padding: 0 !important;" >
-          <span class="fs-5 fw-semibold" style="color:white">Add New parking</span>
-        </a>
-        <div class="card" style="background-color: #000000a1;margin-top: 15px;">
-          <div class="card-body">
-            <p class="card-text">
-            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">
-              <button type="submit" class="btn btn-outline-primary">Add Parking</button>
-            </form>
-            </p>
-          </div>
 
-        </div>
-      </div>
+<!--      <div class="col-8" >-->
+<!--        <a href="/"-->
+<!--           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style=" margin: 0;;   padding: 0 !important;" >-->
+<!--          <span class="fs-5 fw-semibold" style="color:white">Add New parking</span>-->
+<!--        </a>-->
+<!--        <div class="card" style="background-color: #000000a1;margin-top: 15px;">-->
+<!--          <div class="card-body">-->
+<!--            <p class="card-text">-->
+<!--            <form th:if="${userType=='ROLE_OWNER'}" action="/addparking">-->
+<!--              <button type="submit" class="btn btn-outline-primary">Add Parking</button>-->
+<!--            </form>-->
 
+<!--            </p>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+      <div class="col-3"></div>
     </div>
+
   </div>
 
 </main>

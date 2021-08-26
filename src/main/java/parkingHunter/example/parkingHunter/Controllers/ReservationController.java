@@ -69,7 +69,8 @@ public class ReservationController {
         reservationRepository.save(newReservation);
 
 
-     return new RedirectView("/");
+        String url = "http://localhost:8080/userShowParking/"+idP;
+     return new RedirectView(url);
     }
 
 
