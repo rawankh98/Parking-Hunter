@@ -24,32 +24,33 @@
 <!-- left:2rem;-->
 <!-- }-->
 
-<!--  #map {-->
-<!--  position: absolute;-->
-<!--  top:4rem;-->
-<!--  right:0;-->
-
-<!--  width: 40vw;-->
-<!--  height: 50vh;-->
-<!--}-->
-
      #map {
-     width: 100%;
-     height: 100%;
-     border-radius: 20px;;
+     width: 800px;
+     height: 88vh;
    }
 
  .dropdown-toggle{
     color: white;
+    font-size: 19px;
+font-weight: bold;
     }
 .nav-link{
 color: white;
+font-size: 19px;
+font-weight: bold;
+}
+ .navbar{
+margin: 0;
+border-radius: 0;
+border-style: none;
+height: 70px;
+padding-top: 10px;
 }
     main{
-    min-height: 80vh;
     width:100%;
-    padding-top:10vh;
-    background-color: #C0C0C0;
+    margin-top:80px;
+    height: 88vh;
+    padding-left: 115px;
     }
       .navbar{
 margin: 0;
@@ -57,43 +58,6 @@ border-radius: 0;
 border-style: none;
 height: 70px;
 padding-top: 10px;
-}
-
-.footer-clean {
-  padding:50px 0;
-  background-color:#222;
-  color:white;
-  position: relative;
-  bottom: 0;
-}
-
-.footer-clean h3 {
-  margin-top:0;
-  margin-bottom:12px;
-  font-weight:bold;
-  font-size:16px;
-}
-
-.footer-clean ul {
-  padding:0;
-  list-style:none;
-  line-height:1.6;
-  font-size:14px;
-  margin-bottom:0;
-}
-
-.footer-clean ul a {
-  color:inherit;
-  text-decoration:none;
-  opacity:0.8;
-}
-
-.footer-clean ul a:hover {
-  opacity:1;
-}
-
-.footer-clean .item.social {
-  text-align:right;
 }
 
 @media (max-width:767px) {
@@ -109,55 +73,29 @@ padding-top: 10px;
   }
 }
 
-.footer-clean .item.social > a {
-  font-size:24px;
-  width:40px;
-  height:40px;
-  line-height:40px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  border:1px solid #ccc;
-  margin-left:10px;
-  margin-top:22px;
-  color:inherit;
-  opacity:0.75;
-}
+<!--@media (max-width:991px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:40px;-->
+<!--  }-->
+<!--}-->
 
-.footer-clean .item.social > a:hover {
-  opacity:0.9;
-}
-
-@media (max-width:991px) {
-  .footer-clean .item.social > a {
-    margin-top:40px;
-  }
-}
-
-@media (max-width:767px) {
-  .footer-clean .item.social > a {
-    margin-top:10px;
-  }
-}
-
-
-.footer-clean .copyright {
-  margin-top:14px;
-  margin-bottom:0;
-  font-size:13px;
-  opacity:0.6;
-}
+<!--@media (max-width:767px) {-->
+<!--  .footer-clean .item.social > a {-->
+<!--    margin-top:10px;-->
+<!--  }-->
+<!--}-->
 .containers {
 
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    max-height: 90vh;
 }
 .row {
-
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+    max-height: 90vh;
 }
 <!--@media (min-width: 1400px)-->
 <!--.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {-->
@@ -171,7 +109,7 @@ padding-top: 10px;
 
 .bg-white {
     --bs-bg-opacity: 1;
-    background-color: #222222bd !important;
+    background-color: #22222252 !important;
 }
 
 .list-group-item.active {
@@ -180,7 +118,14 @@ padding-top: 10px;
     background-color: #0d6efd;
     /* border-color: #0d6efd; */
 }
-
+body {
+height: 88vh;
+}
+body > main > div > div > div.col-4 > div {
+--bs-bg-opacity: 1;
+    background-color: #222222bd !important;
+    height: 88vh;
+}
 
     </style>
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
@@ -193,7 +138,7 @@ padding-top: 10px;
         <div class="row">
 
             <div class="col-4"style="border-radius: 5px; ">
-                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"style="border-radius: 5px">
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                     <a href="#"
                        class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
                        style="margin-bottom:1rem;">
@@ -273,7 +218,6 @@ console.log(coolLocations);
 
 
 </main>
-<div th:replace="fragments/footer.html :: footer"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
