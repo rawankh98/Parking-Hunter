@@ -5,19 +5,19 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
-    <link rel='stylesheet' type='text/css'
-          href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
-    <title>Title</title>
-    <style>
+  <link rel='stylesheet' type='text/css'
+        href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps.css'>
+  <title>Title</title>
+  <style>
 
 <!-- .container{-->
 <!-- position:relative;-->
@@ -127,61 +127,65 @@ body > main > div > div > div.col-4 > div {
     height: 88vh;
 }
 
-    </style>
-    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
+
+  </style>
+  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.63.0/maps/maps-web.min.js'></script>
 </head>
 <body>
 <div th:replace="fragments/header.html :: header"></div>
 <main>
-    <!--    <div style="height:800px;overflow-y: auto;max-width: 500px;background-color:red;">-->
-    <div class="containers" style="color:black;">
-        <div class="row">
+  <!--    <div style="height:800px;overflow-y: auto;max-width: 500px;background-color:red;">-->
+  <div class="containers" style="color:black;">
+    <div class="row">
 
-            <div class="col-4"style="border-radius: 5px; ">
-                <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
-                    <a href="#"
-                       class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
-                       style="margin-bottom:1rem;">
-                        <span class="fs-5 fw-semibold" style="color:#F3F0D7">Parkings</span>
-                    </a>
-                    <div style="max-height: 80vh;border-radius: 20px; " class="list-group list-group-flush overflow-auto  scrollarea">
-                        <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
-                            <a style=" border-radius: 0; background-color: #EEEEEE; width:100%;"
-                               th:href="@{/userShowParking/{id}(id=${parking.id})}"
-                               class="list-group-item list-group-item-action active py-3 lh-tight"
-                               aria-current="true">
-                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                    <strong style="text-transform:uppercase; margin-bottom: 7px; color:black;"
-                                            th:text="${parking.parkingName}"></strong>
-                                    <large style="color:black;"><span >$</span><span th:text="${parking.pricePerHour}"></span></large>
+      <div class="col-4" style="border-radius: 5px; ">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+          <a href="#"
+             class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
+             style="margin-bottom:1rem;">
+            <span class="fs-5 fw-semibold" style="color:#F3F0D7">Parkings</span>
+          </a>
+          <div style="max-height: 80vh;border-radius: 20px; "
+               class="list-group list-group-flush overflow-auto  scrollarea">
+            <div th:each="parking: ${parkings}" th:if="${userType!='ROLE_OWNER'}" style="padding:.5rem;">
+              <a style=" border-radius: 0; background-color: #EEEEEE; width:100%;"
+                 th:href="@{/userShowParking/{id}(id=${parking.id})}"
+                 class="list-group-item list-group-item-action active py-3 lh-tight"
+                 aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                  <strong style="text-transform:uppercase; margin-bottom: 7px; color:black;"
+                          th:text="${parking.parkingName}"></strong>
+                  <large style="color:black;"><span>$</span><span th:text="${parking.pricePerHour}"></span></large>
 
-                                </div>
-                                <div class="col-10 mb-1 small"><label style="color:black;">Available Spaces </label>&nbsp;
-                                    <p style="display: inline-block;" th:if="${parking.availableSpaces} != 0">🟢</p>&nbsp;
-                                    <p  style="display: inline-block;" th:if="${parking.availableSpaces} == 0"> 🔴 </p>&nbsp;
-                                </div>
-                            </a>
-                            <a class="btn btn-outline-secondary"style="color:white; border-bottom: 1px solid white; border-radius: 1px; background-color: #4387ca; width:100%;" th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
-
-                            <form action="/bookingForm" method="get" th:if="${userType =='ROLE_USER'}">
-                                <button style="border-bottom: 1px solid white; border-radius: 5px; background-color: #4387ca; width:100%; color:white;" class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id} >BOOK NOW</button>
-                            </form>
-
-
-                        </div>
-                    </div>
                 </div>
+                <div class="col-10 mb-1 small"><label style="color:black;">Available Spaces </label>&nbsp;
+                  <p style="display: inline-block;" th:if="${parking.availableSpaces} != 0">🟢</p>&nbsp;
+                  <p style="display: inline-block;" th:if="${parking.availableSpaces} == 0"> 🔴 </p>&nbsp;
+                </div>
+              </a>
+              <a class="btn btn-outline-secondary"
+                 style="color:white; border-bottom: 1px solid white; border-radius: 1px; background-color: #4387ca; width:100%;"
+                 th:href=${parking.url} role="button" data-bs-toggle="button" aria-pressed="true">GPS DIRECTION</a>
+
+              <form action="/bookingForm" method="get" th:if="${userType =='ROLE_USER'}">
+                <button style="border-bottom: 1px solid white; border-radius: 5px; background-color: #4387ca; width:100%; color:white;"
+                        class="btn btn-primary active" type="submit" id="id" name="id" th:value=${parking.id}>BOOK NOW
+                </button>
+              </form>
+
+
             </div>
-            <div class="col-8"style="border-radius: 20px; ">
-                <div id='map' class='map'></div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-8" style="border-radius: 20px; ">
+        <div id='map' class='map'></div>
+      </div>
     </div>
+  </div>
 
 
-
-
-    <script th:inline="javascript">
+  <script th:inline="javascript">
 const objectsOfParkings =  /*[[${parkingsOwner}]]*/ 'default';
 console.log(objectsOfParkings);
 console.log(objectsOfParkings.length);
@@ -213,8 +217,8 @@ console.log(coolLocations);
   });
 
 
-    </script>
 
+  </script>
 
 
 </main>

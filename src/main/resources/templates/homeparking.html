@@ -22,6 +22,7 @@ height: 100vh;
   border: 1px solid black;
   padding: 3rem;
 margin:2rem;
+margin-top: 0;
 border-radius:5px;
 position: relative;
     }
@@ -394,7 +395,8 @@ padding-top: 15vh;
 .divparkingDetails{
     padding: 10px;
     border-bottom: 1px solid;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
+
 }
 
 .dropdown-toggle{
@@ -501,6 +503,9 @@ height: 15vh;
 <!--    margin-top: 10px;-->
 <!--}-->
 
+.container, .col ,.row,.scrollingBar {
+height:100%
+}
 
 
   </style>
@@ -532,15 +537,15 @@ height: 15vh;
   </div>
 
 
-
   <div class="container">
     <!--    th:if="${userType=='ROLE_OWNER'}"-->
     <div class="row">
       <div class="col">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 " style="width: 380px;">
-          <a href="#" style="margin: 0;padding: 0 !important;"
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 scrollingBar" style="width: 380px;">
+          <a href="#" style="margin: 0;margin-bottom: 20px;"
              class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-            <span class="fs-5 fw-semibold" th:text="${parkingsOwner.parkingName}" style="color:white;font-size:2.5rem !important"></span>
+            <span class="fs-5 fw-semibold" th:text="${parkingsOwner.parkingName}"
+                  style="color:white;font-size:2.5rem !important"></span>
           </a>
           <div style="height: 80vh; " class="list-group list-group-flush scrollarea">
 
@@ -548,8 +553,10 @@ height: 15vh;
               <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom: 10px;">SHOW ALL</button>
             </form>
 
-            <form th:if="${userType=='ROLE_OWNER'}" th:action="@{/parkingcontroller/{id}(id=${parkingsOwner.id})}"  >
-              <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom: 10px;">Parking Controller</button>
+            <form th:if="${userType=='ROLE_OWNER'}" th:action="@{/parkingcontroller/{id}(id=${parkingsOwner.id})}">
+              <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom: 10px;">Parking
+                Controller
+              </button>
             </form>
 
             <div th:each="parking: ${parkingsOwner}" th:if="${userType=='ROLE_OWNER'}">
@@ -575,45 +582,52 @@ height: 15vh;
         </div>
       </div>
       <div class="col">
-        <a href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" style="color:white;font-size:2.5rem !important">
-          <span style="color:white;font-size:2.5rem !important" class="fs-5 fw-semibold" >Details</span>
+        <a href="#"
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
+           style="color:white;font-size:2.5rem !important">
+          <span style="color:white;font-size:2.5rem !important" class="fs-5 fw-semibold">Details</span>
         </a>
         <div class="parkingDetailsH1" style="margin-top:15px">
-          <div style="max-height: 60vh;border-radius: 20px; " class="list-group list-group-flush overflow-auto  scrollarea">
-          <div class="divparkingDetails">
-            <h4> Parking Name   </h4> <span th:text="${parkingsOwner.parkingName}"></span>
+          <div style="max-height: 60vh;border-radius: 20px; "
+               class="list-group list-group-flush overflow-auto  scrollarea">
+            <div class="divparkingDetails">
+              <h4> Parking Name </h4> <span th:text="${parkingsOwner.parkingName}"></span>
+            </div>
+            <div class="divparkingDetails">
+              <h4> Parking Region </h4> <span th:text="${parkingsOwner.region}"></span>
+            </div>
+            <div class="divparkingDetails"><h4> Parking Opening Hours </h4><span
+                    th:text="${parkingsOwner.openingHour}"></span></div>
+            <div class="divparkingDetails"><h4> Parking Closing Hours </h4><span
+                    th:text="${parkingsOwner.closingHour}"></span>
+            </div>
+            <div class="divparkingDetails">
+              <h4> Parking Price Per Hours </h4><span th:text="${parkingsOwner.pricePerHour}"></span>
+            </div>
+            <div class="divparkingDetails">
+              <h4> Owner Name </h4> <span th:text="${parkingsOwner.ownerName}"></span>
+            </div>
           </div>
-          <div class="divparkingDetails">
-            <h4> Parking Region  </h4> <span th:text="${parkingsOwner.region}"></span>
-          </div>
-          <div class="divparkingDetails"><h4> Parking Opening Hours    </h4><span th:text="${parkingsOwner.openingHour}"></span></div>
-          <div class="divparkingDetails">          <h4> Parking Closing Hours   </h4><span th:text="${parkingsOwner.closingHour}"></span>
-          </div>
-          <div class="divparkingDetails">
-            <h4> Parking Price Per Hours   </h4><span th:text="${parkingsOwner.pricePerHour}"></span>
-          </div>
-          <div class="divparkingDetails">
-            <h4> Owner Name </h4> <span th:text="${parkingsOwner.ownerName}"></span>
-          </div>
-          </div></div>
+        </div>
 
       </div>
       <div class="col">
-        <a style="margin-bottom: 30px;" href="/"
-           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom" >
-          <span style="color:white;font-size:2.5rem !important" class="fs-5 fw-semibold" >Reviews</span>
+        <a style="margin-bottom: 20px;" href="#"
+           class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+          <span style="color:white;font-size:2.5rem !important" class="fs-5 fw-semibold">Reviews</span>
         </a>
         <div class="scrollarea" style="height: 60vh">
           <div class="revs" style="text-align: center;" th:each="reviews:${reviewsByBarkingId}">
             <div>
-              <img class="imgProfile" src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
+              <img class="imgProfile"
+                   src="https://freepikpsd.com/media/2019/10/default-image-png-Transparent-Images.png"
                    width="50px" style="border-radius: 50%;" alt="img">
-               <p style="font-size:1.5rem; font-style:bold;" class="revName" th:text="${reviews.userName}"></p>
-               <p style="font-size:.8rem;" class="revText" th:text="${reviews.dateTime}"></p>
-               <p class="revBody" th:text="${reviews.body}"></p>
+              <p style="font-size:1.5rem; font-style:bold; color: black" class="revName"
+                 th:text="${reviews.userName}"></p>
+              <p style="font-size:.8rem; color: black" class="revText" th:text="${reviews.dateTime}"></p>
+              <p class="revBody" th:text="${reviews.body}" style=" color: black"></p>
 
-                          </div>
+            </div>
 
           </div>
         </div>
@@ -660,6 +674,7 @@ $("select").on("change" , function() {
   label.find(".label-desc").html(selection);
 
 });
+
 
 
 
